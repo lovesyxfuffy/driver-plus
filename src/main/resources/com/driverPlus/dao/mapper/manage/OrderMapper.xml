@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.driverPlus.dao.mapper.manage.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.driverPlus.dao.po.manage.Order" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="pay_status" property="payStatus" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="student_idcard" property="studentIdcard" jdbcType="VARCHAR" />
+    <result column="student_telephone" property="studentTelephone" jdbcType="VARCHAR" />
+    <result column="student_qq" property="studentQq" jdbcType="VARCHAR" />
+    <result column="other" property="other" jdbcType="VARCHAR" />
+    <result column="referee_id" property="refereeId" jdbcType="INTEGER" />
+    <result column="class_id" property="classId" jdbcType="INTEGER" />
+    <result column="field_id" property="fieldId" jdbcType="INTEGER" />
+    <result column="add_time" property="addTime" jdbcType="DATE" />
+    <result column="update_time" property="updateTime" jdbcType="DATE" />
+    <result column="school_id" property="schoolId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, user_id, pay_status, status, student_name, price, student_idcard, student_telephone, 
+    student_qq, other, referee_id, class_id, field_id, add_time, update_time, school_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.driverPlus.dao.po.manage.OrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from s_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from s_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from s_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.driverPlus.dao.po.manage.OrderExample" >
+    delete from s_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.driverPlus.dao.po.manage.Order" >
+    insert into s_order (id, user_id, pay_status, 
+      status, student_name, price, 
+      student_idcard, student_telephone, student_qq, 
+      other, referee_id, class_id, 
+      field_id, add_time, update_time, 
+      school_id)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{payStatus,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{studentName,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, 
+      #{studentIdcard,jdbcType=VARCHAR}, #{studentTelephone,jdbcType=VARCHAR}, #{studentQq,jdbcType=VARCHAR}, 
+      #{other,jdbcType=VARCHAR}, #{refereeId,jdbcType=INTEGER}, #{classId,jdbcType=INTEGER}, 
+      #{fieldId,jdbcType=INTEGER}, #{addTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, 
+      #{schoolId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.driverPlus.dao.po.manage.Order" >
+    insert into s_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="payStatus != null" >
+        pay_status,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="studentName != null" >
+        student_name,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="studentIdcard != null" >
+        student_idcard,
+      </if>
+      <if test="studentTelephone != null" >
+        student_telephone,
+      </if>
+      <if test="studentQq != null" >
+        student_qq,
+      </if>
+      <if test="other != null" >
+        other,
+      </if>
+      <if test="refereeId != null" >
+        referee_id,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="fieldId != null" >
+        field_id,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="schoolId != null" >
+        school_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="payStatus != null" >
+        #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="studentName != null" >
+        #{studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="studentIdcard != null" >
+        #{studentIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="studentTelephone != null" >
+        #{studentTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentQq != null" >
+        #{studentQq,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null" >
+        #{other,jdbcType=VARCHAR},
+      </if>
+      <if test="refereeId != null" >
+        #{refereeId,jdbcType=INTEGER},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="fieldId != null" >
+        #{fieldId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="schoolId != null" >
+        #{schoolId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.driverPlus.dao.po.manage.OrderExample" resultType="java.lang.Integer" >
+    select count(*) from s_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update s_order
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.payStatus != null" >
+        pay_status = #{record.payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.studentName != null" >
+        student_name = #{record.studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=INTEGER},
+      </if>
+      <if test="record.studentIdcard != null" >
+        student_idcard = #{record.studentIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentTelephone != null" >
+        student_telephone = #{record.studentTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentQq != null" >
+        student_qq = #{record.studentQq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.other != null" >
+        other = #{record.other,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refereeId != null" >
+        referee_id = #{record.refereeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.classId != null" >
+        class_id = #{record.classId,jdbcType=INTEGER},
+      </if>
+      <if test="record.fieldId != null" >
+        field_id = #{record.fieldId,jdbcType=INTEGER},
+      </if>
+      <if test="record.addTime != null" >
+        add_time = #{record.addTime,jdbcType=DATE},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=DATE},
+      </if>
+      <if test="record.schoolId != null" >
+        school_id = #{record.schoolId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update s_order
+    set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      pay_status = #{record.payStatus,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      student_name = #{record.studentName,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=INTEGER},
+      student_idcard = #{record.studentIdcard,jdbcType=VARCHAR},
+      student_telephone = #{record.studentTelephone,jdbcType=VARCHAR},
+      student_qq = #{record.studentQq,jdbcType=VARCHAR},
+      other = #{record.other,jdbcType=VARCHAR},
+      referee_id = #{record.refereeId,jdbcType=INTEGER},
+      class_id = #{record.classId,jdbcType=INTEGER},
+      field_id = #{record.fieldId,jdbcType=INTEGER},
+      add_time = #{record.addTime,jdbcType=DATE},
+      update_time = #{record.updateTime,jdbcType=DATE},
+      school_id = #{record.schoolId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.driverPlus.dao.po.manage.Order" >
+    update s_order
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="payStatus != null" >
+        pay_status = #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="studentName != null" >
+        student_name = #{studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="studentIdcard != null" >
+        student_idcard = #{studentIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="studentTelephone != null" >
+        student_telephone = #{studentTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentQq != null" >
+        student_qq = #{studentQq,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null" >
+        other = #{other,jdbcType=VARCHAR},
+      </if>
+      <if test="refereeId != null" >
+        referee_id = #{refereeId,jdbcType=INTEGER},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="fieldId != null" >
+        field_id = #{fieldId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="schoolId != null" >
+        school_id = #{schoolId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.driverPlus.dao.po.manage.Order" >
+    update s_order
+    set user_id = #{userId,jdbcType=INTEGER},
+      pay_status = #{payStatus,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      student_name = #{studentName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER},
+      student_idcard = #{studentIdcard,jdbcType=VARCHAR},
+      student_telephone = #{studentTelephone,jdbcType=VARCHAR},
+      student_qq = #{studentQq,jdbcType=VARCHAR},
+      other = #{other,jdbcType=VARCHAR},
+      referee_id = #{refereeId,jdbcType=INTEGER},
+      class_id = #{classId,jdbcType=INTEGER},
+      field_id = #{fieldId,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=DATE},
+      school_id = #{schoolId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
