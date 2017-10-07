@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.driverPlus.dao.mapper.front.noticeMapper" >
-  <resultMap id="BaseResultMap" type="com.driverPlus.dao.po.front.notice" >
+<mapper namespace="com.driverPlus.dao.mapper.front.NoticeMapper" >
+  <resultMap id="BaseResultMap" type="com.driverPlus.dao.po.front.Notice" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="for_user_id" property="forUserId" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="VARCHAR" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List" >
     id, for_user_id, content, name, add_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.driverPlus.dao.po.front.noticeExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.driverPlus.dao.po.front.NoticeExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,19 +93,19 @@
     delete from t_notice
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.driverPlus.dao.po.front.noticeExample" >
+  <delete id="deleteByExample" parameterType="com.driverPlus.dao.po.front.NoticeExample" >
     delete from t_notice
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.driverPlus.dao.po.front.notice" >
+  <insert id="insert" parameterType="com.driverPlus.dao.po.front.Notice" >
     insert into t_notice (id, for_user_id, content, 
       name, add_time)
     values (#{id,jdbcType=INTEGER}, #{forUserId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.driverPlus.dao.po.front.notice" >
+  <insert id="insertSelective" parameterType="com.driverPlus.dao.po.front.Notice" >
     insert into t_notice
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -142,7 +142,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.driverPlus.dao.po.front.noticeExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.driverPlus.dao.po.front.NoticeExample" resultType="java.lang.Integer" >
     select count(*) from t_notice
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -182,7 +182,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.driverPlus.dao.po.front.notice" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.driverPlus.dao.po.front.Notice" >
     update t_notice
     <set >
       <if test="forUserId != null" >
@@ -200,7 +200,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.driverPlus.dao.po.front.notice" >
+  <update id="updateByPrimaryKey" parameterType="com.driverPlus.dao.po.front.Notice" >
     update t_notice
     set for_user_id = #{forUserId,jdbcType=INTEGER},
       content = #{content,jdbcType=VARCHAR},

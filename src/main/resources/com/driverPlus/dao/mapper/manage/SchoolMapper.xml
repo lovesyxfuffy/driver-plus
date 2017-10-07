@@ -7,6 +7,7 @@
     <result column="telephone" property="telephone" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="student_count" property="studentCount" jdbcType="INTEGER" />
+    <result column="sms_count" property="smsCount" jdbcType="INTEGER" />
     <result column="open_id" property="openId" jdbcType="VARCHAR" />
     <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, telephone, status, student_count, open_id, add_time
+    id, name, telephone, status, student_count, sms_count, open_id, add_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.driverPlus.dao.po.manage.SchoolExample" >
     select
@@ -103,11 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.driverPlus.dao.po.manage.School" >
     insert into s_school (id, name, telephone, 
-      status, student_count, open_id, 
-      add_time)
+      status, student_count, sms_count, 
+      open_id, add_time)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{studentCount,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, 
-      #{addTime,jdbcType=TIMESTAMP})
+      #{status,jdbcType=INTEGER}, #{studentCount,jdbcType=INTEGER}, #{smsCount,jdbcType=INTEGER}, 
+      #{openId,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.driverPlus.dao.po.manage.School" >
     insert into s_school
@@ -126,6 +127,9 @@
       </if>
       <if test="studentCount != null" >
         student_count,
+      </if>
+      <if test="smsCount != null" >
+        sms_count,
       </if>
       <if test="openId != null" >
         open_id,
@@ -149,6 +153,9 @@
       </if>
       <if test="studentCount != null" >
         #{studentCount,jdbcType=INTEGER},
+      </if>
+      <if test="smsCount != null" >
+        #{smsCount,jdbcType=INTEGER},
       </if>
       <if test="openId != null" >
         #{openId,jdbcType=VARCHAR},
@@ -182,6 +189,9 @@
       <if test="record.studentCount != null" >
         student_count = #{record.studentCount,jdbcType=INTEGER},
       </if>
+      <if test="record.smsCount != null" >
+        sms_count = #{record.smsCount,jdbcType=INTEGER},
+      </if>
       <if test="record.openId != null" >
         open_id = #{record.openId,jdbcType=VARCHAR},
       </if>
@@ -200,6 +210,7 @@
       telephone = #{record.telephone,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
       student_count = #{record.studentCount,jdbcType=INTEGER},
+      sms_count = #{record.smsCount,jdbcType=INTEGER},
       open_id = #{record.openId,jdbcType=VARCHAR},
       add_time = #{record.addTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -221,6 +232,9 @@
       <if test="studentCount != null" >
         student_count = #{studentCount,jdbcType=INTEGER},
       </if>
+      <if test="smsCount != null" >
+        sms_count = #{smsCount,jdbcType=INTEGER},
+      </if>
       <if test="openId != null" >
         open_id = #{openId,jdbcType=VARCHAR},
       </if>
@@ -236,6 +250,7 @@
       telephone = #{telephone,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       student_count = #{studentCount,jdbcType=INTEGER},
+      sms_count = #{smsCount,jdbcType=INTEGER},
       open_id = #{openId,jdbcType=VARCHAR},
       add_time = #{addTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

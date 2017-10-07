@@ -425,6 +425,66 @@ public class SchoolExample {
             return (Criteria) this;
         }
 
+        public Criteria andSmsCountIsNull() {
+            addCriterion("sms_count is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsCountIsNotNull() {
+            addCriterion("sms_count is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsCountEqualTo(Integer value) {
+            addCriterion("sms_count =", value, "smsCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsCountNotEqualTo(Integer value) {
+            addCriterion("sms_count <>", value, "smsCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsCountGreaterThan(Integer value) {
+            addCriterion("sms_count >", value, "smsCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("sms_count >=", value, "smsCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsCountLessThan(Integer value) {
+            addCriterion("sms_count <", value, "smsCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsCountLessThanOrEqualTo(Integer value) {
+            addCriterion("sms_count <=", value, "smsCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsCountIn(List<Integer> values) {
+            addCriterion("sms_count in", values, "smsCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsCountNotIn(List<Integer> values) {
+            addCriterion("sms_count not in", values, "smsCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsCountBetween(Integer value1, Integer value2) {
+            addCriterion("sms_count between", value1, value2, "smsCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("sms_count not between", value1, value2, "smsCount");
+            return (Criteria) this;
+        }
+
         public Criteria andOpenIdIsNull() {
             addCriterion("open_id is null");
             return (Criteria) this;

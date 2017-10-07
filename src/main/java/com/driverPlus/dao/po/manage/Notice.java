@@ -11,7 +11,11 @@ public class Notice {
 
     private String name;
 
+    private Integer accountId;
+
     private Date addTime;
+
+    private Integer status;
 
     public Integer getId() {
         return id;
@@ -45,11 +49,27 @@ public class Notice {
         this.name = name == null ? null : name.trim();
     }
 
+    public Integer getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
+    }
+
     public Date getAddTime() {
         return addTime;
     }
 
     public void setAddTime(Date addTime) {
         this.addTime = addTime;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

@@ -59,7 +59,7 @@
             <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
 
-        <!--<table schema="driver_plus" tableName="t_notice" domainObjectName="notice"-->
+        <!--<table schema="driver_plus" tableName="t_notice" domainObjectName="Notice"-->
                <!--enableCountByExample="true" enableDeleteByExample="true"-->
                <!--enableSelectByExample="true" enableUpdateByExample="true">-->
             <!--<property name="useActualColumnNames" value="false"/>-->
@@ -124,11 +124,7 @@
             <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
 
-        <!--<table schema="driver_plus" tableName="s_notice" domainObjectName="Notice"-->
-               <!--enableCountByExample="true" enableDeleteByExample="true"-->
-               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--</table>-->
+
 
         <!--<table schema="driver_plus" tableName="s_order" domainObjectName="Order"-->
                <!--enableCountByExample="true" enableDeleteByExample="true"-->
@@ -154,11 +150,11 @@
             <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
 
-        <!--<table schema="driver_plus" tableName="s_school" domainObjectName="School"-->
-               <!--enableCountByExample="true" enableDeleteByExample="true"-->
-               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--</table>-->
+        <table schema="driver_plus" tableName="s_school" domainObjectName="School"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
 
         <!--<table schema="driver_plus" tableName="s_school_service" domainObjectName="SchoolService"-->
                <!--enableCountByExample="true" enableDeleteByExample="true"-->
@@ -166,12 +162,17 @@
             <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
 
-        <table schema="driver_plus" tableName="s_service" domainObjectName="Service"
-               enableCountByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" enableUpdateByExample="true">
-            <property name="useActualColumnNames" value="false"/>
-        </table>
+        <!--<table schema="driver_plus" tableName="s_service" domainObjectName="Service"-->
+               <!--enableCountByExample="true" enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
 
+        <!--<table schema="driver_plus" tableName="s_notice" domainObjectName="Notice"-->
+               <!--enableCountByExample="true" enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
 
     </context>
 </generatorConfiguration>

@@ -2,7 +2,7 @@ package com.driverPlus.dao.po.front;
 
 import java.util.Date;
 
-public class notice {
+public class Notice {
     private Integer id;
 
     private Integer forUserId;

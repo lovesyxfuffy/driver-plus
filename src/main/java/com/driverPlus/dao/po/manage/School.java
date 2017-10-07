@@ -13,6 +13,8 @@ public class School {
 
     private Integer studentCount;
 
+    private Integer smsCount;
+
     private String openId;
 
     private Date addTime;
@@ -55,6 +57,14 @@ public class School {
 
     public void setStudentCount(Integer studentCount) {
         this.studentCount = studentCount;
+    }
+
+    public Integer getSmsCount() {
+        return smsCount;
+    }
+
+    public void setSmsCount(Integer smsCount) {
+        this.smsCount = smsCount;
     }
 
     public String getOpenId() {

@@ -6,7 +6,9 @@
     <result column="for_school_id" property="forSchoolId" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="account_id" property="accountId" jdbcType="INTEGER" />
     <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, for_school_id, content, name, add_time
+    id, for_school_id, content, name, account_id, add_time, status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.driverPlus.dao.po.manage.NoticeExample" >
     select
@@ -101,9 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.driverPlus.dao.po.manage.Notice" >
     insert into s_notice (id, for_school_id, content, 
-      name, add_time)
+      name, account_id, add_time, 
+      status)
     values (#{id,jdbcType=INTEGER}, #{forSchoolId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP})
+      #{name,jdbcType=VARCHAR}, #{accountId,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.driverPlus.dao.po.manage.Notice" >
     insert into s_notice
@@ -120,8 +124,14 @@
       <if test="name != null" >
         name,
       </if>
+      <if test="accountId != null" >
+        account_id,
+      </if>
       <if test="addTime != null" >
         add_time,
+      </if>
+      <if test="status != null" >
+        status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -137,8 +147,14 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="accountId != null" >
+        #{accountId,jdbcType=INTEGER},
+      </if>
       <if test="addTime != null" >
         #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -163,8 +179,14 @@
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
       </if>
+      <if test="record.accountId != null" >
+        account_id = #{record.accountId,jdbcType=INTEGER},
+      </if>
       <if test="record.addTime != null" >
         add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -177,7 +199,9 @@
       for_school_id = #{record.forSchoolId,jdbcType=INTEGER},
       content = #{record.content,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
-      add_time = #{record.addTime,jdbcType=TIMESTAMP}
+      account_id = #{record.accountId,jdbcType=INTEGER},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -194,8 +218,14 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="accountId != null" >
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
       <if test="addTime != null" >
         add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -205,7 +235,9 @@
     set for_school_id = #{forSchoolId,jdbcType=INTEGER},
       content = #{content,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
-      add_time = #{addTime,jdbcType=TIMESTAMP}
+      account_id = #{accountId,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
