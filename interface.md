@@ -446,7 +446,8 @@ response:
                          "idCard":"1221121212121",
                          "phone":"17000000000",
                          "qq":"123123123",
-                         "passStatus":""//完成测评情况
+                         "passStatus":"通过",//模拟测评完成情况   通过  or 不通过
+                         "remoteCepingStatus":"通过" //远程测评 通过 or 不通过  模拟测评只要有一次合格就是通过,否则就都不通过
              }],
              "page":{
                   "pageNo": 1,
