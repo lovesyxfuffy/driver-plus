@@ -11,6 +11,8 @@ public class GroupInfo {
 
     private Integer deadline;
 
+    private Integer status;
+
     private Date addTime;
 
     private Date updateTime;
@@ -47,6 +49,14 @@ public class GroupInfo {
 
     public void setDeadline(Integer deadline) {
         this.deadline = deadline;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Date getAddTime() {

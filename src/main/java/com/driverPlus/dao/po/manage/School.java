@@ -19,6 +19,8 @@ public class School {
 
     private Date addTime;
 
+    private String city;
+
     public Integer getId() {
         return id;
     }
@@ -81,5 +83,13 @@ public class School {
 
     public void setAddTime(Date addTime) {
         this.addTime = addTime;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city == null ? null : city.trim();
     }
 }

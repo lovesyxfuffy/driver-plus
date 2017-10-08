@@ -164,63 +164,73 @@ public class StudentExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNull() {
-            addCriterion("user_id is null");
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNotNull() {
-            addCriterion("user_id is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(Integer value) {
-            addCriterion("user_id =", value, "userId");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(Integer value) {
-            addCriterion("user_id <>", value, "userId");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(Integer value) {
-            addCriterion("user_id >", value, "userId");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("user_id >=", value, "userId");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(Integer value) {
-            addCriterion("user_id <", value, "userId");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
-            addCriterion("user_id <=", value, "userId");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIn(List<Integer> values) {
-            addCriterion("user_id in", values, "userId");
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<Integer> values) {
-            addCriterion("user_id not in", values, "userId");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(Integer value1, Integer value2) {
-            addCriterion("user_id between", value1, value2, "userId");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("user_id not between", value1, value2, "userId");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
 
@@ -424,63 +434,63 @@ public class StudentExample {
             return (Criteria) this;
         }
 
-        public Criteria andContestCountIsNull() {
-            addCriterion("contest_count is null");
+        public Criteria andTestStatusIsNull() {
+            addCriterion("test_status is null");
             return (Criteria) this;
         }
 
-        public Criteria andContestCountIsNotNull() {
-            addCriterion("contest_count is not null");
+        public Criteria andTestStatusIsNotNull() {
+            addCriterion("test_status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andContestCountEqualTo(Integer value) {
-            addCriterion("contest_count =", value, "contestCount");
+        public Criteria andTestStatusEqualTo(Integer value) {
+            addCriterion("test_status =", value, "testStatus");
             return (Criteria) this;
         }
 
-        public Criteria andContestCountNotEqualTo(Integer value) {
-            addCriterion("contest_count <>", value, "contestCount");
+        public Criteria andTestStatusNotEqualTo(Integer value) {
+            addCriterion("test_status <>", value, "testStatus");
             return (Criteria) this;
         }
 
-        public Criteria andContestCountGreaterThan(Integer value) {
-            addCriterion("contest_count >", value, "contestCount");
+        public Criteria andTestStatusGreaterThan(Integer value) {
+            addCriterion("test_status >", value, "testStatus");
             return (Criteria) this;
         }
 
-        public Criteria andContestCountGreaterThanOrEqualTo(Integer value) {
-            addCriterion("contest_count >=", value, "contestCount");
+        public Criteria andTestStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("test_status >=", value, "testStatus");
             return (Criteria) this;
         }
 
-        public Criteria andContestCountLessThan(Integer value) {
-            addCriterion("contest_count <", value, "contestCount");
+        public Criteria andTestStatusLessThan(Integer value) {
+            addCriterion("test_status <", value, "testStatus");
             return (Criteria) this;
         }
 
-        public Criteria andContestCountLessThanOrEqualTo(Integer value) {
-            addCriterion("contest_count <=", value, "contestCount");
+        public Criteria andTestStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("test_status <=", value, "testStatus");
             return (Criteria) this;
         }
 
-        public Criteria andContestCountIn(List<Integer> values) {
-            addCriterion("contest_count in", values, "contestCount");
+        public Criteria andTestStatusIn(List<Integer> values) {
+            addCriterion("test_status in", values, "testStatus");
             return (Criteria) this;
         }
 
-        public Criteria andContestCountNotIn(List<Integer> values) {
-            addCriterion("contest_count not in", values, "contestCount");
+        public Criteria andTestStatusNotIn(List<Integer> values) {
+            addCriterion("test_status not in", values, "testStatus");
             return (Criteria) this;
         }
 
-        public Criteria andContestCountBetween(Integer value1, Integer value2) {
-            addCriterion("contest_count between", value1, value2, "contestCount");
+        public Criteria andTestStatusBetween(Integer value1, Integer value2) {
+            addCriterion("test_status between", value1, value2, "testStatus");
             return (Criteria) this;
         }
 
-        public Criteria andContestCountNotBetween(Integer value1, Integer value2) {
-            addCriterion("contest_count not between", value1, value2, "contestCount");
+        public Criteria andTestStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("test_status not between", value1, value2, "testStatus");
             return (Criteria) this;
         }
 
@@ -721,6 +731,126 @@ public class StudentExample {
 
         public Criteria andSchoolIdNotBetween(Integer value1, Integer value2) {
             addCriterion("school_id not between", value1, value2, "schoolId");
+            return (Criteria) this;
+        }
+
+        public Criteria andContestCountIsNull() {
+            addCriterion("contest_count is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContestCountIsNotNull() {
+            addCriterion("contest_count is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContestCountEqualTo(Integer value) {
+            addCriterion("contest_count =", value, "contestCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andContestCountNotEqualTo(Integer value) {
+            addCriterion("contest_count <>", value, "contestCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andContestCountGreaterThan(Integer value) {
+            addCriterion("contest_count >", value, "contestCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andContestCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("contest_count >=", value, "contestCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andContestCountLessThan(Integer value) {
+            addCriterion("contest_count <", value, "contestCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andContestCountLessThanOrEqualTo(Integer value) {
+            addCriterion("contest_count <=", value, "contestCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andContestCountIn(List<Integer> values) {
+            addCriterion("contest_count in", values, "contestCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andContestCountNotIn(List<Integer> values) {
+            addCriterion("contest_count not in", values, "contestCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andContestCountBetween(Integer value1, Integer value2) {
+            addCriterion("contest_count between", value1, value2, "contestCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andContestCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("contest_count not between", value1, value2, "contestCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIsNull() {
+            addCriterion("user_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIsNotNull() {
+            addCriterion("user_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdEqualTo(Integer value) {
+            addCriterion("user_id =", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotEqualTo(Integer value) {
+            addCriterion("user_id <>", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThan(Integer value) {
+            addCriterion("user_id >", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user_id >=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThan(Integer value) {
+            addCriterion("user_id <", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
+            addCriterion("user_id <=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIn(List<Integer> values) {
+            addCriterion("user_id in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotIn(List<Integer> values) {
+            addCriterion("user_id not in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdBetween(Integer value1, Integer value2) {
+            addCriterion("user_id between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }
     }
