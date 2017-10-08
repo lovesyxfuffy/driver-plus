@@ -584,8 +584,132 @@ response:
                                    "status":1
                                    }   
   
-  21.代理管理接口
+  21.代理管理列表显示接口
+  url:/manage/Market/getAgents
+   
+   method:post
+   
+   request:
+   
+   {
+     "realName":"张三",
+     "telephone":"1800000000",
+     "page": { //每页条数，页码
+             "pageNo": 1,
+             "pageSize": 20,
+         }
+   
+   }
+   
+   response:
+   
+   {
+       "data":{
+               "agentList":[{
+                           "id":12,
+                           "realName":"张三",
+                           "telephone":"18000000000",
+                           "studentCount":12,
+                           "reduction":12.89,
+                           "profitShare":"张三"
+                           
+               }],
+               "page":{
+                    "pageNo": 1,
+                    "pageSize": 10,
+                    "totalCount": 320,
+                    "totalPageCount": 4
+                    } 
+               },
+              
+       "status":1
+                
+   }
+   22.修改代理信息接口
+   url:/manage/Market/setAgent
+       
+       method:post
+       
+       request:
+       
+       {
+         "id":12,
+         "realName":"张三",
+         "telephone":"18000000000",
+         "studentCount":12,
+         "reduction":12.89,
+         "profitShare":"张三"
+       
+       }  
+       response:
+                                      
+                                      {
+                                         "data":{
+                                            "data": null,
+                                            "message": "操作成功"
+                                          },
+                                          "status":1
+                                          }   
+         
+   23.添加代理信息接口
+     url:/manage/Market/addAgent
+            
+            method:post
+            
+            request:
+            
+            {
+               
+              "realName":"张三",
+              "telephone":"18000000000",
+              "studentCount":12,
+              "reduction":12.89,
+              "profitShare":"张三"
+            
+            }  
+     
+     
+     response:
+                                    
+                                    {
+                                       "data":{
+                                          "data": {
+                                              "id":23
+                                          },
+                                          "message": "操作成功"
+                                        },
+                                        "status":1
+                                        }   
+                                        
+  24.禁用代理
+  url:/manage/Market/forbiddenAgent
+               
+               method:post
+               
+               request:
+               
+               {
+                 "id":12
+               
+               }  
+               response:
+                                              
+                                              {
+                                                 "data":{
+                                                    "data": null,
+                                                    "message": "操作成功"
+                                                  },
+                                                  "status":1
+                                                  } 
+  25.根据代理纪录查看代理招生明细列表
+                                                                                   
+                                        
+                                        
+  五.账号管理
   
+  26.显示已经注册的账号记录列表
+      
+                          
                           
                           
                           
