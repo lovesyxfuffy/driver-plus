@@ -25,6 +25,8 @@ public class Student {
 
     private Integer userId;
 
+    private String classType;
+
     public Integer getId() {
         return id;
     }
@@ -119,5 +121,13 @@ public class Student {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getClassType() {
+        return classType;
+    }
+
+    public void setClassType(String classType) {
+        this.classType = classType == null ? null : classType.trim();
     }
 }

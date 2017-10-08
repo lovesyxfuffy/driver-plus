@@ -14,6 +14,7 @@
     <result column="school_id" property="schoolId" jdbcType="INTEGER" />
     <result column="contest_count" property="contestCount" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="class_type" property="classType" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -75,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, name, idcard, telephone, status, test_status, process, accuracy, test_count, 
-    school_id, contest_count, user_id
+    school_id, contest_count, user_id, class_type
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.driverPlus.dao.po.front.StudentExample" >
     select
@@ -111,13 +112,13 @@
     insert into t_student (id, name, idcard, 
       telephone, status, test_status, 
       process, accuracy, test_count, 
-      school_id, contest_count, user_id
-      )
+      school_id, contest_count, user_id, 
+      class_type)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
       #{telephone,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{testStatus,jdbcType=INTEGER}, 
       #{process,jdbcType=INTEGER}, #{accuracy,jdbcType=INTEGER}, #{testCount,jdbcType=INTEGER}, 
-      #{schoolId,jdbcType=INTEGER}, #{contestCount,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}
-      )
+      #{schoolId,jdbcType=INTEGER}, #{contestCount,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{classType,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.driverPlus.dao.po.front.Student" >
     insert into t_student
@@ -158,6 +159,9 @@
       <if test="userId != null" >
         user_id,
       </if>
+      <if test="classType != null" >
+        class_type,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -195,6 +199,9 @@
       </if>
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="classType != null" >
+        #{classType,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -243,6 +250,9 @@
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
+      <if test="record.classType != null" >
+        class_type = #{record.classType,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -261,7 +271,8 @@
       test_count = #{record.testCount,jdbcType=INTEGER},
       school_id = #{record.schoolId,jdbcType=INTEGER},
       contest_count = #{record.contestCount,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER}
+      user_id = #{record.userId,jdbcType=INTEGER},
+      class_type = #{record.classType,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -302,6 +313,9 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="classType != null" >
+        class_type = #{classType,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -317,7 +331,8 @@
       test_count = #{testCount,jdbcType=INTEGER},
       school_id = #{schoolId,jdbcType=INTEGER},
       contest_count = #{contestCount,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER}
+      user_id = #{userId,jdbcType=INTEGER},
+      class_type = #{classType,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

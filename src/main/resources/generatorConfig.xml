@@ -65,11 +65,11 @@
             <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
 
-        <!--<table schema="driver_plus" tableName="t_student" domainObjectName="Student"-->
-               <!--enableCountByExample="true" enableDeleteByExample="true"-->
-               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--</table>-->
+        <table schema="driver_plus" tableName="t_student" domainObjectName="Student"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
 
         <!--<table schema="driver_plus" tableName="t_user" domainObjectName="User"-->
                <!--enableCountByExample="true" enableDeleteByExample="true"-->
@@ -156,11 +156,11 @@
             <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
 
-        <table schema="driver_plus" tableName="t_contest_record" domainObjectName="ContestRecord"
-               enableCountByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" enableUpdateByExample="true">
-            <property name="useActualColumnNames" value="false"/>
-        </table>
+        <!--<table schema="driver_plus" tableName="t_contest_record" domainObjectName="ContestRecord"-->
+               <!--enableCountByExample="true" enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
 
         <!--<table schema="driver_plus" tableName="s_school_service" domainObjectName="SchoolService"-->
                <!--enableCountByExample="true" enableDeleteByExample="true"-->
