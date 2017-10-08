@@ -155,4 +155,228 @@ response:
      "status":1
   }
   
- 5.
+ 5.分组管理查询接口
+ 
+ url:/manage/Groups/getTotalStudentsNumByGroup
+ 
+ method:post
+ 
+ request:
+ 
+ {
+ 
+ }
+ 
+ response:
+ 
+ {
+     "data":{
+             "list":[{
+               "name":"未体检",
+               "num":10
+             },
+             {
+             
+             },
+             {
+             
+             }]
+             },
+            
+     "status":1
+              
+ }
+ 
+ 6.查分组学员信息
+   url:/manage/Groups/getStudentsByGroupsWithPage
+   
+   method:post
+   
+   request:
+   
+   {
+     "groupCode":"",//支付方式code
+     "page": { //每页条数，页码
+             "pageNo": 1,
+             "pageSize": 20,
+         }
+   
+   }
+   
+   response:
+   
+   {
+       "data":{
+               "studentList":[{
+                  "id":12,//学员ID
+                  "className":"普通班",//班级
+                  "locationName":"上海市长宁区",//场地
+                  "agentPhone":"18000000000",//代理人手机号
+                  "":"",//预付定金
+                  "name":"张三",
+                  "idCard":"1221121212121",
+                  "phone":"17000000000",
+                  "qq":"123123123",
+                  "":"",//没有本地暂住证
+                  "":"",//无法提供身份证原件
+                  "status":"无体检"
+                  }],
+               "page":{
+                    "pageNo": 1,
+                    "pageSize": 10,
+                    "totalCount": 320,
+                    "totalPageCount": 4
+                    } 
+               },
+              
+       "status":1
+                
+   } 
+ 6.修改学员信息(姓名,手机号,身份证号)
+   
+  url:/manage/Groups/updateStudentBaseInfo
+      
+  method:post
+      
+  request:
+      
+      {
+        "name":"",//姓名    //只修改学员表
+        "phone":"",//手机号
+        "idCard":"",//身份证号
+        "id":12 //学员ID
+      }
+      
+  response:
+      
+      {
+          "data": null,
+          "message": "操作成功"
+          "status":1
+          }
+          
+ 7.修改学员状态
+    
+   url:/manage/Groups/updateStudentStatus
+       
+   method:post
+       
+   request:
+       
+       {
+         "groupCode":"",//姓名
+         "id":[{12},{11}] //学员ID
+       }
+       
+   response:
+       
+       {
+           "data": null,
+           "message": "操作成功"
+           "status":1
+           }         
+           
+ 8.修改学员状态
+     
+    url:/manage/Groups/updateStudentStatus
+        
+    method:post
+        
+    request:
+        
+        {
+          "groupCode":"",//姓名
+          "id":[{12},{11}] //学员ID
+        }
+        
+    response:
+        
+        {
+            "data": null,
+            "message": "操作成功"
+            "status":1
+            }              
+            
+ 9.修改组名称(修改状态名称)
+      
+     url:/manage/Groups/updateGroupStatus
+         
+     method:post
+         
+     request:
+         
+         {
+           "groupCode":"",//状态code
+           "groupName":"" //状态名称
+         }
+         
+     response:
+         
+         {
+             "data": null,
+             "message": "操作成功"
+             "status":1
+             }  
+ 10.添加分组名称(添加状态值)
+       
+      url:/manage/Groups/addGroupStatus
+          
+      method:post
+          
+      request:
+          
+          {
+            "groupCode":"",//状态code
+            "groupName":"" //状态名称
+          }
+          
+      response:
+          
+          {
+              "data": null,
+              "message": "操作成功"
+              "status":1
+              }   
+                
+ 11.
+    
+                                 
+                                 
+ 12.
+     
+                                 
+                                 
+ 13.                                
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 14.学员测评完成情况展示(理论学习管理)
+ 
+ 
+ 
+ 
+ 15.批量开启关闭学员的"远程测考"权限
+      
+     url:/manage/Groups/openAndCloseRemoteCepingPermission
+         
+     method:post
+         
+     request:
+         
+         {
+           "permission":"0",//0-关闭远程测评权限,1-开启远程测评权限
+           "id":[{12},{11}] //学员ID
+         }
+         
+     response:
+         
+         {
+             "data": null,
+             "message": "操作成功"
+             "status":1
+             }                                   
+ 16.            
