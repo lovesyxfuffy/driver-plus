@@ -623,10 +623,20 @@ response:
 
        {
          "data":{
-                "configMap":{
-                   "key1":"value1",
-                   "key2":"value2"
-                   }
+                "configPo":[{
+                   "id":12,
+                   "key":"key1",
+                   "value":"value1",
+                   "name":"name1",
+                   "type":"wechatApp"
+                   },
+                   {
+                    "id":13,
+                    "key":"key2",
+                    "value":"value2",
+                    "name":"name2",
+                    "type":"wechatApp"
+                   }]
                  },
          "status":1
        }
@@ -642,10 +652,20 @@ request:
  
 
          {
-           "type":"wechatApp",//config的type
+           "configPoList":[{
+           "id":12,
            "key":"key1",
            "value":"value1",
-           "name":"name1"
+           "name":"name1",
+           "type":"wechatApp"//config的type
+           },
+           {
+           "id":13,
+           "key":"key2",
+           "value":"value2",
+           "name":"name2",
+           "type":"wechatApp"//config的type
+           }]
 
          }
 
@@ -817,7 +837,43 @@ response:
 ##### 25.根据代理纪录查看代理招生明细列表
                                                                                    
   
-  ##### 26.显示已经注册的账号记录列表
+##### 26.对优惠层次信息进行修改
+url:/manage/Market/setReductionInfo
+
+method:post
+
+request:
+```json
+ 
+
+          {
+          "reductionList":[{
+                   "id":1,
+                   "studentCount":20,
+                   "reduction":150,
+                   "schoolId":1
+                   },{
+                   }] 
+          }
+  ``` 
+          
+ response:
+ ```json
+  
+ 
+                                     {
+                                        "data":{
+                                           "data": {
+                                               "id":23
+                                           },
+                                           "message": "操作成功"
+                                         },
+                                         "status":1
+                                         }
+ 
+    
+ ``` 
+##### 27.显示已经注册的账号记录列表
       
                           
                           
