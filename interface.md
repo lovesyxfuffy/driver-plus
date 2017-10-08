@@ -18,7 +18,7 @@ request:
   "driverTypeCode":"",//驾照类型code
   "page": { //每页条数，页码
           "pageNo": 1,
-          "pageSize": 20,
+          "pageSize": 20
       }
 
 }
@@ -51,7 +51,7 @@ response:
                         "qq":"123123123",
                         "":"",//没有本地暂住证
                         "":"",//无法提供身份证原件
-                        "status",""
+                        "status":1
             }],
             "page":{
                  "pageNo": 1,
@@ -80,10 +80,10 @@ request:
   "name":"",//学员姓名
   "idCard":"",//身份证号
   "phone":"",//手机号
-  "driverTypeCode":""//驾照类型code,暂无驾照类型字段
+  "driverTypeCode":"",//驾照类型code,暂无驾照类型字段
   "page": { //每页条数，页码
           "pageNo": 1,
-          "pageSize": 20,
+          "pageSize": 20
       }
 
 }
@@ -243,7 +243,7 @@ request:
      "groupCode":"",//支付方式code
      "page": { //每页条数，页码
              "pageNo": 1,
-             "pageSize": 20,
+             "pageSize": 20
          }
 
    }
@@ -316,37 +316,7 @@ response:
 
   
 ```
-##### 7.修改学员状态
 
-url:/manage/Groups/updateStudentStatus
-
-method:post
-
-request:
-```json
- 
-
-       {
-         "groupCode":"",//姓名
-         "id":[{12},{11}] //学员ID
-       }
-
-    
-```
-response:
-```json
- 
-
-                         {
-                            "data":{
-                               "data": null,
-                               "message": "操作成功"
-                             },
-                             "status":1
-                             }
-
-  
-```
 ##### 8.修改学员状态
 
 url:/manage/Groups/updateStudentStatus
@@ -359,7 +329,7 @@ request:
 
         {
           "groupCode":"",//姓名
-          "id":[{12},{11}] //学员ID
+          "id":[12,11] //学员ID
         }
 
      
@@ -397,15 +367,13 @@ request:
 ```
 response:
 ```json
- 
-
-                           {
-                              "data":{
-                                 "data": null,
-                                 "message": "操作成功"
-                               },
-                               "status":1
-                               }
+{
+  "data":{
+     "data": null,
+     "message": "操作成功"
+   },
+   "status":1
+}
   
 ```
 ##### 10.添加分组名称(添加状态值)
@@ -429,36 +397,34 @@ response:
 ```json
  
 
-                            {
-                               "data":{
-                                  "data": null,
-                                  "message": "操作成功"
-                                },
-                                "status":1
-                                }
+{
+   "data":{
+      "data": null,
+      "message": "操作成功"
+    },
+    "status":1
+}
 
   
 ```
-##### 11.
 
- ##### 14.学员测评完成情况展示
+
+##### 14.学员测评完成情况展示
 url:/manage/Orders/getTodayTotalAndOrders
 
 method:post
 
 request:
 ```json
- 
-
  {
    "groupCode":"",//分组状态值
    "name":"",//学员姓名
    "idCard":"",//身份证号
    "phone":"",//手机号
-   "driverTypeCode":""//驾照类型code,暂无驾照类型字段
+   "driverTypeCode":"",//驾照类型code,暂无驾照类型字段
    "page": { //每页条数，页码
            "pageNo": 1,
-           "pageSize": 20,
+           "pageSize": 20
        }
 
  }
@@ -510,7 +476,7 @@ request:
 
          {
            "permission":"0",//0-关闭远程测评权限,1-开启远程测评权限
-           "id":[{12},{11}] //学员ID
+           "id":[12,11] //学员ID
          }
 
       
@@ -616,8 +582,8 @@ request:
                    },{
                    }],
 
-                   "id",
-                   "content",
+                   "id":1,
+                   "content":"xxxxxxxxxx",
                    "strategy":"75",
                    "deadline":"95"
 
@@ -676,7 +642,7 @@ request:
  
 
          {
-           "type":"wechatApp"//config的type
+           "type":"wechatApp",//config的type
            "key":"key1",
            "value":"value1",
            "name":"name1"
@@ -713,7 +679,7 @@ request:
      "telephone":"1800000000",
      "page": { //每页条数，页码
              "pageNo": 1,
-             "pageSize": 20,
+             "pageSize": 20
          }
 
    }
