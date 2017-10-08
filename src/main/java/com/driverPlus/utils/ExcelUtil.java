@@ -5,17 +5,27 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+<<<<<<< HEAD
 import java.io.*;
+=======
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+>>>>>>> 23c1b9a1fa5b8760de62fd0996e35f3623f0ecaf
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
 
 /**
  * Created by yujingyang on 2017/8/3.
  */
+=======
+>>>>>>> 23c1b9a1fa5b8760de62fd0996e35f3623f0ecaf
 public class ExcelUtil {
 
     /**
@@ -69,7 +79,15 @@ public class ExcelUtil {
                     else
                         cell0.setCellValue("");
 
+<<<<<<< HEAD
                 } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+=======
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+>>>>>>> 23c1b9a1fa5b8760de62fd0996e35f3623f0ecaf
                     e.printStackTrace();
                 }
             }
@@ -83,6 +101,7 @@ public class ExcelUtil {
         return String.valueOf(cs);
     }
 
+<<<<<<< HEAD
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, IOException {
 //        LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
 //        linkedHashMap.put("employeeName", "姓名");
@@ -108,3 +127,31 @@ public class ExcelUtil {
     }
 }
 
+=======
+   /* public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, IOException {
+        LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
+        linkedHashMap.put("employeeName", "姓名");
+        linkedHashMap.put("employeeId", "id");
+
+        AppGroupEmployeeRelation appGroupEmployeeRelation = new AppGroupEmployeeRelation();
+        appGroupEmployeeRelation.setEmployeeName("于景洋");
+        appGroupEmployeeRelation.setEmployeeId("2029757");
+
+        AppGroupEmployeeRelation appGroupEmployeeRelation2 = new AppGroupEmployeeRelation();
+        appGroupEmployeeRelation2.setEmployeeName("于景洋2");
+        appGroupEmployeeRelation2.setEmployeeId("20297572");
+
+        List<AppGroupEmployeeRelation> tmp = new ArrayList<>();
+        tmp.add(appGroupEmployeeRelation);
+        tmp.add(appGroupEmployeeRelation2);
+
+        XSSFWorkbook workBook = ExcelUtil.exportExcel(linkedHashMap, tmp);
+        OutputStream ops = new FileOutputStream(new File("/Users/yujingyang/codes/1.xlsx"));
+        workBook.write(ops);
+        ops.flush();
+        ops.close();
+    }*/
+
+
+}
+>>>>>>> 23c1b9a1fa5b8760de62fd0996e35f3623f0ecaf
