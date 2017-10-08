@@ -8,9 +8,10 @@
     <result column="student_count" property="studentCount" jdbcType="INTEGER" />
     <result column="reduction" property="reduction" jdbcType="INTEGER" />
     <result column="profit_share" property="profitShare" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
     <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="school_id" property="schoolId" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,8 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, real_name, telephone, student_count, reduction, profit_share, add_time, update_time, 
-    school_id
+    id, real_name, telephone, student_count, reduction, profit_share, status, add_time, 
+    school_id, update_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.driverPlus.dao.po.manage.AgentExample" >
     select
@@ -107,12 +108,12 @@
   <insert id="insert" parameterType="com.driverPlus.dao.po.manage.Agent" >
     insert into s_agent (id, real_name, telephone, 
       student_count, reduction, profit_share, 
-      add_time, update_time, school_id
-      )
+      status, add_time, school_id, 
+      update_time)
     values (#{id,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
       #{studentCount,jdbcType=INTEGER}, #{reduction,jdbcType=INTEGER}, #{profitShare,jdbcType=INTEGER}, 
-      #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{schoolId,jdbcType=INTEGER}
-      )
+      #{status,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, #{schoolId,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.driverPlus.dao.po.manage.Agent" >
     insert into s_agent
@@ -135,14 +136,17 @@
       <if test="profitShare != null" >
         profit_share,
       </if>
+      <if test="status != null" >
+        status,
+      </if>
       <if test="addTime != null" >
         add_time,
       </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
       <if test="schoolId != null" >
         school_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -164,14 +168,17 @@
       <if test="profitShare != null" >
         #{profitShare,jdbcType=INTEGER},
       </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
       <if test="addTime != null" >
         #{addTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="schoolId != null" >
         #{schoolId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -202,14 +209,17 @@
       <if test="record.profitShare != null" >
         profit_share = #{record.profitShare,jdbcType=INTEGER},
       </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
       <if test="record.addTime != null" >
         add_time = #{record.addTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.updateTime != null" >
-        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="record.schoolId != null" >
         school_id = #{record.schoolId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -224,9 +234,10 @@
       student_count = #{record.studentCount,jdbcType=INTEGER},
       reduction = #{record.reduction,jdbcType=INTEGER},
       profit_share = #{record.profitShare,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      school_id = #{record.schoolId,jdbcType=INTEGER}
+      school_id = #{record.schoolId,jdbcType=INTEGER},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -249,14 +260,17 @@
       <if test="profitShare != null" >
         profit_share = #{profitShare,jdbcType=INTEGER},
       </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
       <if test="addTime != null" >
         add_time = #{addTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="schoolId != null" >
         school_id = #{schoolId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -268,9 +282,10 @@
       student_count = #{studentCount,jdbcType=INTEGER},
       reduction = #{reduction,jdbcType=INTEGER},
       profit_share = #{profitShare,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
       add_time = #{addTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      school_id = #{schoolId,jdbcType=INTEGER}
+      school_id = #{schoolId,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -15,11 +15,13 @@ public class Agent {
 
     private Integer profitShare;
 
+    private Integer status;
+
     private Date addTime;
 
-    private Date updateTime;
-
     private Integer schoolId;
+
+    private Date updateTime;
 
     public Integer getId() {
         return id;
@@ -69,6 +71,14 @@ public class Agent {
         this.profitShare = profitShare;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     public Date getAddTime() {
         return addTime;
     }
@@ -77,19 +87,19 @@ public class Agent {
         this.addTime = addTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
     public Integer getSchoolId() {
         return schoolId;
     }
 
     public void setSchoolId(Integer schoolId) {
         this.schoolId = schoolId;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

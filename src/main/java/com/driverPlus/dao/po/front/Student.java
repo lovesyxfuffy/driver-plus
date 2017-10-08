@@ -3,7 +3,7 @@ package com.driverPlus.dao.po.front;
 public class Student {
     private Integer id;
 
-    private Integer userId;
+    private String name;
 
     private String idcard;
 
@@ -11,7 +11,7 @@ public class Student {
 
     private Integer status;
 
-    private Integer contestCount;
+    private Integer testStatus;
 
     private Integer process;
 
@@ -21,6 +21,10 @@ public class Student {
 
     private Integer schoolId;
 
+    private Integer contestCount;
+
+    private Integer userId;
+
     public Integer getId() {
         return id;
     }
@@ -29,12 +33,12 @@ public class Student {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getName() {
+        return name;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public String getIdcard() {
@@ -61,12 +65,12 @@ public class Student {
         this.status = status;
     }
 
-    public Integer getContestCount() {
-        return contestCount;
+    public Integer getTestStatus() {
+        return testStatus;
     }
 
-    public void setContestCount(Integer contestCount) {
-        this.contestCount = contestCount;
+    public void setTestStatus(Integer testStatus) {
+        this.testStatus = testStatus;
     }
 
     public Integer getProcess() {
@@ -99,5 +103,21 @@ public class Student {
 
     public void setSchoolId(Integer schoolId) {
         this.schoolId = schoolId;
+    }
+
+    public Integer getContestCount() {
+        return contestCount;
+    }
+
+    public void setContestCount(Integer contestCount) {
+        this.contestCount = contestCount;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }
