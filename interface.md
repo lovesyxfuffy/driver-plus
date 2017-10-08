@@ -134,7 +134,7 @@ request:
       "locationCode":"",//场地code
       "package":"",//套餐code
       "driverTypeCode":"",//驾照类型code
-      "idList":[{},{}]
+      "idList":[11,12]
 
   }
 
