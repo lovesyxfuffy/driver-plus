@@ -16,6 +16,6 @@ public class TestController {
 
     @RequestMapping(value = "hello",method = RequestMethod.GET)
     public ResponseEntity<Map<String,Object>> test(){
-        return WebUtil.result("1");
+        return WebUtil.success("1");
     }
 }
