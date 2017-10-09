@@ -805,19 +805,29 @@ response:
 ```json
  
 
-                                              {
-                                                 "data":{
-                                                    "data": null,
-                                                    "message": "操作成功"
-                                                  },
-                                                  "status":1
-                                                  }
-   
+{
+    "data":{
+    "data": null,
+    "message": "操作成功"
+    },
+    "status":1
+}
+
 ```
-##### 25.根据代理纪录查看代理招生明细列表
-                                                                                   
-  
-  ##### 26.显示已经注册的账号记录列表
+
+##### 25.发送通知给后台管理员
+
+method:post
+
+url:
+
+request:
+```json
+{
+
+}
+```
+
       
                           
                           
