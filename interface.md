@@ -609,5 +609,247 @@ response:
 }
 ```
 
-##### 26.
+##### 26.获取代理列表
+url:/manage/marketing/getAgentList
+
+method:post
+
+request:
+```json
+{
+
+}
+```
+
+response:
+```json
+{
+  "data":[
+    {
+      "id":1,
+      "name":"老王代理",
+      "reduction":20,
+      "profileShare":100,
+      "studentCount":10
+    },{},{},{}
+  ],
+  "status":1
+}
+```
+
+##### 27.新增代理
+url:/manage/marketing/addAgent
+
+method:post
+
+request:
+```json
+{
+    "name":"老王代理",
+    "reduction":20,
+    "profileShare":100,
+    "studentCount":10
+}
+```
+
+response:
+```json
+{
+  "data":{
+    "id":5
+  },
+  "status":1
+}
+```
+
+##### 28.修改代理
+url:/manage/marketing/updateAgent
+
+method:post
+
+request:
+```json
+{
+    "id":3,
+    "name":"老王代理",
+    "reduction":20,
+    "profileShare":100,
+    "studentCount":10
+}
+```
+
+response:
+```json
+{
+  "data":{},
+  "status":1
+}
+```
+
+##### 29.禁用代理
+url:/manage/marketing/stopAgent
+
+method:post
+
+request:
+```json
+{
+  "idList":[1,2,3,4,5,6]
+}
+```
+
+response:
+```json
+{
+  "data":{},
+  "status":1
+}
+```
+
+##### 30.根据代理id查询代理招生列表
+url:/manage/student/getStudentListByAgent
+
+method:post
+
+request:
+```json
+{
+  "agentId":1
+
+}
+```
+
+response:
+```json
+{
+  "data":[
+    {
+      "id":1,
+      "name":"yujingyang",
+      "idcard":"111111",
+      "telephone":"12345678",
+      "classTypeStr":"C",
+      "price":1000,
+      "addTime":"yyyy-mm-dd"
+    },{},{}
+  ],
+  "status":1
+}
+```
+
+##### 31.导出代理名下学生Excel
+url:/manage/marketing/getAgentStudentList
+
+method:post
+
+request:
+```json
+{
+  "agentId":2
+}
+```
+
+response:
+```json
+{
+  "data":{},
+  "status":1
+}
+```
+
+##### 32.获取通知
+url:/manage/common/getNotice
+
+method:post
+
+request:
+```json
+{
+
+}
+```
+
+response:
+```json
+{
+  "data":[
+      {
+        "name":"xxxxxxxxxx",
+        "content":"xxxxxxxxxxxxxxxxx"
+      },{},{}
+  ],
+  "status":1
+}
+```
+
+##### 33.获取场地列表
+url:/manage/field/getFieldList
+
+method:post
+
+request:
+```json
+{
+
+}
+```
+
+response:
+```json
+{
+  "data":[
+    {
+      "id":1,
+      "name":"11111xxxx",
+      "addTime":"2017-10-09"
+    },{},{},{}
+  ],
+  "status":1
+}
+```
+
+##### 34.获取场地详情
+url:/manage/field/getField/{fieldId}
+
+method:post
+
+request:
+```json
+{
+
+}
+```
+
+response:
+```json
+{
+  "data":{
+    "id":3,
+    "name":"aaaa",
+    "position":"xxxxxxxx",
+    "content":"xxxxxxx"
+  },
+  "status":1
+}
+```
+
+##### 35.新增场地
+url:/manage/field/createField
+
+method:post
+
+request:
+```json
+{
+
+}
+```
+
+response:
+```json
+{
+  "data":{},
+  "status":1
+}
+```
 
