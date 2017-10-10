@@ -11,7 +11,7 @@ import com.aliyuncs.profile.IClientProfile;
 
 
 
-/**
+/*
  * Created by wangfeng on 17/10/7.
  */
 public class MessageServiceTest {
