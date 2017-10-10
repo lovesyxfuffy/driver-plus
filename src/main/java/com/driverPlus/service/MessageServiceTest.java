@@ -1,4 +1,4 @@
-package com.driverPlus.service;
+/*package com.driverPlus.service;
 
 
 import com.aliyuncs.DefaultAcsClient;
@@ -11,9 +11,9 @@ import com.aliyuncs.profile.IClientProfile;
 
 
 
-/*
+*//*
  * Created by wangfeng on 17/10/7.
- */
+ *//*
 public class MessageServiceTest {
     public static void main(String[] args) throws Exception{
 
@@ -55,4 +55,4 @@ public class MessageServiceTest {
             System.out.println("you are ok");
         }
     }
-}
+}*/

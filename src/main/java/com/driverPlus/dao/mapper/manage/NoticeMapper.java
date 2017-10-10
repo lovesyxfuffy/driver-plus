@@ -4,6 +4,9 @@ import com.driverPlus.dao.po.manage.Notice;
 import com.driverPlus.dao.po.manage.NoticeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository("sNoticeMapper")
 
 public interface NoticeMapper {
     int countByExample(NoticeExample example);
