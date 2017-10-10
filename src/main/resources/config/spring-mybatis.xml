@@ -56,9 +56,9 @@
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.nekostoryweb.dao.mapper" />
+        <property name="basePackage" value="com.driverPlus.dao.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-        <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
+        <!--<property name="annotationClass" value="org.springframework.stereotype.Repository"/>-->
     </bean>
 
 

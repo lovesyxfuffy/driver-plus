@@ -4,6 +4,7 @@ import com.driverPlus.dao.mapper.manage.SchoolMapper;
 import com.driverPlus.dao.po.manage.School;
 import com.driverPlus.service.manage.SchoolsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class SchoolServiceImpl   implements SchoolsService {
 
     @Autowired
-    private SchoolMapper schoolMapper;
+    SchoolMapper schoolMapper;
 
     @Override
     public School getSchoolById(Integer id){
