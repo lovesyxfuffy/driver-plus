@@ -20,12 +20,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/manage/Schools")
 @Slf4j
-public class SchoolController {
+public class SchoolsController {
 
     @Autowired
     private SchoolsService schoolService;
 
-    @RequestMapping(value = "/agreeAndRefuseSchools",method = RequestMethod.GET)
+    @RequestMapping(value = "/agreeAndRefuseSchools",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> test(@RequestBody Map<String, Integer> requestParam){
 
 

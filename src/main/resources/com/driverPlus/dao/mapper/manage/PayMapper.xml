@@ -240,4 +240,10 @@
       school_id = #{schoolId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="sumPayByExample" parameterType="com.driverPlus.dao.po.manage.PayExample" resultType="java.lang.Integer" >
+    select sum(pay_count) from s_pay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
 </mapper>
