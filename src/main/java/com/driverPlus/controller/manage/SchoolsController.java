@@ -26,7 +26,7 @@ public class SchoolsController {
     private SchoolsService schoolService;
 
     @RequestMapping(value = "/agreeAndRefuseSchools",method = RequestMethod.POST)
-    public ResponseEntity<Map<String,Object>> test(@RequestBody Map<String, Integer> requestParam){
+    public ResponseEntity<Map<String,Object>> agreeAndRefuseSchools(@RequestBody Map<String, Integer> requestParam){
 
 
         Integer schoolId=requestParam.get("id");

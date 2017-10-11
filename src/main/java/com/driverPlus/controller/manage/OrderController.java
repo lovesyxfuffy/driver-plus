@@ -5,6 +5,7 @@ import com.driverPlus.dao.po.manage.School;
 import com.driverPlus.enums.OrderStatusEnum;
 import com.driverPlus.enums.PayWayEnum;
 import com.driverPlus.enums.SchoolStatusEnum;
+import com.driverPlus.service.manage.FieldService;
 import com.driverPlus.service.manage.OrderService;
 import com.driverPlus.service.manage.PayService;
 import com.driverPlus.service.manage.SchoolsService;
@@ -32,9 +33,11 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private PayService payService;
+    @Autowired
+    private FieldService fieldService;
 
     @RequestMapping(value = "/getStatistic",method = RequestMethod.POST)
-    public ResponseEntity<Map<String,Object>> test(@RequestBody Map<String, Integer> requestParam){
+    public ResponseEntity<Map<String,Object>> getStatistic(@RequestBody Map<String, Integer> requestParam){
 
 
         Integer fieldId=requestParam.get("fieldId");
@@ -61,4 +64,11 @@ public class OrderController {
 
         return WebUtil.result(dto);
     }
+
+    @RequestMapping(value = "/getFieldEnum",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getFieldEnum(){
+
+        return WebUtil.result(fieldService.getFieldList());
+    }
+
 }
