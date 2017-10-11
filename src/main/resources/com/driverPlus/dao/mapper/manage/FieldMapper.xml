@@ -5,11 +5,13 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="position" property="position" jdbcType="VARCHAR" />
-    <result column="transport" property="transport" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="add_time" property="addTime" jdbcType="DATE" />
     <result column="update_time" property="updateTime" jdbcType="DATE" />
     <result column="school_id" property="schoolId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.driverPlus.dao.po.manage.Field" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,8 +72,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, position, transport, status, add_time, update_time, school_id
+    id, name, position, status, add_time, update_time, school_id
   </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.driverPlus.dao.po.manage.FieldExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from s_field
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.driverPlus.dao.po.manage.FieldExample" >
     select
     <if test="distinct" >
@@ -86,9 +107,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from s_field
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -104,11 +127,11 @@
   </delete>
   <insert id="insert" parameterType="com.driverPlus.dao.po.manage.Field" >
     insert into s_field (id, name, position, 
-      transport, status, add_time, 
-      update_time, school_id)
+      status, add_time, update_time, 
+      school_id, content)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
-      #{transport,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{addTime,jdbcType=DATE}, 
-      #{updateTime,jdbcType=DATE}, #{schoolId,jdbcType=INTEGER})
+      #{status,jdbcType=INTEGER}, #{addTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, 
+      #{schoolId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.driverPlus.dao.po.manage.Field" >
     insert into s_field
@@ -122,9 +145,6 @@
       <if test="position != null" >
         position,
       </if>
-      <if test="transport != null" >
-        transport,
-      </if>
       <if test="status != null" >
         status,
       </if>
@@ -137,6 +157,9 @@
       <if test="schoolId != null" >
         school_id,
       </if>
+      <if test="content != null" >
+        content,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -147,9 +170,6 @@
       </if>
       <if test="position != null" >
         #{position,jdbcType=VARCHAR},
-      </if>
-      <if test="transport != null" >
-        #{transport,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
@@ -162,6 +182,9 @@
       </if>
       <if test="schoolId != null" >
         #{schoolId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -183,9 +206,6 @@
       <if test="record.position != null" >
         position = #{record.position,jdbcType=VARCHAR},
       </if>
-      <if test="record.transport != null" >
-        transport = #{record.transport,jdbcType=VARCHAR},
-      </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
       </if>
@@ -198,7 +218,24 @@
       <if test="record.schoolId != null" >
         school_id = #{record.schoolId,jdbcType=INTEGER},
       </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update s_field
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      position = #{record.position,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      add_time = #{record.addTime,jdbcType=DATE},
+      update_time = #{record.updateTime,jdbcType=DATE},
+      school_id = #{record.schoolId,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -208,7 +245,6 @@
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=VARCHAR},
-      transport = #{record.transport,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
       add_time = #{record.addTime,jdbcType=DATE},
       update_time = #{record.updateTime,jdbcType=DATE},
@@ -226,9 +262,6 @@
       <if test="position != null" >
         position = #{position,jdbcType=VARCHAR},
       </if>
-      <if test="transport != null" >
-        transport = #{transport,jdbcType=VARCHAR},
-      </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
@@ -241,14 +274,27 @@
       <if test="schoolId != null" >
         school_id = #{schoolId,jdbcType=INTEGER},
       </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.driverPlus.dao.po.manage.Field" >
+    update s_field
+    set name = #{name,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=DATE},
+      school_id = #{schoolId,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.driverPlus.dao.po.manage.Field" >
     update s_field
     set name = #{name,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
-      transport = #{transport,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       add_time = #{addTime,jdbcType=DATE},
       update_time = #{updateTime,jdbcType=DATE},

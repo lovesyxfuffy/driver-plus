@@ -39,34 +39,42 @@ method:post
 request:
 ```json
 {
-  "fieldId":3,
-  "classId":5,
-  "studentName":"yujingyang",
-  "studentIdcard":"123456",
-  "telephone":"17621181235"
+    "fieldId":3,
+    "classId":5,
+    "studentName":"yujingyang",
+    "studentIdcard":"123456",
+    "telephone":"17621181235",
+    "pageNo":1,
+    "pageSize":12
 }
 ```
 
 response:
 ```json
 {
-  "data":[
-    {
-      "id":2,
-      "payStatusStr":"已支付",
-      "statusStr":"支付完成",
-      "studentName":"于景洋",
-      "studentIdcard":"123455667",
-      "refereeName":"代理人姓名",
-      "className":"班型名称",
-      "fieldName":"场地名称",
-      "addTime":"添加时间"
-    },{},{},{}
-  ],
+  "data":{
+    "content":[
+        {
+              "id":2,
+              "payStatusStr":"已支付",
+              "statusStr":"支付完成",
+              "studentName":"于景洋",
+              "studentIdcard":"123455667",
+              "refereeName":"代理人姓名",
+              "className":"班型名称",
+              "fieldName":"场地名称",
+              "addTime":"添加时间"
+            },{},{},{}
+    ],
+    "page":{
+        "pageNo":1,
+        "pageSize":10,
+        "total":3
+    }
+  },
   "status":1
 }
 ```
-
 ##### 3.场地枚举
 url:/manage/order/getFieldEnum
 
@@ -232,29 +240,39 @@ method:post
 request:
 ```json
 {
-  "name":"1234",
-  "idcard":"1111",
-  "telephone":"12334455",
-  "classType":""
+    "name":"1234",
+    "idcard":"1111",
+    "telephone":"12334455",
+    "classType":"",
+    "pageNo":1,
+    "pageSize":12
 }
 ```
 
 response:
 ```json
 {
-  "data":[
-    {
-      "id":1,
-      "name":"yujingyang",
-      "idcard":"111111",
-      "telephone":"12345678",
-      "classTypeStr":"C",
-      "statusStr":"科目一不合格"
-    },{},{}
-  ],
+  "data":{
+    "content":[
+        {
+            "id":1,
+            "name":"yujingyang",
+            "idcard":"111111",
+            "telephone":"12345678",
+            "classTypeStr":"C",
+            "statusStr":"科目一不合格"
+        },{},{},{}
+    ],
+    "page":{
+        "pageNo":1,
+        "pageSize":10,
+        "total":3
+    }
+  },
   "status":1
 }
 ```
+
 
 ##### 11.修改学员状态
 url:/manage/student/changeStudentStatus
@@ -345,13 +363,19 @@ url:/manage/study/getStudyResultList
 
 method:post
 
+url:
+
+method:post
+
 request:
 ```json
 {
-  "name":"1234",
-  "idcard":"1111",
-  "telephone":"12334455",
-  "classType":""
+    "name":"1234",
+    "idcard":"1111",
+    "telephone":"12334455",
+    "classType":"",
+    "pageNo":1,
+    "pageSize":12
 }
 ```
 
@@ -359,20 +383,30 @@ response:
 (1代表完成 0代表未完成)
 ```json
 {
-  "data":[
-    {
-      "id":3,
-      "condition1":1,
-      "condition2":1,
-      "condition3":0,
-      "contestResult":0,
-      "name":"于景洋",
-      "telephone":"123456788"
-    },{},{},{}
-  ],
+  "data":{
+    "content":[
+        {
+            "id":3,
+            "condition1":1,
+            "condition2":1,
+            "condition3":0,
+            "contestResult":0,
+            "name":"于景洋",
+            "telephone":"123456788"
+        },{},{},{}
+    ],
+    "page":{
+        "pageNo":1,
+        "pageSize":10,
+        "total":3
+    }
+  },
   "status":1
 }
 ```
+
+
+
 
 ##### 17.config录入(各种配置 例如考试条件)
 url:/manage/common/setConfig
@@ -447,24 +481,40 @@ url:/manage/marketing/getClassList
 
 method:post
 
-request:``{}``
+request:
+```json
+{
+
+    "pageNo":1,
+    "pageSize":12
+}
+```
 
 response:
 ```json
 {
-  "data":[
-    {
-      "id":1,
-      "name":"banxing",
-      "price":30,
-      "servicePromise":"xxxxxxxx",
-      "priceContent":"xxxxxxxxxx",
-      "typeStr":"C1"
-    },{},{}
-  ],
+  "data":{
+    "content":[
+        {
+          "id":1,
+          "name":"banxing",
+          "price":30,
+          "servicePromise":"xxxxxxxx",
+          "priceContent":"xxxxxxxxxx",
+          "typeStr":"C1"
+        },{},{},{}
+    ],
+    "page":{
+        "pageNo":1,
+        "pageSize":10,
+        "total":3
+    }
+  },
   "status":1
 }
 ```
+
+
 
 ##### 21.学车套餐添加
 url:/manage/marketing/addClass
@@ -557,29 +607,39 @@ url:/manage/order/searchOrderList
 
 method:post
 
+
 request:
 ```json
 {
-  "ownerId":3
+    "ownerId":3,
+    "pageNo":1,
+    "pageSize":12
 }
 ```
 
 response:
 ```json
 {
-  "data":[
-    {
-      "id":2,
-      "payStatusStr":"已支付",
-      "statusStr":"支付完成",
-      "studentName":"于景洋",
-      "studentIdcard":"123455667",
-      "refereeName":"代理人姓名",
-      "className":"班型名称",
-      "fieldName":"场地名称",
-      "addTime":"添加时间"
-    },{},{},{}
-  ],
+  "data":{
+    "content":[
+        {
+            "id":2,
+            "payStatusStr":"已支付",
+            "statusStr":"支付完成",
+            "studentName":"于景洋",
+            "studentIdcard":"123455667",
+            "refereeName":"代理人姓名",
+            "className":"班型名称",
+            "fieldName":"场地名称",
+            "addTime":"添加时间"
+        },{},{},{}
+    ],
+    "page":{
+        "pageNo":1,
+        "pageSize":10,
+        "total":3
+    }
+  },
   "status":1
 }
 ```
@@ -617,22 +677,30 @@ method:post
 request:
 ```json
 {
-
+    "pageNo":1,
+    "pageSize":12
 }
 ```
 
 response:
 ```json
 {
-  "data":[
-    {
-      "id":1,
-      "name":"老王代理",
-      "reduction":20,
-      "profileShare":100,
-      "studentCount":10
-    },{},{},{}
-  ],
+  "data":{
+    "content":[
+        {
+          "id":1,
+          "name":"老王代理",
+          "reduction":20,
+          "profileShare":100,
+          "studentCount":10
+        },{},{},{}
+    ],
+    "page":{
+        "pageNo":1,
+        "pageSize":10,
+        "total":3
+    }
+  },
   "status":1
 }
 ```
@@ -707,35 +775,44 @@ response:
 ```
 
 ##### 30.根据代理id查询代理招生列表
-url:/manage/student/getStudentListByAgent
+url:
 
 method:post
 
 request:
 ```json
 {
-  "agentId":1
-
+    "agentId":1,
+    "pageNo":1,
+    "pageSize":12
 }
 ```
 
 response:
 ```json
 {
-  "data":[
-    {
-      "id":1,
-      "name":"yujingyang",
-      "idcard":"111111",
-      "telephone":"12345678",
-      "classTypeStr":"C",
-      "price":1000,
-      "addTime":"yyyy-mm-dd"
-    },{},{}
-  ],
+  "data":{
+    "content":[
+        {
+          "id":1,
+          "name":"yujingyang",
+          "idcard":"111111",
+          "telephone":"12345678",
+          "classTypeStr":"C",
+          "price":1000,
+          "addTime":"yyyy-mm-dd"
+        },{},{},{}
+    ],
+    "page":{
+        "pageNo":1,
+        "pageSize":10,
+        "total":3
+    }
+  },
   "status":1
 }
 ```
+
 
 ##### 31.导出代理名下学生Excel
 url:/manage/marketing/getAgentStudentList
@@ -841,6 +918,9 @@ method:post
 request:
 ```json
 {
+  "name":"aaaaa",
+  "position":"bbbbbbbb",
+  "content":"xxxxxxxx"
 
 }
 ```
@@ -853,3 +933,147 @@ response:
 }
 ```
 
+##### 36.编辑场地
+url:/manage/field/updateField
+
+method:post
+
+request:
+```json
+{
+  "id":3,
+  "name":"aaaaa",
+  "position":"bbbbbbbb",
+  "content":"xxxxxxxx"
+
+}
+```
+
+response:
+```json
+{
+  "data":{},
+  "status":1
+}
+```
+
+
+
+##### 37.获取订单列表(带查询)
+
+url:/manage/admin/order/searchOrderList
+
+method:post
+
+request:
+```json
+{
+  "fieldId":3,
+  "classId":5,
+  "studentName":"yujingyang",
+  "studentIdcard":"123456",
+  "telephone":"17621181235",
+  "city":"上海",
+  "schoolId":5
+}
+```
+
+response:
+```json
+{
+  "data":[
+    {
+      "id":2,
+      "payStatusStr":"已支付",
+      "statusStr":"支付完成",
+      "studentName":"于景洋",
+      "studentIdcard":"123455667",
+      "refereeName":"代理人姓名",
+      "className":"班型名称",
+      "fieldName":"场地名称",
+      "addTime":"添加时间",
+      "schoolName":"xxxx驾校"
+    },{},{},{}
+  ],
+  "status":1
+}
+```
+
+##### 38.获取驾校列表(带查询)
+url:/manage/admin/getSchoolList
+
+method:post
+
+request:
+```json
+{
+  "city":"上海市"
+
+}
+```
+
+response:
+```json
+{
+  "data":[
+    {
+      "id":3,
+      "name":"xxx驾校",
+      "adminName":"",//config
+      "adminEmail":"",//config
+      "adminJob":"",//config
+      "telephone":"1231434514",
+      "sms_count":15
+    },{},{},{}
+  ],
+  "status":1
+}
+```
+
+##### 39.获取驾校 当日/ 当月 / 总计 报名人数
+url:/manage/admin/getSchoolStudentCount
+
+method:post
+
+request:
+```json
+{
+  "schoolId":3
+}
+```
+
+response:
+```json
+{
+  "data":{
+    "day":3,
+    "month":5,
+    "amount":10
+  },
+  "status":1
+}
+```
+
+##### 40.对指定驾校列表发送通知
+url:/manage/
+
+method:post
+
+request:
+```json
+{
+
+}
+```
+
+response:
+```json
+{
+  "data":[
+    {
+
+    },{},{},{}
+  ],
+  "status":1
+}
+```

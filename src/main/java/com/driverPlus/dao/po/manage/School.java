@@ -17,9 +17,11 @@ public class School {
 
     private String openId;
 
+    private String city;
+
     private Date addTime;
 
-    private String city;
+    private String schoolContent;
 
     public Integer getId() {
         return id;
@@ -77,6 +79,14 @@ public class School {
         this.openId = openId == null ? null : openId.trim();
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city == null ? null : city.trim();
+    }
+
     public Date getAddTime() {
         return addTime;
     }
@@ -85,11 +95,11 @@ public class School {
         this.addTime = addTime;
     }
 
-    public String getCity() {
-        return city;
+    public String getSchoolContent() {
+        return schoolContent;
     }
 
-    public void setCity(String city) {
-        this.city = city == null ? null : city.trim();
+    public void setSchoolContent(String schoolContent) {
+        this.schoolContent = schoolContent == null ? null : schoolContent.trim();
     }
 }

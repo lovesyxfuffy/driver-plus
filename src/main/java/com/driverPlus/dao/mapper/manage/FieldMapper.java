@@ -16,15 +16,21 @@ public interface FieldMapper {
 
     int insertSelective(Field record);
 
+    List<Field> selectByExampleWithBLOBs(FieldExample example);
+
     List<Field> selectByExample(FieldExample example);
 
     Field selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Field record, @Param("example") FieldExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") Field record, @Param("example") FieldExample example);
+
     int updateByExample(@Param("record") Field record, @Param("example") FieldExample example);
 
     int updateByPrimaryKeySelective(Field record);
+
+    int updateByPrimaryKeyWithBLOBs(Field record);
 
     int updateByPrimaryKey(Field record);
 }
