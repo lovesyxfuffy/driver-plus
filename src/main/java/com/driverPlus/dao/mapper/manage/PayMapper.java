@@ -27,4 +27,7 @@ public interface PayMapper {
     int updateByPrimaryKeySelective(Pay record);
 
     int updateByPrimaryKey(Pay record);
+
+    int sumPayByExample(PayExample example);
+
 }

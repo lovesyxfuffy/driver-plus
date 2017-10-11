@@ -20,13 +20,13 @@ import java.util.Map;
 @RestController
 @RequestMapping("/manage/Schools")
 @Slf4j
-public class SchoolController {
+public class SchoolsController {
 
     @Autowired
     private SchoolsService schoolService;
 
-    @RequestMapping(value = "/agreeAndRefuseSchools",method = RequestMethod.GET)
-    public ResponseEntity<Map<String,Object>> test(@RequestBody Map<String, Integer> requestParam){
+    @RequestMapping(value = "/agreeAndRefuseSchools",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> agreeAndRefuseSchools(@RequestBody Map<String, Integer> requestParam){
 
 
         Integer schoolId=requestParam.get("id");
