@@ -9,8 +9,11 @@
     <result column="student_count" property="studentCount" jdbcType="INTEGER" />
     <result column="sms_count" property="smsCount" jdbcType="INTEGER" />
     <result column="open_id" property="openId" jdbcType="VARCHAR" />
-    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
     <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.driverPlus.dao.po.manage.School" extends="BaseResultMap" >
+    <result column="school_content" property="schoolContent" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,8 +74,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, telephone, status, student_count, sms_count, open_id, add_time, city
+    id, name, telephone, status, student_count, sms_count, open_id, city, add_time
   </sql>
+  <sql id="Blob_Column_List" >
+    school_content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.driverPlus.dao.po.manage.SchoolExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from s_school
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.driverPlus.dao.po.manage.SchoolExample" >
     select
     <if test="distinct" >
@@ -87,9 +109,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from s_school
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -106,12 +130,12 @@
   <insert id="insert" parameterType="com.driverPlus.dao.po.manage.School" >
     insert into s_school (id, name, telephone, 
       status, student_count, sms_count, 
-      open_id, add_time, city
-      )
+      open_id, city, add_time, 
+      school_content)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{studentCount,jdbcType=INTEGER}, #{smsCount,jdbcType=INTEGER}, 
-      #{openId,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{city,jdbcType=VARCHAR}
-      )
+      #{openId,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{schoolContent,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.driverPlus.dao.po.manage.School" >
     insert into s_school
@@ -137,11 +161,14 @@
       <if test="openId != null" >
         open_id,
       </if>
+      <if test="city != null" >
+        city,
+      </if>
       <if test="addTime != null" >
         add_time,
       </if>
-      <if test="city != null" >
-        city,
+      <if test="schoolContent != null" >
+        school_content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -166,11 +193,14 @@
       <if test="openId != null" >
         #{openId,jdbcType=VARCHAR},
       </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
       <if test="addTime != null" >
         #{addTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="city != null" >
-        #{city,jdbcType=VARCHAR},
+      <if test="schoolContent != null" >
+        #{schoolContent,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -204,13 +234,32 @@
       <if test="record.openId != null" >
         open_id = #{record.openId,jdbcType=VARCHAR},
       </if>
-      <if test="record.addTime != null" >
-        add_time = #{record.addTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="record.city != null" >
         city = #{record.city,jdbcType=VARCHAR},
       </if>
+      <if test="record.addTime != null" >
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.schoolContent != null" >
+        school_content = #{record.schoolContent,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update s_school
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      student_count = #{record.studentCount,jdbcType=INTEGER},
+      sms_count = #{record.smsCount,jdbcType=INTEGER},
+      open_id = #{record.openId,jdbcType=VARCHAR},
+      city = #{record.city,jdbcType=VARCHAR},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      school_content = #{record.schoolContent,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -224,8 +273,8 @@
       student_count = #{record.studentCount,jdbcType=INTEGER},
       sms_count = #{record.smsCount,jdbcType=INTEGER},
       open_id = #{record.openId,jdbcType=VARCHAR},
-      add_time = #{record.addTime,jdbcType=TIMESTAMP},
-      city = #{record.city,jdbcType=VARCHAR}
+      city = #{record.city,jdbcType=VARCHAR},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -251,13 +300,29 @@
       <if test="openId != null" >
         open_id = #{openId,jdbcType=VARCHAR},
       </if>
-      <if test="addTime != null" >
-        add_time = #{addTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="city != null" >
         city = #{city,jdbcType=VARCHAR},
       </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="schoolContent != null" >
+        school_content = #{schoolContent,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.driverPlus.dao.po.manage.School" >
+    update s_school
+    set name = #{name,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      student_count = #{studentCount,jdbcType=INTEGER},
+      sms_count = #{smsCount,jdbcType=INTEGER},
+      open_id = #{openId,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      school_content = #{schoolContent,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.driverPlus.dao.po.manage.School" >
@@ -268,8 +333,8 @@
       student_count = #{studentCount,jdbcType=INTEGER},
       sms_count = #{smsCount,jdbcType=INTEGER},
       open_id = #{openId,jdbcType=VARCHAR},
-      add_time = #{addTime,jdbcType=TIMESTAMP},
-      city = #{city,jdbcType=VARCHAR}
+      city = #{city,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -9,8 +9,6 @@ public class Field {
 
     private String position;
 
-    private String transport;
-
     private Integer status;
 
     private Date addTime;
@@ -18,6 +16,8 @@ public class Field {
     private Date updateTime;
 
     private Integer schoolId;
+
+    private String content;
 
     public Integer getId() {
         return id;
@@ -41,14 +41,6 @@ public class Field {
 
     public void setPosition(String position) {
         this.position = position == null ? null : position.trim();
-    }
-
-    public String getTransport() {
-        return transport;
-    }
-
-    public void setTransport(String transport) {
-        this.transport = transport == null ? null : transport.trim();
     }
 
     public Integer getStatus() {
@@ -81,5 +73,13 @@ public class Field {
 
     public void setSchoolId(Integer schoolId) {
         this.schoolId = schoolId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 }
