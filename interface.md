@@ -867,20 +867,28 @@ method:post
 request:
 ```json
 {
-
+    "pageNo":1,
+    "pageSize":12
 }
 ```
 
 response:
 ```json
 {
-  "data":[
-    {
-      "id":1,
-      "name":"11111xxxx",
-      "addTime":"2017-10-09"
-    },{},{},{}
-  ],
+  "data":{
+    "content":[
+        {
+          "id":1,
+          "name":"11111xxxx",
+          "addTime":"2017-10-09"
+        },{},{},{}
+    ],
+    "page":{
+        "pageNo":1,
+        "pageSize":10,
+        "total":3
+    }
+  },
   "status":1
 }
 ```
@@ -968,33 +976,42 @@ method:post
 request:
 ```json
 {
-  "fieldId":3,
-  "classId":5,
-  "studentName":"yujingyang",
-  "studentIdcard":"123456",
-  "telephone":"17621181235",
-  "city":"上海",
-  "schoolId":5
+    "fieldId":3,
+    "classId":5,
+    "studentName":"yujingyang",
+    "studentIdcard":"123456",
+    "telephone":"17621181235",
+    "city":"上海",
+    "schoolId":5,
+    "pageNo":1,
+    "pageSize":12
 }
 ```
 
 response:
 ```json
 {
-  "data":[
-    {
-      "id":2,
-      "payStatusStr":"已支付",
-      "statusStr":"支付完成",
-      "studentName":"于景洋",
-      "studentIdcard":"123455667",
-      "refereeName":"代理人姓名",
-      "className":"班型名称",
-      "fieldName":"场地名称",
-      "addTime":"添加时间",
-      "schoolName":"xxxx驾校"
-    },{},{},{}
-  ],
+  "data":{
+    "content":[
+        {
+          "id":2,
+          "payStatusStr":"已支付",
+          "statusStr":"支付完成",
+          "studentName":"于景洋",
+          "studentIdcard":"123455667",
+          "refereeName":"代理人姓名",
+          "className":"班型名称",
+          "fieldName":"场地名称",
+          "addTime":"添加时间",
+          "schoolName":"xxxx驾校"
+        },{},{},{}
+    ],
+    "page":{
+        "pageNo":1,
+        "pageSize":10,
+        "total":3
+    }
+  },
   "status":1
 }
 ```
@@ -1007,28 +1024,38 @@ method:post
 request:
 ```json
 {
-  "city":"上海市"
-
+    "city":"上海市",
+    "pageNo":1,
+    "pageSize":12
 }
 ```
 
 response:
 ```json
 {
-  "data":[
-    {
-      "id":3,
-      "name":"xxx驾校",
-      "adminName":"",//config
-      "adminEmail":"",//config
-      "adminJob":"",//config
-      "telephone":"1231434514",
-      "sms_count":15
-    },{},{},{}
-  ],
+  "data":{
+    "content":[
+        {
+          "id":3,
+          "name":"xxx驾校",
+          "adminName":"",//config
+          "adminEmail":"",//config
+          "adminJob":"",//config
+          "telephone":"1231434514",
+          "sms_count":15
+        },{},{},{}
+    ],
+    "page":{
+        "pageNo":1,
+        "pageSize":10,
+        "total":3
+    }
+  },
   "status":1
 }
 ```
+
+
 
 ##### 39.获取驾校 当日/ 当月 / 总计 报名人数
 url:/manage/admin/getSchoolStudentCount
@@ -1055,7 +1082,63 @@ response:
 ```
 
 ##### 40.对指定驾校列表发送通知
-url:/manage/
+url:/manage/admin/sendNotice
+
+method:post
+
+request:
+```json
+{
+  "idList":[1,2,3,4,5,6]
+}
+```
+
+response:
+```json
+{
+  "data":{},
+  "status":1
+}
+```
+
+##### 41.获取通知列表
+url:/manage/admin/getNoticeList
+
+method:post
+
+request:
+```json
+{
+    "pageNo":1,
+    "pageSize":12
+}
+```
+
+response:
+```json
+{
+  "data":{
+    "content":[
+        {
+          "id":3,
+          "forSchoolName":"xxxx驾校",
+          "accountName":"xxxx管理员",
+          "name":"xxxx标题",
+          "content":"xxxxxxxxx"
+        },{},{},{}
+    ],
+    "page":{
+        "pageNo":1,
+        "pageSize":10,
+        "total":3
+    }
+  },
+  "status":1
+}
+```
+
+##### 42.获取服务列表(不需要分页)
+url:/manage/admin/getServiceList
 
 method:post
 
@@ -1070,10 +1153,75 @@ response:
 ```json
 {
   "data":[
-    {
-
-    },{},{},{}
+  {
+    "id":"2",
+    "serviceName":"xxxx服务",
+    "price":100,
+    "type":"",
+    "typeStr":"短信服务"
+  }
   ],
+  "status":1
+}
+```
+
+##### 43.获取业务的交易记录
+url:/manage/admin/getServiceRecord
+
+method:post
+
+request:
+```json
+{
+    "pageNo":1,
+    "pageSize":12
+}
+```
+
+response:
+```json
+{
+  "data":{
+    "content":[
+        {
+            "id":"2",
+            "serviceName":"xxxx服务",
+            "price":100,
+            "type":"",
+            "typeStr":"短信服务",
+            "buySchool":"xxx驾校",
+            "addTime":"yyyy-mm-dd"
+        },{},{},{}
+    ],
+    "page":{
+        "pageNo":1,
+        "pageSize":10,
+        "total":3
+    }
+  },
+  "status":1
+}
+```
+
+#### 44.短信内容更新
+url:/manage/admin/updateService
+
+method:post
+
+request:
+```json
+{
+  "id":"2",
+  "serviceName":"xxxx服务",
+  "price":100,
+  "type":"sms_service"//写死 sms_service 和 service
+}
+```
+
+response:
+```json
+{
+  "data":{},
   "status":1
 }
 ```
