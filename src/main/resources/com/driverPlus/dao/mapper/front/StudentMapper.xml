@@ -335,4 +335,13 @@
       class_type = #{classType,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateStudentStatusInId" >
+    update t_student
+    set test_status = #{testStatus,jdbcType=INTEGER},
+    where id  IN
+    <foreach collection="list" item="idList"  open="(" separator="," close=")">
+      #{idList}
+    </foreach>
+  </update>
+
 </mapper>

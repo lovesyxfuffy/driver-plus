@@ -164,5 +164,54 @@ public class OrderServiceImpl implements OrderService {
         return orderDtoList;
     }
 
+    @Override
+    public List<Order> getOrderListById(List<Integer> idList){
+        OrderExample example=new OrderExample();
+        OrderExample.Criteria criteria=example.createCriteria();
+        criteria.andIdIn(idList);
+        criteria.andSchoolIdEqualTo(UserUtil.getSchoolId());
+        return orderMapper.selectByExample(example);
+    }
+    @Override
+    public List<Order> getWaitConfirmOrderListById(List<Integer> idList){
+        OrderExample example=new OrderExample();
+        OrderExample.Criteria criteria=example.createCriteria();
+        criteria.andIdIn(idList);
+        criteria.andSchoolIdEqualTo(UserUtil.getSchoolId());
+        criteria.andStatusEqualTo(OrderStatusEnum.paid.getCode());
+        return orderMapper.selectByExample(example);
+    }
+    @Override
+    public List<Order> getConfirmOrderListById(List<Integer> idList){
+        OrderExample example=new OrderExample();
+        OrderExample.Criteria criteria=example.createCriteria();
+        criteria.andIdIn(idList);
+        criteria.andSchoolIdEqualTo(UserUtil.getSchoolId());
+        criteria.andStatusEqualTo(OrderStatusEnum.confirmed.getCode());
+        return orderMapper.selectByExample(example);
+    }
+    @Override
+    public void cancelOrderListById(List<Integer> idList){
+        OrderExample example=new OrderExample();
+        OrderExample.Criteria criteria=example.createCriteria();
+        criteria.andIdIn(idList);
+        criteria.andSchoolIdEqualTo(UserUtil.getSchoolId());
+        criteria.andStatusEqualTo(OrderStatusEnum.confirmed.getCode());
+        Order order=new Order();
+        order.setStatus(OrderStatusEnum.canceled.getCode());
+        orderMapper.updateByExampleSelective(order,example);
+    }
+    @Override
+    public void confirmOrderListById(List<Integer> idList){
+        OrderExample example=new OrderExample();
+        OrderExample.Criteria criteria=example.createCriteria();
+        criteria.andIdIn(idList);
+        criteria.andSchoolIdEqualTo(UserUtil.getSchoolId());
+        criteria.andStatusEqualTo(OrderStatusEnum.paid.getCode());
+
+        Order order=new Order();
+        order.setStatus(OrderStatusEnum.confirmed.getCode());
+        orderMapper.updateByExampleSelective(order,example);
+    }
 
 }

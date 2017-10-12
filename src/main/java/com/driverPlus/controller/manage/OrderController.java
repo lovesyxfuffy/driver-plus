@@ -156,6 +156,20 @@ public class OrderController {
 
     }
     }
+    @RequestMapping(value = "/confirm",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> confirm(@RequestParam List<Integer> idList){
 
+        orderService.confirmOrderListById(idList);
+
+
+        return WebUtil.success("操作成功");
+    }
+    @RequestMapping(value = "/cancel",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> cancel(@RequestParam List<Integer> idList){
+
+        orderService.cancelOrderListById(idList);
+
+        return WebUtil.success("操作成功");
+    }
 
 }

@@ -18,4 +18,14 @@ public interface OrderService {
 
     List<OrderDto> serachOrderListNotPage(QueryOrderParam queryOrderParam);
 
+    List<Order> getOrderListById(List<Integer> idList);
+
+    List<Order> getWaitConfirmOrderListById(List<Integer> idList);
+
+    List<Order> getConfirmOrderListById(List<Integer> idList);
+
+    void cancelOrderListById(List<Integer> idList);
+
+    void confirmOrderListById(List<Integer> idList);
+
 }
