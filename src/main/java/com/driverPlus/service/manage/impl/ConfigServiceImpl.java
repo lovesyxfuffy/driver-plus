@@ -2,12 +2,15 @@ package com.driverPlus.service.manage.impl;
 
 
 import com.driverPlus.Auth.UserUtil;
+import com.driverPlus.contants.GroupStatusConstants;
 import com.driverPlus.dao.dto.manage.EnumDto;
 import com.driverPlus.dao.mapper.manage.ConfigMapper;
 import com.driverPlus.dao.po.manage.Config;
 import com.driverPlus.dao.po.manage.ConfigExample;
+import com.driverPlus.enums.GroupStatusEnum;
 import com.driverPlus.service.manage.ConfigService;
 import org.apache.commons.collections.list.AbstractLinkedList;
+import org.apache.commons.lang.enums.Enum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +24,35 @@ public class ConfigServiceImpl implements ConfigService {
 
     @Autowired
     ConfigMapper configMapper;
+
+    @Override
+    public List<EnumDto>getGroupStatusList(){
+
+        return GroupStatusConstants.enumDtoList;
+
+    }
+    @Override
+    public void addGroupStatusList(String status){
+
+        int max=GroupStatusConstants.enumDtoList.size();
+        EnumDto dto=new EnumDto();
+        dto.setId(max+1);
+        dto.setName(status);
+
+        GroupStatusConstants.enumDtoList.add(dto);
+
+    }
+    @Override
+    public void editGroupStatusList(Integer id,String status){
+
+        for(EnumDto dto:GroupStatusConstants.enumDtoList){
+            if(id==dto.getId()){
+                dto.setName(status);
+            }
+        }
+
+
+    }
 
     @Override
     public List<EnumDto> getEnumDtoList(String type){

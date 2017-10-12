@@ -12,13 +12,9 @@ public enum ClassTypeEnum {
     C1("C1", "C1"),
     C2("C2", "C2"),
     C3("C3", "C3"),
-    C4("C4", "C4"),
     D("D", "D"),
     E("E", "E"),
-    F("F", "F"),
-    M("M", "M"),
-    N("N", "N"),
-    P("P", "P");
+    F("F", "F");
 
     private String code;
 

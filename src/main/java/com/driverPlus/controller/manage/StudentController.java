@@ -11,10 +11,7 @@ import com.driverPlus.utils.WebUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -35,13 +32,29 @@ public class StudentController {
     @RequestMapping(value = "/getStatusEnum",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> getStatusEnum(){
 
-        List<EnumDto> list=configService.getEnumDtoList("studentGroupStatus");
+        List<EnumDto> list=configService.getGroupStatusList();
 
         return WebUtil.result(list);
     }
     //todo 添加分组
+    @RequestMapping(value = "/addStatus",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> addStatus(@RequestParam List<String> statusList){
 
+        for(String status:statusList){
+            configService.addGroupStatusList(status);
+        }
+
+        return WebUtil.success("操作成功");
+    }
     //todo 修改分组名称
+
+    @RequestMapping(value = "/editStatus",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> addStatus(@RequestParam Integer id,@RequestParam String status){
+
+        configService.editGroupStatusList(id,status);
+
+        return WebUtil.success("操作成功");
+    }
 
     @RequestMapping(value = "/getStudentList",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> getStudentList(@RequestBody QueryStudentParam queryStudentParam){
@@ -64,6 +77,8 @@ public class StudentController {
     }
 
     //todo 查看消息发送历史
+
+
 
     //todo 查看驾校短信余量
 
