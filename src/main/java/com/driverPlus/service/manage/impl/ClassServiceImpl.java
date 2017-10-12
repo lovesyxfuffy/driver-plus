@@ -1,14 +1,10 @@
 package com.driverPlus.service.manage.impl;
 
 import com.driverPlus.dao.mapper.manage.ClassMapper;
-import com.driverPlus.dao.mapper.manage.FieldMapper;
 import com.driverPlus.dao.po.manage.Class;
 import com.driverPlus.dao.po.manage.ClassExample;
-import com.driverPlus.dao.po.manage.Field;
-import com.driverPlus.dao.po.manage.FieldExample;
 import com.driverPlus.service.manage.ClassService;
-import com.driverPlus.service.manage.FieldService;
-import com.driverPlus.utils.UserUtil;
+import com.driverPlus.Auth.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

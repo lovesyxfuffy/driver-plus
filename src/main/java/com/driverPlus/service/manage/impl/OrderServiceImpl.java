@@ -12,14 +12,13 @@ import com.driverPlus.service.manage.AgentService;
 import com.driverPlus.service.manage.ClassService;
 import com.driverPlus.service.manage.FieldService;
 import com.driverPlus.service.manage.OrderService;
-import com.driverPlus.utils.UserUtil;
+import com.driverPlus.Auth.UserUtil;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
