@@ -1,4 +1,4 @@
-package com.driverPlus.utils;
+package com.driverPlus.Auth;
 
 import com.driverPlus.dao.po.UserInfo;
 
