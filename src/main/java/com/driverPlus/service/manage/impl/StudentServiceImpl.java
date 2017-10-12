@@ -1,6 +1,7 @@
 package com.driverPlus.service.manage.impl;
 
 
+import com.driverPlus.Auth.UserUtil;
 import com.driverPlus.dao.dto.manage.QueryStudentParam;
 import com.driverPlus.dao.dto.manage.StudentDto;
 import com.driverPlus.dao.mapper.front.StudentMapper;
@@ -11,7 +12,6 @@ import com.driverPlus.dao.po.manage.Agent;
 import com.driverPlus.dao.po.manage.OrderExample;
 import com.driverPlus.enums.StudentStatusEnum;
 import com.driverPlus.service.manage.StudentService;
-import com.driverPlus.utils.UserUtil;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

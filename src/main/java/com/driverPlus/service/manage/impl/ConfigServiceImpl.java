@@ -1,12 +1,12 @@
 package com.driverPlus.service.manage.impl;
 
 
+import com.driverPlus.Auth.UserUtil;
 import com.driverPlus.dao.dto.manage.EnumDto;
 import com.driverPlus.dao.mapper.manage.ConfigMapper;
 import com.driverPlus.dao.po.manage.Config;
 import com.driverPlus.dao.po.manage.ConfigExample;
 import com.driverPlus.service.manage.ConfigService;
-import com.driverPlus.utils.UserUtil;
 import org.apache.commons.collections.list.AbstractLinkedList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
