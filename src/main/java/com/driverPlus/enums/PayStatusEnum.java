@@ -3,7 +3,7 @@ package com.driverPlus.enums;
 /**
  * Created by wangfeng on 2017/10/11.
  */
-public enum OrderStatusEnum {
+public enum PayStatusEnum {//todo 支付状态需要重新确认
     submit(0, "已提交订单"),
     paying(1, "支付中"),
     paid(2,"支付完成"),
@@ -14,7 +14,7 @@ public enum OrderStatusEnum {
 
     private String name;
 
-    OrderStatusEnum(int code, String name) {
+    PayStatusEnum(int code, String name) {
         this.code = code;
         this.name = name;
     }
@@ -35,8 +35,8 @@ public enum OrderStatusEnum {
         this.name = name;
     }
 
-    public static OrderStatusEnum getByCode(int code){
-        for(OrderStatusEnum item: OrderStatusEnum.values()){
+    public static PayStatusEnum getByCode(int code){
+        for(PayStatusEnum item: PayStatusEnum.values()){
             if(code==item.getCode()){
                 return item;
             }

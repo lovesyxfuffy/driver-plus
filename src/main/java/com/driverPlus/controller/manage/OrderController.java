@@ -1,24 +1,35 @@
 package com.driverPlus.controller.manage;
 
+import com.driverPlus.dao.dto.manage.ClassTypeDto;
+import com.driverPlus.dao.dto.manage.OrderDto;
 import com.driverPlus.dao.dto.manage.TodayOrderDto;
-import com.driverPlus.dao.po.manage.School;
+import com.driverPlus.dao.dto.manage.QueryOrderParam;
+import com.driverPlus.dao.po.manage.Order;
+import com.driverPlus.enums.ClassTypeEnum;
 import com.driverPlus.enums.OrderStatusEnum;
 import com.driverPlus.enums.PayWayEnum;
-import com.driverPlus.enums.SchoolStatusEnum;
+import com.driverPlus.service.manage.ClassService;
 import com.driverPlus.service.manage.FieldService;
 import com.driverPlus.service.manage.OrderService;
 import com.driverPlus.service.manage.PayService;
-import com.driverPlus.service.manage.SchoolsService;
+import com.driverPlus.utils.ExcelUtil;
 import com.driverPlus.utils.UserUtil;
 import com.driverPlus.utils.WebUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,6 +46,8 @@ public class OrderController {
     private PayService payService;
     @Autowired
     private FieldService fieldService;
+    @Autowired
+    private ClassService classService;
 
     @RequestMapping(value = "/getStatistic",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> getStatistic(@RequestBody Map<String, Integer> requestParam){
@@ -64,11 +77,84 @@ public class OrderController {
 
         return WebUtil.result(dto);
     }
+    @RequestMapping(value = "/searchOrderList",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getStatistic(@RequestBody QueryOrderParam queryOrderParam){
+
+        return WebUtil.result(orderService.serachOrderList(queryOrderParam));
+    }
 
     @RequestMapping(value = "/getFieldEnum",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> getFieldEnum(){
 
         return WebUtil.result(fieldService.getFieldList());
     }
+    @RequestMapping(value = "/getClassEnum",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getClassEnum(){
+
+        return WebUtil.result(classService.getClassList());
+    }
+    @RequestMapping(value = "/getTypeEnum",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getTypeEnum(){
+        List<ClassTypeDto> list=new ArrayList<>();
+
+        for(ClassTypeEnum item: ClassTypeEnum.values()){
+            ClassTypeDto dto=new ClassTypeDto();
+            dto.setName(item.getCode());
+            list.add(dto);
+        }
+        return WebUtil.result(list);
+    }
+
+    @RequestMapping(value = "/exportExcel",method = RequestMethod.GET)
+    public ResponseEntity<byte[]> exportExcel(@RequestParam Integer fieldId, @RequestParam Integer classId,
+                                              @RequestParam String studentName, @RequestParam String studentIdcard, @RequestParam String telephone)
+    throws Exception{
+
+
+        LinkedHashMap<String, String> fieldMap = new LinkedHashMap<>();
+
+        fieldMap.put("studentName","学员姓名");
+        fieldMap.put("studentIdcard","身份证");
+        fieldMap.put("refereeName","代理人");
+        fieldMap.put("className","班型名称");
+        fieldMap.put("fieldName","场地");
+        fieldMap.put("statusStr","支付状态");
+        fieldMap.put("addTime","添加时间");
+
+
+        QueryOrderParam queryOrderParam=new QueryOrderParam();
+        queryOrderParam.setClassId(classId);
+        queryOrderParam.setFieldId(fieldId);
+        queryOrderParam.setStudentIdcard(studentIdcard);
+        queryOrderParam.setStudentName(studentName);
+        queryOrderParam.setTelephone(telephone);
+        try{
+            List<OrderDto> list=orderService.serachOrderListNotPage(queryOrderParam);
+            XSSFWorkbook xSSFWorkbook=ExcelUtil.exportExcel(fieldMap,list);
+
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            xSSFWorkbook.write(out);
+            HttpHeaders headers = new HttpHeaders();
+            String fileName = new String("订单.xlsx".getBytes("UTF-8"), "iso-8859-1");//为了解决中文名称乱码问题
+            headers.setContentDispositionFormData("attachment", fileName);
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            ResponseEntity<byte[]> filebyte = new ResponseEntity<>(out.toByteArray(), headers, HttpStatus.OK);
+            out.close();
+            return filebyte;
+    } catch (InvocationTargetException e) {
+        e.printStackTrace();
+
+        return null;
+    } catch (IllegalAccessException e) {
+        e.printStackTrace();
+        return null;
+
+    } catch (IOException e) {
+        e.printStackTrace();
+        return null;
+
+    }
+    }
+
 
 }

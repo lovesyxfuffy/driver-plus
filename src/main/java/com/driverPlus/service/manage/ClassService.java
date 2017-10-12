@@ -1,5 +1,6 @@
 package com.driverPlus.service.manage;
 
+import com.driverPlus.dao.po.manage.Agent;
 import com.driverPlus.dao.po.manage.Class;
 import com.driverPlus.dao.po.manage.Field;
 
@@ -9,9 +10,8 @@ import java.util.Map;
 /**
  * Created by wangfeng on 17/10/9.
  */
-public interface FieldService {
+public interface ClassService {
 
-    List<Field> getFieldList();
-    Map<Integer,Field> getAllFieldMap();
-
+    List<Class> getClassList();
+    Map<Integer,Class> getAllClassMap();
 }

@@ -18,7 +18,7 @@ import java.util.Map;
 public class PageInfoResult<E> {
     private static final String pageNo_="pageNo";
     private static final String pageSize_="pageSize";
-    private static final String totalCount_="totalCount";
+    private static final String totalCount_="total";
     private static final String totalPageCount_="totalPageCount";
 
     private Map<String, Integer> page;
