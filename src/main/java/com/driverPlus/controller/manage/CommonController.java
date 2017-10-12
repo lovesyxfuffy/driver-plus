@@ -1,5 +1,6 @@
 package com.driverPlus.controller.manage;
 
+import com.driverPlus.dao.po.manage.Config;
 import com.driverPlus.dao.po.manage.School;
 import com.driverPlus.enums.SchoolStatusEnum;
 import com.driverPlus.service.manage.ConfigService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,6 +37,12 @@ public class CommonController {
     }
 
     //todo 根据类型获取所有配置 没有ID
+    @RequestMapping(value = "/getConfigByType",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getConfigByType(@RequestBody Map<String, String> requestParam){
 
+        List<Config> configList=configService.getConfigList(requestParam.get("typeName"));
+
+        return WebUtil.result(configList);
+    }
 
 }
