@@ -115,6 +115,7 @@ public class OrderController {
 
         fieldMap.put("studentName","学员姓名");
         fieldMap.put("studentIdcard","身份证");
+        fieldMap.put("telephone","手机号");
         fieldMap.put("refereeName","代理人");
         fieldMap.put("className","班型名称");
         fieldMap.put("fieldName","场地");

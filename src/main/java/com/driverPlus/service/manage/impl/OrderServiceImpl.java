@@ -108,6 +108,8 @@ public class OrderServiceImpl implements OrderService {
             dto.setFieldName(fieldMap.get(order.getFieldId()).getName());
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             dto.setAddTime(sdf.format(order.getAddTime()));
+            dto.setTelephone(order.getStudentTelephone());
+
 
 
             orderDtoList.add(dto);
@@ -154,6 +156,7 @@ public class OrderServiceImpl implements OrderService {
             dto.setFieldName(fieldMap.get(order.getFieldId())==null?"":fieldMap.get(order.getFieldId()).getName());
             SimpleDateFormat sdf=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
             dto.setAddTime(sdf.format(order.getAddTime()));
+            dto.setTelephone(order.getStudentTelephone());
 
 
             orderDtoList.add(dto);

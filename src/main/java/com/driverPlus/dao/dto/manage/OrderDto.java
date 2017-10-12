@@ -15,6 +15,7 @@ public class OrderDto implements Serializable {
     private String refereeName;
     private String className;
     private String fieldName;
+    private String telephone;
     private String addTime;
 
     public Integer getId() {
@@ -88,5 +89,14 @@ public class OrderDto implements Serializable {
     public void setAddTime(String addTime) {
         this.addTime = addTime;
     }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
 
 }
