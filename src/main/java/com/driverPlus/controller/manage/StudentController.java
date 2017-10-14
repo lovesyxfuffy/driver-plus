@@ -1,5 +1,6 @@
 package com.driverPlus.controller.manage;
 
+import com.driverPlus.Auth.UserUtil;
 import com.driverPlus.dao.dto.manage.EnumDto;
 import com.driverPlus.dao.dto.manage.QueryStudentParam;
 import com.driverPlus.dao.po.manage.School;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +30,8 @@ public class StudentController {
     private ConfigService configService;
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private SchoolsService schoolsService;
 
     @RequestMapping(value = "/getStatusEnum",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> getStatusEnum(){
@@ -78,7 +82,16 @@ public class StudentController {
 
 
 
-    //todo 查看驾校短信余量
+    @RequestMapping(value = "/getLastSms",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getLastSms(){
+
+        School school=schoolsService.getSchoolById(UserUtil.getSchoolId());
+        Map<String,Integer> map=new HashMap<>();
+        map.put("smsCount",school.getSmsCount());
+        map.put("smsUsed",school.getSmsCount());
+
+        return WebUtil.result(map);
+    }
 
     //todo 驾校充值
 

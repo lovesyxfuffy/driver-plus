@@ -338,7 +338,7 @@ response:
 }
 ```
 
-##### 14.查看驾校短信余量  未完成
+##### 14.查看驾校短信余量  完成
 url:/manage/student/getLastSms
 
 method:post
@@ -1137,7 +1137,7 @@ response:
 }
 ```
 
-##### 42.获取服务列表(不需要分页)
+##### 42.获取服务列表(不需要分页) 完成
 url:/manage/admin/getServiceList
 
 method:post
@@ -1165,7 +1165,7 @@ response:
 }
 ```
 
-##### 43.获取业务的交易记录
+##### 43.获取业务的交易记录 完成
 url:/manage/admin/getServiceRecord
 
 method:post
@@ -1187,7 +1187,7 @@ response:
             "id":"2",
             "serviceName":"xxxx服务",
             "price":100,
-            "type":"",
+            "type":1,
             "typeStr":"短信服务",
             "buySchool":"xxx驾校",
             "addTime":"yyyy-mm-dd"
@@ -1203,7 +1203,7 @@ response:
 }
 ```
 
-#### 44.短信内容更新
+#### 44.短信内容更新 完成
 url:/manage/admin/updateService
 
 method:post
@@ -1214,7 +1214,7 @@ request:
   "id":"2",
   "serviceName":"xxxx服务",
   "price":100,
-  "type":"sms_service"//写死 sms_service 和 service
+  "type":1 //写死 1-短信服务 和 2-普通服务
 }
 ```
 

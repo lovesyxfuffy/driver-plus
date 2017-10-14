@@ -178,4 +178,26 @@
       service_id = #{serviceId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <resultMap id="ServiceRecordMap" type="com.driverPlus.dao.dto.manage.ServiceRecordDto" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="service_name" property="serviceName" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="name" property="buySchool" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="selectServiceRecordList" resultMap="ServiceRecordMap">
+
+    select distinct ss2.id,
+                ss2.service_name,
+                ss2.price,
+                ss2.type,
+                ss.name,
+                sss.add_time
+  from s_school_service sss
+  left join s_school ss on(sss.school_id=ss.id)
+  left join s_service ss2 on(sss.service_id=ss2.id)
+  </select>
 </mapper>
