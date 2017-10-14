@@ -1089,7 +1089,8 @@ method:post
 request:
 ```json
 {
-  "idList":[1,2,3,4,5,6]
+  "idList":[1,2,3,4,5,6],
+  "content":"通知内容123"
 }
 ```
 
