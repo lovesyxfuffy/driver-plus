@@ -21,4 +21,10 @@ public interface NoticeService {
     String sendStudentNotice(List<Integer> studentIdList,String content,String name) throws Exception;
 
     PageInfoResult<NoticeDto> getNoticeListWithPage(Integer pageNo,Integer pageSize);
+
+    void sendSchoolNotice(NoticeDto dto);
+
+    PageInfoResult<NoticeDto> getSNoticeListWithPage(Integer pageNo,Integer pageSize);
+
+
 }

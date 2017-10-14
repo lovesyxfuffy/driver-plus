@@ -1,5 +1,6 @@
 package com.driverPlus.controller.manage;
 
+import com.driverPlus.dao.dto.manage.NoticeDto;
 import com.driverPlus.dao.po.manage.Config;
 import com.driverPlus.dao.po.manage.Service;
 import com.driverPlus.service.manage.ConfigService;
@@ -46,6 +47,21 @@ public class AdminController {
     public ResponseEntity<Map<String,Object>> getServiceList(){
 
         return WebUtil.result(serviceService.getServceiList());
+    }
+
+    @RequestMapping(value = "/sendNotice",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> sendNotice(@RequestBody NoticeDto noticeDto){
+
+
+        noticeService.sendSchoolNotice(noticeDto);
+        return WebUtil.success("通知成功");
+    }
+
+    @RequestMapping(value = "/getNoticeList",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getNoticeList(@RequestBody Map<String,Integer> requestParam){
+
+
+        return WebUtil.result(noticeService.getSNoticeListWithPage(requestParam.get("pageNo"),requestParam.get("pageSize")));
     }
 
 

@@ -190,6 +190,18 @@ public class MarketingController {
 
         return WebUtil.result(listDtoList);
     }
+    @RequestMapping(value = "/updateGroupInfo",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> updateGroupInfo(@RequestBody GroupInfoListDto groupInfoListDto){
+
+        groupService.updateGroupInfo(groupInfoListDto);
+
+        return WebUtil.success("操作成功");
+    }
+    @RequestMapping(value = "/getGroupOwnerEnum",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getGroupOwnerEnum(){
+
+        return WebUtil.result(groupService.getGroupOwnerEnum());
+    }
 
 
 }

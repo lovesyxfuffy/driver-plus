@@ -1,6 +1,8 @@
 package com.driverPlus.service.manage;
 
 import com.driverPlus.dao.dto.manage.AgentDto;
+import com.driverPlus.dao.dto.manage.EnumDto;
+import com.driverPlus.dao.dto.manage.GroupInfoListDto;
 import com.driverPlus.dao.po.PageInfoResult;
 import com.driverPlus.dao.po.front.GroupInfo;
 import com.driverPlus.dao.po.front.GroupReduction;
@@ -22,5 +24,7 @@ public interface GroupService {
     Map<Integer,List<GroupReduction>> getGroupReductionMap();
     Map<Integer,Integer> getGroupCountByStudent(List<GroupRelation> groupRelationList);
     Map<Integer,Integer> getGroupCountByOwer(List<GroupRelation> groupRelationList);
+    void updateGroupInfo(GroupInfoListDto dto);
+    List<EnumDto> getGroupOwnerEnum();
 
 }

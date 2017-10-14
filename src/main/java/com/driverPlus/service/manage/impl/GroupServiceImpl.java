@@ -2,6 +2,8 @@ package com.driverPlus.service.manage.impl;
 
 import com.driverPlus.Auth.UserUtil;
 import com.driverPlus.dao.dto.manage.AgentDto;
+import com.driverPlus.dao.dto.manage.EnumDto;
+import com.driverPlus.dao.dto.manage.GroupInfoListDto;
 import com.driverPlus.dao.mapper.front.GroupInfoMapper;
 import com.driverPlus.dao.mapper.front.GroupReductionMapper;
 import com.driverPlus.dao.mapper.front.GroupRelationMapper;
@@ -13,6 +15,7 @@ import com.driverPlus.dao.po.manage.AgentExample;
 import com.driverPlus.enums.AgentStatusEnum;
 import com.driverPlus.service.manage.AgentService;
 import com.driverPlus.service.manage.GroupService;
+import com.driverPlus.service.manage.StudentService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +30,13 @@ import java.util.*;
 public class GroupServiceImpl implements GroupService {
 
     @Autowired
-    GroupInfoMapper grouoInfoMapper;
+    GroupInfoMapper groupInfoMapper;
     @Autowired
     GroupReductionMapper reductionMapper;
     @Autowired
     GroupRelationMapper groupRelationMapper;
+    @Autowired
+    StudentService studentService;
 
     @Override
     public List<GroupInfo> getGroupInfoList(){
@@ -39,7 +44,7 @@ public class GroupServiceImpl implements GroupService {
         GroupInfoExample.Criteria criteria=example.createCriteria();
         criteria.andSchoolIdEqualTo(UserUtil.getSchoolId());
 
-        return grouoInfoMapper.selectByExample(example);
+        return groupInfoMapper.selectByExample(example);
 
     }
     @Override
@@ -127,6 +132,34 @@ public class GroupServiceImpl implements GroupService {
         }
         return countOwerMap;
 
+    }
+    @Override
+    public void updateGroupInfo(GroupInfoListDto dto){
+        GroupInfo groupInfo=new GroupInfo();
+        BeanUtils.copyProperties(dto,groupInfo);
+
+        groupInfoMapper.updateByPrimaryKeySelective(groupInfo);
+
+        List<GroupReduction> reductionList=dto.getReductionList();
+        for(GroupReduction groupReduction:reductionList){
+            reductionMapper.updateByPrimaryKeySelective(groupReduction);
+        }
+    }
+    @Override
+    public List<EnumDto> getGroupOwnerEnum(){
+
+        List<EnumDto> enumDtoList=new ArrayList<>();
+        Map<Integer,Student> map=studentService.getStudentMap();
+        List<GroupRelation> groupRelationList=getGroupRelationList();
+        Map<Integer,Integer> existMap=new HashMap<>();
+        for(GroupRelation groupRelation:groupRelationList) {
+            if (!existMap.containsKey(groupRelation.getOwnerId())) {
+                EnumDto dto=new EnumDto();
+                dto.setId(groupRelation.getOwnerId());
+                dto.setName(map.get(groupRelation.getOwnerId())==null?"":map.get(groupRelation.getOwnerId()).getName());
+            }
+        }
+        return enumDtoList;
     }
 
 

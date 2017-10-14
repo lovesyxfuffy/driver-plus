@@ -17,6 +17,14 @@ public class NoticeDto implements Serializable {
 
     private String forUserName;
 
+    private Integer forShcoolId;
+
+    private String forSchoolName;
+
+    private Integer accountId;
+
+    private String accountName;
+
     private String name;
 
     private String content;
@@ -69,5 +77,36 @@ public class NoticeDto implements Serializable {
         this.forUserName = forUserName;
     }
 
+    public Integer getForShcoolId() {
+        return forShcoolId;
+    }
+
+    public void setForShcoolId(Integer forShcoolId) {
+        this.forShcoolId = forShcoolId;
+    }
+
+    public String getForSchoolName() {
+        return forSchoolName;
+    }
+
+    public void setForSchoolName(String forSchoolName) {
+        this.forSchoolName = forSchoolName;
+    }
+
+    public Integer getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
 
 }

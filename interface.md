@@ -567,6 +567,7 @@ response:
 {
   "data":[
     {
+      "id":2,
       "deadline":1223,
       "strategy":"组团攻略",
       "content":"组团说明",
@@ -574,6 +575,7 @@ response:
       "groupCount":3,
       "reductionList":[
         {
+          "id":12,
           "studentCount":3,
           "reduction":30
         }
@@ -584,21 +586,20 @@ response:
 }
 ```
 
-##### 23.组团信息更新   接口定义的有问题
+##### 23.组团信息更新   ********* 加了更改的ID  完成
 url:/manage/marketing/updateGroupInfo
 
 method:post
 
 request:
 ```json
-{
+{     "id":2,
       "deadline":1223,
       "strategy":"组团攻略",
       "content":"组团说明",
-      "studentCount":1,
-      "groupCount":3,
       "reductionList":[
         {
+          "id":21,
           "studentCount":3,
           "reduction":30
         }
@@ -657,7 +658,7 @@ response:
 }
 ```
 
-##### 25.获取开团人枚举
+##### 25.获取开团人枚举  完成
 url:/manage/marketing/getGroupOwnerEnum
 
 method:post
@@ -1094,7 +1095,7 @@ response:
 }
 ```
 
-##### 40.对指定驾校列表发送通知  ************
+##### 40.对指定驾校列表发送通知   完成 ************ 
 url:/manage/admin/sendNotice
 
 method:post
@@ -1116,7 +1117,7 @@ response:
 }
 ```
 
-##### 41.获取通知列表
+##### 41.获取通知列表 完成
 url:/manage/admin/getNoticeList
 
 method:post
