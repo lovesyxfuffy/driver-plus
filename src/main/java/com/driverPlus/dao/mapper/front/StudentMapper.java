@@ -1,5 +1,6 @@
 package com.driverPlus.dao.mapper.front;
 
+import com.driverPlus.dao.dto.manage.StudentResultDto;
 import com.driverPlus.dao.po.front.Student;
 import com.driverPlus.dao.po.front.StudentExample;
 import java.util.List;
@@ -27,4 +28,9 @@ public interface StudentMapper {
     int updateByPrimaryKeySelective(Student record);
 
     int updateByPrimaryKey(Student record);
+
+    int updateStudentStatusInId(@Param("idList") List<Integer> idList,@Param("testStatus") Integer testStatus);
+
+    List<StudentResultDto> selectStudentByAgentId(@Param("agentId") Integer agentId,@Param("schoolId") Integer schoolId);
+
 }

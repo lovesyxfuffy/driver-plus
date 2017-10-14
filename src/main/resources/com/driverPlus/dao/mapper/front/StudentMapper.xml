@@ -335,4 +335,39 @@
       class_type = #{classType,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateStudentStatusInId" >
+    update t_student
+    set test_status = #{testStatus,jdbcType=INTEGER},
+    where id  IN
+    <foreach collection="list" item="idList"  open="(" separator="," close=")">
+      #{idList}
+    </foreach>
+  </update>
+
+  <resultMap id="StudentResultMap" type="com.driverPlus.dao.dto.manage.StudentResultDto" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="realName" jdbcType="VARCHAR" />
+    <result column="idcard" property="idcard" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="class_type" property="classTypeStr" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="add_time" property="addTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectStudentByAgentIdWithPage" resultMap="StudentResultMap">
+
+        select distinct stu.id,
+              stu.name,
+              stu.idcard,
+              stu.telephone,
+              stu.class_type,
+              ord.price,
+              ord.add_time
+        from t_student  stu
+        left join s_order ord on(stu.user_id=ord.user_id)
+        where ord.status!=-3
+        and ord.referee_id=#{agentId,jdbcType=INTEGER}
+        and stu.school_id=#{schoolId,jdbcType=INTEGER}
+
+  </select>
+
 </mapper>

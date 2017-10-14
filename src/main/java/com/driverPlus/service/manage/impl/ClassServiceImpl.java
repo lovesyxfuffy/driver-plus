@@ -1,12 +1,15 @@
 package com.driverPlus.service.manage.impl;
 
 import com.driverPlus.dao.mapper.manage.ClassMapper;
+import com.driverPlus.dao.po.PageInfoResult;
 import com.driverPlus.dao.po.manage.Class;
 import com.driverPlus.dao.po.manage.ClassExample;
 import com.driverPlus.service.manage.ClassService;
 import com.driverPlus.Auth.UserUtil;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,5 +40,15 @@ public class ClassServiceImpl implements ClassService {
             classHashMap.put(classl.getId(),classl);
         }
         return classHashMap;
+    }
+    @Override
+    public PageInfoResult<Class> getClassListWithPage(Integer pageNo, Integer pageSize){
+
+        PageHelper.startPage(pageNo,pageSize);
+        List<Class> list=getClassList();
+        if(CollectionUtils.isEmpty(list)){
+            return PageInfoResult.buildPage();
+        }
+        return PageInfoResult.buildPageFromList(list);
     }
 }
