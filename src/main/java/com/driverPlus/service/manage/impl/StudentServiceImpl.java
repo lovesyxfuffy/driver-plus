@@ -4,6 +4,7 @@ package com.driverPlus.service.manage.impl;
 import com.driverPlus.Auth.UserUtil;
 import com.driverPlus.dao.dto.manage.QueryStudentParam;
 import com.driverPlus.dao.dto.manage.StudentDto;
+import com.driverPlus.dao.dto.manage.StudentResultDto;
 import com.driverPlus.dao.mapper.front.StudentMapper;
 import com.driverPlus.dao.po.PageInfoResult;
 import com.driverPlus.dao.po.front.Student;
@@ -12,6 +13,7 @@ import com.driverPlus.dao.po.manage.Agent;
 import com.driverPlus.dao.po.manage.OrderExample;
 import com.driverPlus.enums.StudentStatusEnum;
 import com.driverPlus.service.manage.StudentService;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +78,14 @@ public class StudentServiceImpl implements StudentService {
     }
     @Override
     public void updateStudentTestStatusById(List<Integer> idList,Integer status){
+       //// TODO: 17/10/14
+    }
+    @Override
+    public PageInfoResult<StudentResultDto> searchStudentByAgentIdWithPage(Integer agentId,Integer pageNo,Integer pageSize){
 
+        PageHelper.startPage(pageNo,pageSize);
+        List<StudentResultDto>studentList=studentMapper.selectStudentByAgentIdWithPage(agentId,UserUtil.getSchoolId());
+
+        return PageInfoResult.buildPageFromList(studentList);
     }
 }

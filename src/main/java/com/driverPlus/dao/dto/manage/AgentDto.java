@@ -28,6 +28,10 @@ public class AgentDto implements Serializable {
 
     private Date updateTime;
 
+    private Integer pageNo;
+
+    private Integer pageSize;
+
     public Integer getId() {
         return id;
     }
@@ -106,6 +110,22 @@ public class AgentDto implements Serializable {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Integer getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(Integer pageNo) {
+        this.pageNo = pageNo;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
     }
 
 

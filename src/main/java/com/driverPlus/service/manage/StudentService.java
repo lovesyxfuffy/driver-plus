@@ -2,6 +2,7 @@ package com.driverPlus.service.manage;
 
 import com.driverPlus.dao.dto.manage.QueryStudentParam;
 import com.driverPlus.dao.dto.manage.StudentDto;
+import com.driverPlus.dao.dto.manage.StudentResultDto;
 import com.driverPlus.dao.po.PageInfoResult;
 import com.driverPlus.dao.po.manage.Agent;
 
@@ -18,4 +19,6 @@ public interface StudentService {
     void updateStudentStatusById(Integer id,Integer status);
 
     void updateStudentTestStatusById(List<Integer> idList,Integer status);
+
+    PageInfoResult<StudentResultDto> searchStudentByAgentIdWithPage(Integer agentId, Integer pageNo, Integer pageSize);
 }

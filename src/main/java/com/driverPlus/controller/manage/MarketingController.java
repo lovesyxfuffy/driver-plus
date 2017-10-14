@@ -8,6 +8,7 @@ import com.driverPlus.enums.AgentStatusEnum;
 import com.driverPlus.enums.SchoolStatusEnum;
 import com.driverPlus.service.manage.AgentService;
 import com.driverPlus.service.manage.SchoolsService;
+import com.driverPlus.service.manage.StudentService;
 import com.driverPlus.utils.WebUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class MarketingController {
 
     @Autowired
     private AgentService agentService;
+    @Autowired
+    private StudentService studentService;
 
     @RequestMapping(value = "/updateAgent",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> updateAgent(@RequestBody Map<String, String> requestParam){
@@ -77,5 +80,22 @@ public class MarketingController {
 
         return WebUtil.result(enumDto);
     }
+
+    @RequestMapping(value = "/getAgentList",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getAgentList(@RequestBody AgentDto agentDto){
+
+        return WebUtil.result(agentService.searchAgentList(agentDto));
+    }
+
+    @RequestMapping(value = "/getStudentListByAgent",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getStudentListByAgent(@RequestBody Map<String, Integer> requestParam){
+
+        Integer agentId=requestParam.get("agentId");
+        Integer pageNo=requestParam.get("pageNo");
+        Integer pageSize=requestParam.get("pageSize");
+
+        return WebUtil.result(studentService.searchStudentByAgentIdWithPage(agentId,pageNo,pageSize));
+    }
+
 
 }

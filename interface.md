@@ -775,7 +775,7 @@ response:
 ```
 
 ##### 30.根据代理id查询代理招生列表
-url:
+url:/manage/marketing/getAgentStudentList
 
 method:post
 
@@ -815,7 +815,7 @@ response:
 
 
 ##### 31.导出代理名下学生Excel
-url:/manage/marketing/getAgentStudentList
+url:/manage/marketing/exportAgentStudentListExcel
 
 method:post
 

@@ -1,6 +1,7 @@
 package com.driverPlus.service.manage;
 
 import com.driverPlus.dao.dto.manage.AgentDto;
+import com.driverPlus.dao.po.PageInfoResult;
 import com.driverPlus.dao.po.manage.Agent;
 import com.driverPlus.dao.po.manage.Class;
 
@@ -17,4 +18,5 @@ public interface AgentService {
     Map<String,Agent> getAllAgentMapByPhone();
     void updateAgentById(Agent agent);
     Agent addAgent(Agent agentPo);
+    PageInfoResult<Agent> searchAgentList(AgentDto agentDto);
 }
