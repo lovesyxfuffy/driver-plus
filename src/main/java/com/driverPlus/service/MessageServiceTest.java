@@ -15,7 +15,7 @@ import com.aliyuncs.profile.IClientProfile;
  * Created by wangfeng on 17/10/7.
  *//*
 public class MessageServiceTest {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws exception{
 
         //设置超时时间-可自行调整
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");

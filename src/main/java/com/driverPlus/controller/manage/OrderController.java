@@ -48,24 +48,24 @@ public class OrderController {
     @Autowired
     private ClassService classService;
 
-    @RequestMapping(value = "/getStatistic",method = RequestMethod.POST)
-    public ResponseEntity<Map<String,Object>> getStatistic(@RequestBody Map<String, Integer> requestParam){
+    @RequestMapping(value = "/getStatistic", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> getStatistic(@RequestBody Map<String, Integer> requestParam) {
 
 
-        Integer fieldId=requestParam.get("fieldId");
-        Integer classId=requestParam.get("classId");
+        Integer fieldId = requestParam.get("fieldId");
+        Integer classId = requestParam.get("classId");
 
-        Integer schoolId= UserUtil.getSchoolId();
+        Integer schoolId = UserUtil.getSchoolId();
 
-        Integer orderCountToday=orderService.getTodayTotalOrdersBySchoolIdAndStatus(schoolId,-999);
-        Integer orderConfirmed=orderService.getTodayTotalOrdersBySchoolIdAndStatus(schoolId, OrderStatusEnum.confirmed.getCode());
-        Integer orderWaitForConfirmed=orderService.getTodayTotalOrdersBySchoolIdAndStatus(schoolId, OrderStatusEnum.paid.getCode());
-        Integer orderCanceled=orderService.getTodayTotalOrdersBySchoolIdAndStatus(schoolId, OrderStatusEnum.canceled.getCode());
-        Float payAmount=Float.parseFloat(payService.getTodayPayAmountBySchoolIdAndPayWay(schoolId, "-999")+"");
-        Float onlinePayAmount=Float.parseFloat(payService.getTodayPayAmountBySchoolIdAndPayWay(schoolId,"other")+"");//其它支付方式
-        Float offlinePayAmount=Float.parseFloat(payService.getTodayPayAmountBySchoolIdAndPayWay(schoolId,PayWayEnum.offline.getCode())+"");
+        Integer orderCountToday = orderService.getTodayTotalOrdersBySchoolIdAndStatus(schoolId, -999);
+        Integer orderConfirmed = orderService.getTodayTotalOrdersBySchoolIdAndStatus(schoolId, OrderStatusEnum.confirmed.getCode());
+        Integer orderWaitForConfirmed = orderService.getTodayTotalOrdersBySchoolIdAndStatus(schoolId, OrderStatusEnum.paid.getCode());
+        Integer orderCanceled = orderService.getTodayTotalOrdersBySchoolIdAndStatus(schoolId, OrderStatusEnum.canceled.getCode());
+        Float payAmount = Float.parseFloat(payService.getTodayPayAmountBySchoolIdAndPayWay(schoolId, "-999") + "");
+        Float onlinePayAmount = Float.parseFloat(payService.getTodayPayAmountBySchoolIdAndPayWay(schoolId, "other") + "");//其它支付方式
+        Float offlinePayAmount = Float.parseFloat(payService.getTodayPayAmountBySchoolIdAndPayWay(schoolId, PayWayEnum.offline.getCode()) + "");
 
-        TodayOrderDto dto=new TodayOrderDto();
+        TodayOrderDto dto = new TodayOrderDto();
         dto.setOrderCountToday(orderCountToday);
         dto.setOrderConfirmed(orderConfirmed);
         dto.setOrderWaitForConfirmed(orderWaitForConfirmed);
@@ -76,61 +76,64 @@ public class OrderController {
 
         return WebUtil.result(dto);
     }
-    @RequestMapping(value = "/searchOrderList",method = RequestMethod.POST)
-    public ResponseEntity<Map<String,Object>> getStatistic(@RequestBody QueryOrderParam queryOrderParam){
+
+    @RequestMapping(value = "/searchOrderList", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> getStatistic(@RequestBody QueryOrderParam queryOrderParam) {
 
         return WebUtil.result(orderService.serachOrderList(queryOrderParam));
     }
 
-    @RequestMapping(value = "/getFieldEnum",method = RequestMethod.POST)
-    public ResponseEntity<Map<String,Object>> getFieldEnum(){
+    @RequestMapping(value = "/getFieldEnum", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> getFieldEnum() {
 
         return WebUtil.result(fieldService.getFieldList());
     }
-    @RequestMapping(value = "/getClassEnum",method = RequestMethod.POST)
-    public ResponseEntity<Map<String,Object>> getClassEnum(){
+
+    @RequestMapping(value = "/getClassEnum", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> getClassEnum() {
 
         return WebUtil.result(classService.getClassList());
     }
-    @RequestMapping(value = "/getTypeEnum",method = RequestMethod.POST)
-    public ResponseEntity<Map<String,Object>> getTypeEnum(){
-        List<ClassTypeDto> list=new ArrayList<>();
 
-        for(ClassTypeEnum item: ClassTypeEnum.values()){
-            ClassTypeDto dto=new ClassTypeDto();
+    @RequestMapping(value = "/getTypeEnum", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> getTypeEnum() {
+        List<ClassTypeDto> list = new ArrayList<>();
+
+        for (ClassTypeEnum item : ClassTypeEnum.values()) {
+            ClassTypeDto dto = new ClassTypeDto();
             dto.setName(item.getCode());
             list.add(dto);
         }
         return WebUtil.result(list);
     }
 
-    @RequestMapping(value = "/exportExcel",method = RequestMethod.GET)
+    @RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
     public ResponseEntity<byte[]> exportExcel(@RequestParam Integer fieldId, @RequestParam Integer classId,
                                               @RequestParam String studentName, @RequestParam String studentIdcard, @RequestParam String telephone)
-    throws Exception{
+            throws Exception {
 
 
         LinkedHashMap<String, String> fieldMap = new LinkedHashMap<>();
 
-        fieldMap.put("studentName","学员姓名");
-        fieldMap.put("studentIdcard","身份证");
-        fieldMap.put("telephone","手机号");
-        fieldMap.put("refereeName","代理人");
-        fieldMap.put("className","班型名称");
-        fieldMap.put("fieldName","场地");
-        fieldMap.put("statusStr","支付状态");
-        fieldMap.put("addTime","添加时间");
+        fieldMap.put("studentName", "学员姓名");
+        fieldMap.put("studentIdcard", "身份证");
+        fieldMap.put("telephone", "手机号");
+        fieldMap.put("refereeName", "代理人");
+        fieldMap.put("className", "班型名称");
+        fieldMap.put("fieldName", "场地");
+        fieldMap.put("statusStr", "支付状态");
+        fieldMap.put("addTime", "添加时间");
 
 
-        QueryOrderParam queryOrderParam=new QueryOrderParam();
+        QueryOrderParam queryOrderParam = new QueryOrderParam();
         queryOrderParam.setClassId(classId);
         queryOrderParam.setFieldId(fieldId);
         queryOrderParam.setStudentIdcard(studentIdcard);
         queryOrderParam.setStudentName(studentName);
         queryOrderParam.setTelephone(telephone);
-        try{
-            List<OrderDto> list=orderService.serachOrderListNotPage(queryOrderParam);
-            XSSFWorkbook xSSFWorkbook=ExcelUtil.exportExcel(fieldMap,list);
+        try {
+            List<OrderDto> list = orderService.serachOrderListNotPage(queryOrderParam);
+            XSSFWorkbook xSSFWorkbook = ExcelUtil.exportExcel(fieldMap, list);
 
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             xSSFWorkbook.write(out);
@@ -141,19 +144,19 @@ public class OrderController {
             ResponseEntity<byte[]> filebyte = new ResponseEntity<>(out.toByteArray(), headers, HttpStatus.OK);
             out.close();
             return filebyte;
-    } catch (InvocationTargetException e) {
-        e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
 
-        return null;
-    } catch (IllegalAccessException e) {
-        e.printStackTrace();
-        return null;
+            return null;
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            return null;
 
-    } catch (IOException e) {
-        e.printStackTrace();
-        return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
 
-    }
+        }
     }
 
 

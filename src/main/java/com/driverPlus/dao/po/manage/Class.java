@@ -13,6 +13,8 @@ public class Class {
 
     private String name;
 
+    private Integer fieldId;
+
     private Integer status;
 
     private Date addTime;
@@ -59,6 +61,14 @@ public class Class {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public Integer getFieldId() {
+        return fieldId;
+    }
+
+    public void setFieldId(Integer fieldId) {
+        this.fieldId = fieldId;
     }
 
     public Integer getStatus() {

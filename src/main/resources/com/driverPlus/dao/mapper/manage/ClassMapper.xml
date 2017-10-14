@@ -7,14 +7,15 @@
     <result column="price" property="price" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="field_id" property="fieldId" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="add_time" property="addTime" jdbcType="DATE" />
     <result column="update_time" property="updateTime" jdbcType="DATE" />
     <result column="school_id" property="schoolId" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.driverPlus.dao.po.manage.ClassWithBLOBs" extends="BaseResultMap" >
-    <result column="service_promise" property="servicePromise" jdbcType="LONGVARCHAR" />
     <result column="price_content" property="priceContent" jdbcType="LONGVARCHAR" />
+    <result column="service_promise" property="servicePromise" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -75,10 +76,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, type, price, content, name, status, add_time, update_time, school_id
+    id, type, price, content, name, field_id, status, add_time, update_time, school_id
   </sql>
   <sql id="Blob_Column_List" >
-    service_promise, price_content
+    price_content, service_promise
   </sql>
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.driverPlus.dao.po.manage.ClassExample" >
     select
@@ -130,13 +131,15 @@
   </delete>
   <insert id="insert" parameterType="com.driverPlus.dao.po.manage.ClassWithBLOBs" >
     insert into s_class (id, type, price, 
-      content, name, status, 
-      add_time, update_time, school_id, 
-      service_promise, price_content)
+      content, name, field_id, 
+      status, add_time, update_time, 
+      school_id, price_content, service_promise
+      )
     values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, 
-      #{content,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
-      #{addTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, #{schoolId,jdbcType=INTEGER}, 
-      #{servicePromise,jdbcType=LONGVARCHAR}, #{priceContent,jdbcType=LONGVARCHAR})
+      #{content,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{fieldId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{addTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, 
+      #{schoolId,jdbcType=INTEGER}, #{priceContent,jdbcType=LONGVARCHAR}, #{servicePromise,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.driverPlus.dao.po.manage.ClassWithBLOBs" >
     insert into s_class
@@ -156,6 +159,9 @@
       <if test="name != null" >
         name,
       </if>
+      <if test="fieldId != null" >
+        field_id,
+      </if>
       <if test="status != null" >
         status,
       </if>
@@ -168,11 +174,11 @@
       <if test="schoolId != null" >
         school_id,
       </if>
-      <if test="servicePromise != null" >
-        service_promise,
-      </if>
       <if test="priceContent != null" >
         price_content,
+      </if>
+      <if test="servicePromise != null" >
+        service_promise,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -191,6 +197,9 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="fieldId != null" >
+        #{fieldId,jdbcType=INTEGER},
+      </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
@@ -203,11 +212,11 @@
       <if test="schoolId != null" >
         #{schoolId,jdbcType=INTEGER},
       </if>
-      <if test="servicePromise != null" >
-        #{servicePromise,jdbcType=LONGVARCHAR},
-      </if>
       <if test="priceContent != null" >
         #{priceContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="servicePromise != null" >
+        #{servicePromise,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -235,6 +244,9 @@
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
       </if>
+      <if test="record.fieldId != null" >
+        field_id = #{record.fieldId,jdbcType=INTEGER},
+      </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
       </if>
@@ -247,11 +259,11 @@
       <if test="record.schoolId != null" >
         school_id = #{record.schoolId,jdbcType=INTEGER},
       </if>
-      <if test="record.servicePromise != null" >
-        service_promise = #{record.servicePromise,jdbcType=LONGVARCHAR},
-      </if>
       <if test="record.priceContent != null" >
         price_content = #{record.priceContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.servicePromise != null" >
+        service_promise = #{record.servicePromise,jdbcType=LONGVARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -265,12 +277,13 @@
       price = #{record.price,jdbcType=INTEGER},
       content = #{record.content,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
+      field_id = #{record.fieldId,jdbcType=INTEGER},
       status = #{record.status,jdbcType=INTEGER},
       add_time = #{record.addTime,jdbcType=DATE},
       update_time = #{record.updateTime,jdbcType=DATE},
       school_id = #{record.schoolId,jdbcType=INTEGER},
-      service_promise = #{record.servicePromise,jdbcType=LONGVARCHAR},
-      price_content = #{record.priceContent,jdbcType=LONGVARCHAR}
+      price_content = #{record.priceContent,jdbcType=LONGVARCHAR},
+      service_promise = #{record.servicePromise,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -282,6 +295,7 @@
       price = #{record.price,jdbcType=INTEGER},
       content = #{record.content,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
+      field_id = #{record.fieldId,jdbcType=INTEGER},
       status = #{record.status,jdbcType=INTEGER},
       add_time = #{record.addTime,jdbcType=DATE},
       update_time = #{record.updateTime,jdbcType=DATE},
@@ -305,6 +319,9 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="fieldId != null" >
+        field_id = #{fieldId,jdbcType=INTEGER},
+      </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
@@ -317,11 +334,11 @@
       <if test="schoolId != null" >
         school_id = #{schoolId,jdbcType=INTEGER},
       </if>
-      <if test="servicePromise != null" >
-        service_promise = #{servicePromise,jdbcType=LONGVARCHAR},
-      </if>
       <if test="priceContent != null" >
         price_content = #{priceContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="servicePromise != null" >
+        service_promise = #{servicePromise,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -332,12 +349,13 @@
       price = #{price,jdbcType=INTEGER},
       content = #{content,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
+      field_id = #{fieldId,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       add_time = #{addTime,jdbcType=DATE},
       update_time = #{updateTime,jdbcType=DATE},
       school_id = #{schoolId,jdbcType=INTEGER},
-      service_promise = #{servicePromise,jdbcType=LONGVARCHAR},
-      price_content = #{priceContent,jdbcType=LONGVARCHAR}
+      price_content = #{priceContent,jdbcType=LONGVARCHAR},
+      service_promise = #{servicePromise,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.driverPlus.dao.po.manage.Class" >
@@ -346,6 +364,7 @@
       price = #{price,jdbcType=INTEGER},
       content = #{content,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
+      field_id = #{fieldId,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       add_time = #{addTime,jdbcType=DATE},
       update_time = #{updateTime,jdbcType=DATE},

@@ -462,6 +462,66 @@ public class ClassExample {
             return (Criteria) this;
         }
 
+        public Criteria andFieldIdIsNull() {
+            addCriterion("field_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldIdIsNotNull() {
+            addCriterion("field_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldIdEqualTo(Integer value) {
+            addCriterion("field_id =", value, "fieldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldIdNotEqualTo(Integer value) {
+            addCriterion("field_id <>", value, "fieldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldIdGreaterThan(Integer value) {
+            addCriterion("field_id >", value, "fieldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("field_id >=", value, "fieldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldIdLessThan(Integer value) {
+            addCriterion("field_id <", value, "fieldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldIdLessThanOrEqualTo(Integer value) {
+            addCriterion("field_id <=", value, "fieldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldIdIn(List<Integer> values) {
+            addCriterion("field_id in", values, "fieldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldIdNotIn(List<Integer> values) {
+            addCriterion("field_id not in", values, "fieldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldIdBetween(Integer value1, Integer value2) {
+            addCriterion("field_id between", value1, value2, "fieldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("field_id not between", value1, value2, "fieldId");
+            return (Criteria) this;
+        }
+
         public Criteria andStatusIsNull() {
             addCriterion("status is null");
             return (Criteria) this;
