@@ -689,9 +689,9 @@ response:
     "content":[
         {
           "id":1,
-          "name":"老王代理",
+          "realName":"老王代理",
           "reduction":20,
-          "profileShare":100,
+          "profitShare":100,
           "studentCount":10
         },{},{},{}
     ],
@@ -713,9 +713,9 @@ method:post
 request:
 ```json
 {
-    "name":"老王代理",
+    "realName":"老王代理",
     "reduction":20,
-    "profileShare":100,
+    "profitShare":100,
     "studentCount":10
 }
 ```
@@ -739,9 +739,9 @@ request:
 ```json
 {
     "id":3,
-    "name":"老王代理",
+    "realName":"老王代理",
     "reduction":20,
-    "profileShare":100,
+    "profitShare":100,
     "studentCount":10
 }
 ```
@@ -795,7 +795,7 @@ response:
     "content":[
         {
           "id":1,
-          "name":"yujingyang",
+          "realName":"yujingyang",
           "idcard":"111111",
           "telephone":"12345678",
           "classTypeStr":"C",
