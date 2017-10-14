@@ -1,8 +1,8 @@
 driver-plus前后端接口文档
 ===========
 
-###### 1.获取统计信息接口
-url:/manage/order/getStatistic
+###### 1.获取统计信息接口    完成
+url:/manage/order/getStatistic  
 
 method:post
 
@@ -30,7 +30,7 @@ response:
 }
 ```
 
-##### 2.获取订单列表(带查询)
+##### 2.获取订单列表(带查询)  完成
 
 url:/manage/order/searchOrderList
 
@@ -75,7 +75,7 @@ response:
   "status":1
 }
 ```
-##### 3.场地枚举
+##### 3.场地枚举   完成
 url:/manage/order/getFieldEnum
 
 method:post
@@ -95,7 +95,7 @@ response:
 }
 ```
 
-##### 4.班型枚举
+##### 4.班型枚举   完成
 url:/manage/order/getClassEnum
 
 method:post
@@ -115,7 +115,7 @@ response:
 }
 ```
 
-##### 4.5 驾照类型枚举
+##### 4.5 驾照类型枚举  完成
 url:/manage/order/getTypeEnum
 
 method:post
@@ -134,7 +134,7 @@ response:
 }
 ```
 
-##### 5.导出Excel
+##### 5.导出Excel   完成
 url:/manage/order/exportExcel
 
 method:get
@@ -152,7 +152,7 @@ request:
 
 response:``file``
 
-##### 6.订单确认 订单取消
+##### 6.订单确认 订单取消    完成
 url:/manage/order/confirm
 url:/manage/order/cancel
 
@@ -173,7 +173,7 @@ response:
 }
 ```
 
-##### 7.学员分组(状态)枚举
+##### 7.学员分组(状态)枚举  完成
 url:/manage/student/getStatusEnum
 
 method:post
@@ -193,7 +193,7 @@ response:
 }
 ```
 
-##### 8.添加分组
+##### 8.添加分组    完成
 url:/manage/student/addStatus
 
 method:post
@@ -211,7 +211,7 @@ response:
 }
 ```
 
-##### 9.修改分组名称
+##### 9.修改分组名称   完成
 url:/manage/student/editStatus
 
 method:post
@@ -232,7 +232,7 @@ response:
 }
 ```
 
-##### 10.获取学员列表
+##### 10.获取学员列表   完成
 url:/manage/student/getStudentList
 
 method:post
@@ -274,7 +274,7 @@ response:
 ```
 
 
-##### 11.修改学员状态
+##### 11.修改学员状态   完成
 url:/manage/student/changeStudentStatus
 
 method:post
@@ -295,7 +295,7 @@ response:
 }
 ```
 
-##### 12.发送通知
+##### 12.发送通知   未完成
 url:/manage/student/sendNotice
 
 method:post
@@ -316,7 +316,7 @@ response:
 }
 ```
 
-##### 13.查看消息发送历史
+##### 13.查看消息发送历史 未完成
 url:/manage/student/getNoticeList
 
 method:post
@@ -338,7 +338,7 @@ response:
 }
 ```
 
-##### 14.查看驾校短信余量
+##### 14.查看驾校短信余量  未完成
 url:/manage/student/getLastSms
 
 method:post
@@ -356,9 +356,9 @@ response:
 }
 ```
 
-##### 15.驾校充值(支付待定)
+##### 15.驾校充值(支付待定) 未完成
 
-##### 16.获取学员学习情况列表
+##### 16.获取学员学习情况列表 未完成
 url:/manage/study/getStudyResultList
 
 method:post
@@ -408,7 +408,7 @@ response:
 
 
 
-##### 17.config录入(各种配置 例如考试条件)
+##### 17.config录入(各种配置 例如考试条件)  完成
 url:/manage/common/setConfig
 
 method:post
@@ -431,7 +431,7 @@ response:
 }
 ```
 
-##### 18.根据类型获取所有配置
+##### 18.根据类型获取所有配置   完成
 url:/manage/common/getConfigByType/{typeName}
 
 method:post
@@ -454,7 +454,7 @@ response:
 }
 ```
 
-##### 19.设置远程测考开启关闭
+##### 19.设置远程测考开启关闭  完成
 url:/manage/study/setContestStatus
 
 method:post
@@ -476,7 +476,7 @@ response:
 }
 ```
 
-##### 20.学车套餐列表（班型列表）
+##### 20.学车套餐列表（班型列表） 完成
 url:/manage/marketing/getClassList
 
 method:post
@@ -501,7 +501,7 @@ response:
           "price":30,
           "servicePromise":"xxxxxxxx",
           "priceContent":"xxxxxxxxxx",
-          "typeStr":"C1"
+          "type":"C1"
         },{},{},{}
     ],
     "page":{
@@ -516,7 +516,7 @@ response:
 
 
 
-##### 21.学车套餐添加
+##### 21.学车套餐添加    完成
 url:/manage/marketing/addClass
 
 method:post

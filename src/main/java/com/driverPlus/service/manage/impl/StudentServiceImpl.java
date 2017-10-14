@@ -18,6 +18,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
@@ -84,8 +85,17 @@ public class StudentServiceImpl implements StudentService {
     public PageInfoResult<StudentResultDto> searchStudentByAgentIdWithPage(Integer agentId,Integer pageNo,Integer pageSize){
 
         PageHelper.startPage(pageNo,pageSize);
-        List<StudentResultDto>studentList=studentMapper.selectStudentByAgentIdWithPage(agentId,UserUtil.getSchoolId());
-
+        List<StudentResultDto>studentList=studentMapper.selectStudentByAgentId(agentId,UserUtil.getSchoolId());
+        if(CollectionUtils.isEmpty(studentList)){
+            return PageInfoResult.buildPage();
+        }
         return PageInfoResult.buildPageFromList(studentList);
+    }
+
+    @Override
+    public List<StudentResultDto> searchStudentByAgentId(Integer agentId){
+
+        return studentMapper.selectStudentByAgentId(agentId,UserUtil.getSchoolId());
+
     }
 }

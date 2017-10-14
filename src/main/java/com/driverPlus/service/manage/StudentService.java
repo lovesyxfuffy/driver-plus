@@ -21,4 +21,7 @@ public interface StudentService {
     void updateStudentTestStatusById(List<Integer> idList,Integer status);
 
     PageInfoResult<StudentResultDto> searchStudentByAgentIdWithPage(Integer agentId, Integer pageNo, Integer pageSize);
+
+    List<StudentResultDto> searchStudentByAgentId(Integer agentId);
+
 }

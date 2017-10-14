@@ -17,6 +17,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.text.SimpleDateFormat;
@@ -95,8 +96,9 @@ public class OrderServiceImpl implements OrderService {
         }
         criteria.andSchoolIdEqualTo(UserUtil.getSchoolId());
         List<Order> orderList=orderMapper.selectByExample(example);
-
-
+        if(CollectionUtils.isEmpty(orderList)){
+            return PageInfoResult.buildPage();
+        }
         for(Order order:orderList){
             OrderDto dto=new OrderDto();
             BeanUtils.copyProperties(order,dto);

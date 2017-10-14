@@ -1,5 +1,6 @@
 package com.driverPlus.service.manage;
 
+import com.driverPlus.dao.po.PageInfoResult;
 import com.driverPlus.dao.po.manage.Class;
 import com.driverPlus.dao.po.manage.Field;
 
@@ -13,5 +14,10 @@ public interface FieldService {
 
     List<Field> getFieldList();
     Map<Integer,Field> getAllFieldMap();
+    PageInfoResult<Field> getFiledList(Integer pageNo,Integer pageSize);
+    Field getFieldDetail(Integer fieldId);
+    void addField(Field field);
+    void updateField(Field field);
+
 
 }

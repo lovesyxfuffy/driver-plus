@@ -22,10 +22,10 @@ public class PageInfoResult<E> {
     private static final String totalPageCount_="totalPageCount";
 
     private Map<String, Integer> page;
-    private List<E> pageList;
+    private List<E> content;
 
     public PageInfoResult() {
-        this.pageList = Lists.newArrayList();
+        this.content = Lists.newArrayList();
         this.page = Maps.newHashMap();
         page.put(pageNo_, 1);
         page.put(pageSize_, 20);
@@ -88,7 +88,7 @@ public class PageInfoResult<E> {
         if (CollectionUtils.isEmpty(list)) {
             page.put(totalCount_,0);
             page.put(totalPageCount_,0);
-            this.pageList = Lists.newArrayList();
+            this.content = Lists.newArrayList();
         } else {
             int totalCount=list.size();
             int totalPage;
@@ -104,7 +104,7 @@ public class PageInfoResult<E> {
             int endIndex = currentPage * pageSize;
             startIndex = startIndex < 0 ? 0 : startIndex;
             endIndex = endIndex > list.size() ? list.size() : endIndex;
-            this.pageList = list.subList(startIndex, endIndex);
+            this.content = list.subList(startIndex, endIndex);
         }
         page.put(pageNo_, currentPage);
         page.put(pageSize_, pageSize);
@@ -114,9 +114,9 @@ public class PageInfoResult<E> {
     public PageInfoResult(int currentPage, int pageSize, int totalCount, List<E> list) {
         this.page = Maps.newHashMap();
         if (CollectionUtils.isEmpty(list)) {
-            this.pageList = Lists.newArrayList();
+            this.content = Lists.newArrayList();
         } else {
-            this.pageList =list;
+            this.content =list;
         }
         int totalPage;
         if (pageSize != 0){

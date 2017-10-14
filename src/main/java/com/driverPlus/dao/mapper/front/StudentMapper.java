@@ -31,6 +31,6 @@ public interface StudentMapper {
 
     int updateStudentStatusInId(@Param("idList") List<Integer> idList,@Param("testStatus") Integer testStatus);
 
-    List<StudentResultDto> selectStudentByAgentIdWithPage(@Param("agentId") Integer agentId,@Param("schoolId") Integer schoolId);
+    List<StudentResultDto> selectStudentByAgentId(@Param("agentId") Integer agentId,@Param("schoolId") Integer schoolId);
 
 }

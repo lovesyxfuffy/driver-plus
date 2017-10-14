@@ -36,7 +36,6 @@ public class StudentController {
 
         return WebUtil.result(list);
     }
-    //todo 添加分组
     @RequestMapping(value = "/addStatus",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> addStatus(@RequestParam List<String> statusList){
 
@@ -46,7 +45,6 @@ public class StudentController {
 
         return WebUtil.success("操作成功");
     }
-    //todo 修改分组名称
 
     @RequestMapping(value = "/editStatus",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> addStatus(@RequestParam Integer id,@RequestParam String status){
