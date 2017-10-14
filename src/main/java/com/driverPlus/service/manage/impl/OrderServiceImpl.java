@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -251,6 +252,59 @@ public class OrderServiceImpl implements OrderService {
         }
         return PageInfoResult.buildPageFromList(orderList,orderDtoList);
 
+    }
+    @Override
+    public Integer getStudentCountByToday(Integer schoolId){
+
+        OrderExample example=new OrderExample();
+        OrderExample.Criteria criteria=example.createCriteria();
+        criteria.andSchoolIdEqualTo(schoolId);
+        criteria.andStatusEqualTo(OrderStatusEnum.confirmed.getCode());
+        Date nowDate = new Date();
+        SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
+        SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd 23:59:59");
+        SimpleDateFormat formatter3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        String begindate = formatter1.format(nowDate);
+        String enddate = formatter2.format(nowDate);
+
+        try {
+            criteria.andAddTimeBetween(formatter3.parse(begindate),formatter3.parse(enddate));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return orderMapper.countByExample(example);
+
+    }
+
+    @Override
+    public Integer getStudentCountByMonth(Integer schoolId){
+        OrderExample example=new OrderExample();
+        OrderExample.Criteria criteria=example.createCriteria();
+        criteria.andSchoolIdEqualTo(schoolId);
+        criteria.andStatusEqualTo(OrderStatusEnum.confirmed.getCode());
+        Date nowDate = new Date();
+        SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-01 00:00:00");
+        SimpleDateFormat formatter3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        String begindate = formatter1.format(nowDate);
+
+        try {
+            criteria.andAddTimeBetween(formatter3.parse(begindate),nowDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return orderMapper.countByExample(example);
+    }
+
+    @Override
+    public Integer getStudentCountTotal(Integer schoolId){
+        OrderExample example=new OrderExample();
+        OrderExample.Criteria criteria=example.createCriteria();
+        criteria.andSchoolIdEqualTo(schoolId);
+        criteria.andStatusEqualTo(OrderStatusEnum.confirmed.getCode());
+
+        return orderMapper.countByExample(example);
     }
 
 }

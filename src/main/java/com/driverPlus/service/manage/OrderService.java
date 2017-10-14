@@ -30,4 +30,9 @@ public interface OrderService {
 
     PageInfoResult<OrderDto> serachOrderListByOwnerId(QueryOrderParam queryOrderParam);
 
+    Integer getStudentCountByToday(Integer schoolId);
+
+    Integer getStudentCountByMonth(Integer schoolId);
+
+    Integer getStudentCountTotal(Integer schoolId);
 }

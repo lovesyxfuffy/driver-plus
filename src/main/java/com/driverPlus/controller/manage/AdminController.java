@@ -3,9 +3,7 @@ package com.driverPlus.controller.manage;
 import com.driverPlus.dao.dto.manage.NoticeDto;
 import com.driverPlus.dao.po.manage.Config;
 import com.driverPlus.dao.po.manage.Service;
-import com.driverPlus.service.manage.ConfigService;
-import com.driverPlus.service.manage.NoticeService;
-import com.driverPlus.service.manage.ServiceService;
+import com.driverPlus.service.manage.*;
 import com.driverPlus.utils.WebUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +31,9 @@ public class AdminController {
 
     @Autowired
     private NoticeService noticeService;
+
+    @Autowired
+    private OrderService orderService;
 
     @RequestMapping(value = "/updateService",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> updateService(@RequestBody Service service){
@@ -62,6 +65,19 @@ public class AdminController {
 
 
         return WebUtil.result(noticeService.getSNoticeListWithPage(requestParam.get("pageNo"),requestParam.get("pageSize")));
+    }
+
+    @RequestMapping(value = "/getSchoolStudentCount",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getSchoolStudentCount(@RequestBody Map<String,Integer> requestParam){
+
+        Integer todayCount=orderService.getStudentCountByToday(requestParam.get("schoolId"));
+        Integer monthCount=orderService.getStudentCountByMonth(requestParam.get("schoolId"));
+        Integer totalCount=orderService.getStudentCountTotal(requestParam.get("schoolId"));
+        Map<String,Integer> map=new HashMap<>();
+        map.put("day",todayCount);
+        map.put("month",monthCount);
+        map.put("amount",todayCount);
+        return WebUtil.result(map);
     }
 
 

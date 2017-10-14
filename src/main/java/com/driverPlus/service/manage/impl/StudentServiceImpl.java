@@ -6,11 +6,13 @@ import com.driverPlus.dao.dto.manage.QueryStudentParam;
 import com.driverPlus.dao.dto.manage.StudentDto;
 import com.driverPlus.dao.dto.manage.StudentResultDto;
 import com.driverPlus.dao.mapper.front.StudentMapper;
+import com.driverPlus.dao.mapper.manage.OrderMapper;
 import com.driverPlus.dao.po.PageInfoResult;
 import com.driverPlus.dao.po.front.Student;
 import com.driverPlus.dao.po.front.StudentExample;
 import com.driverPlus.dao.po.manage.Agent;
 import com.driverPlus.dao.po.manage.OrderExample;
+import com.driverPlus.enums.OrderStatusEnum;
 import com.driverPlus.enums.StudentStatusEnum;
 import com.driverPlus.service.manage.StudentService;
 import com.github.pagehelper.Page;
@@ -21,10 +23,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by wangfeng on 17/10/9.
@@ -34,6 +35,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     StudentMapper studentMapper;
+    @Autowired
+    OrderMapper orderMapper;
 
     @Override
     public PageInfoResult<StudentDto> serachStudentList(QueryStudentParam queryStudentParam){
