@@ -17,7 +17,7 @@ import com.aliyuncs.profile.IClientProfile;
   */
 
 public interface MessageService {
-    void noticeToStudentMessage(String telephone,String content)throws Exception;
+    boolean noticeToStudentMessage(String telephone,String content)throws Exception;
     boolean noticeMessage(String telephone,String content,String smsTemplateCode)throws Exception;
 
 }

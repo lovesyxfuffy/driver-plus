@@ -98,4 +98,25 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.selectStudentByAgentId(agentId,UserUtil.getSchoolId());
 
     }
+    @Override
+    public List<Student> getStudentListById(List<Integer> idList){
+        StudentExample example=new StudentExample();
+        StudentExample.Criteria criteria=example.createCriteria();
+        criteria.andSchoolIdEqualTo(UserUtil.getSchoolId());
+        criteria.andIdIn(idList);
+
+        return studentMapper.selectByExample(example);
+    }
+    @Override
+    public Map<Integer,Student> getStudentMap(){
+        StudentExample example=new StudentExample();
+        StudentExample.Criteria criteria=example.createCriteria();
+        criteria.andSchoolIdEqualTo(UserUtil.getSchoolId());
+        List<Student> list=studentMapper.selectByExample(example);
+        Map<Integer,Student> map=new HashMap<>();
+        for(Student student:list){
+            map.put(student.getUserId(),student);
+        }
+        return map;
+    }
 }

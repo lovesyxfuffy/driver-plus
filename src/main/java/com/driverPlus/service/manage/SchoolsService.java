@@ -10,4 +10,6 @@ public interface SchoolsService {
     School getSchoolById(Integer id);
 
     void updateSchoolStatusById(Integer id,Integer status);
+
+    void updateSchoolById(School school);
 }

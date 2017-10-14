@@ -26,10 +26,9 @@ public class MessageServiceImpl implements MessageService{
     private NoticeService noticeService;
 
     @Override
-    public void noticeToStudentMessage(String telephone,String content)throws Exception{
+    public boolean noticeToStudentMessage(String telephone,String content)throws Exception{
 
-        boolean noticeFlag=noticeMessage(telephone,content,"SMS_73090055");
-        //// TODO: 17/10/14  
+        return noticeMessage(telephone,content,"SMS_73090055");
 
     }
 

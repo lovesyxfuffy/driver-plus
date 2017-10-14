@@ -2,10 +2,12 @@ package com.driverPlus.controller.manage;
 
 import com.driverPlus.Auth.UserUtil;
 import com.driverPlus.dao.dto.manage.EnumDto;
+import com.driverPlus.dao.dto.manage.NoticeDto;
 import com.driverPlus.dao.dto.manage.QueryStudentParam;
 import com.driverPlus.dao.po.manage.School;
 import com.driverPlus.enums.SchoolStatusEnum;
 import com.driverPlus.service.manage.ConfigService;
+import com.driverPlus.service.manage.NoticeService;
 import com.driverPlus.service.manage.SchoolsService;
 import com.driverPlus.service.manage.StudentService;
 import com.driverPlus.utils.WebUtil;
@@ -32,6 +34,8 @@ public class StudentController {
     private StudentService studentService;
     @Autowired
     private SchoolsService schoolsService;
+    @Autowired
+    private NoticeService noticeService;
 
     @RequestMapping(value = "/getStatusEnum",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> getStatusEnum(){
@@ -71,15 +75,18 @@ public class StudentController {
         return WebUtil.success("操作成功");
     }
 
-    @RequestMapping(value = "/sendNotice",method = RequestMethod.POST)//// TODO: 17/10/12 发送通知
-    public ResponseEntity<Map<String,Object>> sendNotice(@RequestBody Map<String, Integer> requestParam){
+    @RequestMapping(value = "/sendNotice",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> sendNotice(@RequestBody NoticeDto noticeDto) throws Exception{
 
-
-        return WebUtil.success("操作成功");
+        return WebUtil.success(noticeService.sendStudentNotice(noticeDto.getIdList(),noticeDto.getContent(),noticeDto.getName()));
     }
 
-    //todo 查看消息发送历史
+    //查看消息发送历史
+    @RequestMapping(value = "/getNoticeList",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getNoticeList(@RequestBody Map<String, Integer> requestParam){
 
+        return WebUtil.result(noticeService.getNoticeListWithPage(requestParam.get("pageNo"),requestParam.get("pageSize")));
+    }
 
 
     @RequestMapping(value = "/getLastSms",method = RequestMethod.POST)

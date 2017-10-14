@@ -29,4 +29,8 @@ public interface NoticeMapper {
     int updateByPrimaryKeySelective(Notice record);
 
     int updateByPrimaryKey(Notice record);
+
+    int insertNoticeList(@Param("list")List<Notice> noticeList);
+
+    List<Notice> selectNoticeList(@Param("schoolId")Integer schoolId);
 }

@@ -27,7 +27,13 @@ public class SchoolServiceImpl   implements SchoolsService {
 
         School school=new School();
         school.setStatus(status);
+        school.setId(id);
         schoolMapper.updateByPrimaryKey(school);
+    }
+    @Override
+    public void updateSchoolById(School school){
+
+        schoolMapper.updateByPrimaryKeySelective(school);
     }
 
 }

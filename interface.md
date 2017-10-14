@@ -295,7 +295,7 @@ response:
 }
 ```
 
-##### 12.发送通知   未完成    *********
+##### 12.发送通知   完成    *********
 url:/manage/student/sendNotice
 
 method:post
@@ -317,24 +317,36 @@ response:
 }
 ```
 
-##### 13.查看消息发送历史 未完成
+##### 13.查看消息发送历史 完成    ****** 加了分页
 url:/manage/student/getNoticeList
 
 method:post
 
-request:``{}``
+request:
+```json
+{
+    "pageNo":1,
+    "pageSize":12
+}
+```
 
 response:
 ```json
 {
-  "data":[
-    {
-      "id":3,
-      "forUserName":"于景洋",
-      "content":"zxxxxxxx",
-      "name":"标题"
-    },{},{},{}
-  ],
+  "data":{
+       "content":[{
+           "id":3,
+           "forUserName":"于景洋",
+           "content":"zxxxxxxx",
+           "name":"标题"
+          },{},{},{}
+         ],
+       "page":{
+            "pageNo":1,
+            "pageSize":10,
+            "total":3
+       }
+  },
   "status":1
 }
 ```
