@@ -295,7 +295,7 @@ response:
 }
 ```
 
-##### 12.发送通知   未完成
+##### 12.发送通知   未完成    *********
 url:/manage/student/sendNotice
 
 method:post
@@ -304,7 +304,8 @@ request:
 ```json
 {
   "idList":[1,2,3,4,5,7],
-  "content":"这是发送内容"
+  "content":"这是发送内容",
+  "name":"这是通知标题"
 }
 ```
 
@@ -1081,7 +1082,7 @@ response:
 }
 ```
 
-##### 40.对指定驾校列表发送通知
+##### 40.对指定驾校列表发送通知  ************
 url:/manage/admin/sendNotice
 
 method:post
@@ -1090,7 +1091,8 @@ request:
 ```json
 {
   "idList":[1,2,3,4,5,6],
-  "content":"通知内容123"
+  "content":"通知内容123",
+  "name":"这是通知标题"
 }
 ```
 
