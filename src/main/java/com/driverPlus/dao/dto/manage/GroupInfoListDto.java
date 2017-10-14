@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class GroupInfoListDto implements Serializable {
 
+    private int id;
     private int deadline;
     private String strategy;
     private String content;
@@ -17,6 +18,13 @@ public class GroupInfoListDto implements Serializable {
     private Integer groupCount;
     private List<GroupReduction> reductionList;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public int getDeadline() {
         return deadline;
     }

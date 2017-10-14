@@ -601,9 +601,9 @@ response:
 }
 ```
 
-##### 24.获取订单列表(以团为单位)
+##### 24.获取订单列表(以团为单位) 完成
 
-url:/manage/order/searchOrderList
+url:/manage/order/searchOrderListByOwnerId
 
 method:post
 

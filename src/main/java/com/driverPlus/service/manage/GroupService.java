@@ -18,6 +18,7 @@ public interface GroupService {
     List<GroupInfo> getGroupInfoList();
     List<GroupReduction>getGroupReductionList();
     List<GroupRelation>getGroupRelationList();
+    List<GroupRelation>getGroupRelationListByOwnerId(Integer ownerId);
     Map<Integer,List<GroupReduction>> getGroupReductionMap();
     Map<Integer,Integer> getGroupCountByStudent(List<GroupRelation> groupRelationList);
     Map<Integer,Integer> getGroupCountByOwer(List<GroupRelation> groupRelationList);

@@ -173,5 +173,12 @@ public class OrderController {
 
         return WebUtil.success("操作成功");
     }
+    @RequestMapping(value = "/searchOrderListByOwnerId", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> searchOrderListByOwnerId(@RequestBody QueryOrderParam queryOrderParam) {
+
+        return WebUtil.result(orderService.serachOrderListByOwnerId(queryOrderParam));
+    }
+
+    //todo 获取开团人枚举接口
 
 }

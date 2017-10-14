@@ -65,6 +65,15 @@ public class GroupServiceImpl implements GroupService {
         return groupRelationMapper.selectByExample(example);
     }
     @Override
+    public List<GroupRelation>getGroupRelationListByOwnerId(Integer ownerId){
+
+        GroupRelationExample example=new GroupRelationExample();
+        GroupRelationExample.Criteria criteria=example.createCriteria();
+        criteria.andOwnerIdEqualTo(ownerId);
+
+        return groupRelationMapper.selectByExample(example);
+    }
+    @Override
     public Map<Integer,List<GroupReduction>> getGroupReductionMap(){
         List<GroupReduction> reductionList=getGroupReductionList();
         Map<Integer,List<GroupReduction>> reductionMap=new HashMap<>();

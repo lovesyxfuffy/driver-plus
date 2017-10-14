@@ -12,6 +12,7 @@ public class QueryOrderParam  implements Serializable {
     private String studentName;
     private String studentIdcard;
     private String telephone;
+    private Integer ownerId;
     private Integer pageNo;
     private Integer pageSize;
 
@@ -53,6 +54,14 @@ public class QueryOrderParam  implements Serializable {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
     public Integer getPageNo() {

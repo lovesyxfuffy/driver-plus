@@ -28,4 +28,6 @@ public interface OrderService {
 
     void confirmOrderListById(List<Integer> idList);
 
+    PageInfoResult<OrderDto> serachOrderListByOwnerId(QueryOrderParam queryOrderParam);
+
 }
