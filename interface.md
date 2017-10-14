@@ -541,7 +541,7 @@ response:
 }
 ```
 
-##### 22.组团信息展示(文字性内容读config接口)
+##### 22.组团信息展示(文字性内容读config接口) 完成
 url:/manage/marketing/getGroupInfo
 
 method:post
@@ -571,7 +571,7 @@ response:
 }
 ```
 
-##### 23.组团信息更新
+##### 23.组团信息更新   接口定义的有问题
 url:/manage/marketing/updateGroupInfo
 
 method:post

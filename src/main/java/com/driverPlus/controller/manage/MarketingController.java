@@ -2,20 +2,22 @@ package com.driverPlus.controller.manage;
 
 import com.driverPlus.dao.dto.manage.AgentDto;
 import com.driverPlus.dao.dto.manage.EnumDto;
+import com.driverPlus.dao.dto.manage.GroupInfoListDto;
 import com.driverPlus.dao.dto.manage.StudentResultDto;
+import com.driverPlus.dao.po.front.GroupInfo;
+import com.driverPlus.dao.po.front.GroupReduction;
+import com.driverPlus.dao.po.front.GroupRelation;
 import com.driverPlus.dao.po.manage.Agent;
 import com.driverPlus.dao.po.manage.ClassWithBLOBs;
 import com.driverPlus.dao.po.manage.School;
 import com.driverPlus.enums.AgentStatusEnum;
 import com.driverPlus.enums.SchoolStatusEnum;
-import com.driverPlus.service.manage.AgentService;
-import com.driverPlus.service.manage.ClassService;
-import com.driverPlus.service.manage.SchoolsService;
-import com.driverPlus.service.manage.StudentService;
+import com.driverPlus.service.manage.*;
 import com.driverPlus.utils.ExcelUtil;
 import com.driverPlus.utils.WebUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,10 +28,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by wangfeng on 2017/10/9.
@@ -45,6 +44,8 @@ public class MarketingController {
     private StudentService studentService;
     @Autowired
     private ClassService classService;
+    @Autowired
+    private GroupService groupService;
 
     @RequestMapping(value = "/updateAgent",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> updateAgent(@RequestBody Map<String, String> requestParam){
@@ -166,6 +167,28 @@ public class MarketingController {
         classService.addClass(classPo);
 
         return WebUtil.success("操作成功");
+    }
+    @RequestMapping(value = "/getGroupInfo",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getGroupInfo(){
+
+        List<GroupInfo> groupInfoList=groupService.getGroupInfoList();
+        Map<Integer,List<GroupReduction>> reductionMap=groupService.getGroupReductionMap();
+        List<GroupRelation> groupRelationList=groupService.getGroupRelationList();
+        Map<Integer,Integer> countStudentMap=groupService.getGroupCountByStudent(groupRelationList);
+        Map<Integer,Integer> countGroupMap=groupService.getGroupCountByOwer(groupRelationList);
+
+        List<GroupInfoListDto> listDtoList=new ArrayList<>();
+        for(GroupInfo groupInfo:groupInfoList){
+            GroupInfoListDto dto=new GroupInfoListDto();
+            BeanUtils.copyProperties(groupInfo,dto);
+            dto.setStudentCount(countStudentMap.get(groupInfo.getId())==null?0:countStudentMap.get(groupInfo.getId()));
+            dto.setGroupCount(countGroupMap.get(groupInfo.getId())==null?0:countGroupMap.get(groupInfo.getId()));
+            dto.setReductionList(reductionMap.get(groupInfo.getId())==null?new ArrayList<GroupReduction>():reductionMap.get(groupInfo.getId()));
+
+            listDtoList.add(dto);
+        }
+
+        return WebUtil.result(listDtoList);
     }
 
 
