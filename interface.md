@@ -1071,8 +1071,8 @@ response:
 
 
 
-##### 39.获取驾校 当日/ 当月 / 总计 报名人数
-url:/manage/admin/getSchoolStudentCount 完成
+##### 39.获取驾校 当日/ 当月 / 总计 报名人数 完成
+url:/manage/admin/getSchoolStudentCount 
 
 method:post
 
