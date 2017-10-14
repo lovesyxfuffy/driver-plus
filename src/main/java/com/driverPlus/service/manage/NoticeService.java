@@ -11,7 +11,9 @@ import java.util.Map;
 /**
  * Created by wangfeng on 17/10/9.
  */
-public interface TNoticeService {
+public interface NoticeService {
 
-    List<Notice> getNoticeList();
+    List<Notice> getTNoticeList();
+
+    List<com.driverPlus.dao.po.manage.Notice> getSNoticeList();
 }

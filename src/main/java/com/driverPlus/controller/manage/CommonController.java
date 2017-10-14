@@ -1,11 +1,8 @@
 package com.driverPlus.controller.manage;
 
 import com.driverPlus.dao.po.manage.Config;
-import com.driverPlus.dao.po.manage.School;
-import com.driverPlus.enums.SchoolStatusEnum;
 import com.driverPlus.service.manage.ConfigService;
-import com.driverPlus.service.manage.SchoolsService;
-import com.driverPlus.service.manage.TNoticeService;
+import com.driverPlus.service.manage.NoticeService;
 import com.driverPlus.utils.WebUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +27,7 @@ public class CommonController {
     private ConfigService configService;
 
     @Autowired
-    private TNoticeService tNoticeService;
+    private NoticeService noticeService;
 
     @RequestMapping(value = "/setConfig",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> agreeAndRefuseSchools(@RequestBody Map<String, String> requestParam){
@@ -52,7 +49,7 @@ public class CommonController {
     @RequestMapping(value = "/getNotice",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> getNotice(){
 
-        return WebUtil.result(tNoticeService.getNoticeList());
+        return WebUtil.result(noticeService.getSNoticeList());
     }
 
 

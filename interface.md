@@ -834,7 +834,7 @@ response:
 }
 ```
 
-##### 32.获取通知
+##### 32.获取通知    完成(s_notice)
 url:/manage/common/getNotice
 
 method:post
