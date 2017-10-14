@@ -4,6 +4,7 @@ import com.driverPlus.dao.dto.manage.AgentDto;
 import com.driverPlus.dao.dto.manage.EnumDto;
 import com.driverPlus.dao.dto.manage.StudentResultDto;
 import com.driverPlus.dao.po.manage.Agent;
+import com.driverPlus.dao.po.manage.ClassWithBLOBs;
 import com.driverPlus.dao.po.manage.School;
 import com.driverPlus.enums.AgentStatusEnum;
 import com.driverPlus.enums.SchoolStatusEnum;
@@ -159,14 +160,13 @@ public class MarketingController {
         return WebUtil.result(classService.getClassListWithPage(pageNo,pageSize));
     }
 
-    /*@RequestMapping(value = "/addClass",method = RequestMethod.POST)
-    public ResponseEntity<Map<String,Object>> addClass(@RequestBody Map<String, Integer> requestParam){
+    @RequestMapping(value = "/addClass",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> addClass(@RequestBody ClassWithBLOBs classPo){
 
-        Integer pageNo=requestParam.get("pageNo");
-        Integer pageSize=requestParam.get("pageSize");
+        classService.addClass(classPo);
 
-        return WebUtil.result(classService.getClassListWithPage(pageNo,pageSize));
-    }*/
+        return WebUtil.success("操作成功");
+    }
 
 
 }

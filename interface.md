@@ -669,7 +669,7 @@ response:
 }
 ```
 
-##### 26.获取代理列表
+##### 26.获取代理列表   完成
 url:/manage/marketing/getAgentList
 
 method:post
@@ -705,7 +705,7 @@ response:
 }
 ```
 
-##### 27.新增代理
+##### 27.新增代理   完成
 url:/manage/marketing/addAgent
 
 method:post
@@ -730,7 +730,7 @@ response:
 }
 ```
 
-##### 28.修改代理
+##### 28.修改代理   完成
 url:/manage/marketing/updateAgent
 
 method:post
@@ -754,7 +754,7 @@ response:
 }
 ```
 
-##### 29.禁用代理
+##### 29.禁用代理    完成
 url:/manage/marketing/stopAgent
 
 method:post
@@ -774,7 +774,7 @@ response:
 }
 ```
 
-##### 30.根据代理id查询代理招生列表
+##### 30.根据代理id查询代理招生列表   完成
 url:/manage/marketing/getAgentStudentList
 
 method:post
@@ -814,7 +814,7 @@ response:
 ```
 
 
-##### 31.导出代理名下学生Excel
+##### 31.导出代理名下学生Excel    完成
 url:/manage/marketing/exportAgentStudentListExcel
 
 method:post
@@ -859,7 +859,7 @@ response:
 }
 ```
 
-##### 33.获取场地列表
+##### 33.获取场地列表   完成
 url:/manage/field/getFieldList
 
 method:post
@@ -893,7 +893,7 @@ response:
 }
 ```
 
-##### 34.获取场地详情
+##### 34.获取场地详情    完成
 url:/manage/field/getField/{fieldId}
 
 method:post
@@ -918,7 +918,7 @@ response:
 }
 ```
 
-##### 35.新增场地
+##### 35.新增场地   完成
 url:/manage/field/createField
 
 method:post
@@ -941,7 +941,7 @@ response:
 }
 ```
 
-##### 36.编辑场地
+##### 36.编辑场地   完成
 url:/manage/field/updateField
 
 method:post
@@ -967,7 +967,7 @@ response:
 
 
 
-##### 37.获取订单列表(带查询)
+##### 37.获取订单列表(带查询)  
 
 url:/manage/admin/order/searchOrderList
 
