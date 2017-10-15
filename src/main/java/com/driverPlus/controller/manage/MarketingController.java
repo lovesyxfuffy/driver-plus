@@ -102,8 +102,8 @@ public class MarketingController {
         return WebUtil.result(agentService.searchAgentList(agentDto));
     }
 
-    @RequestMapping(value = "/getStudentListByAgent",method = RequestMethod.POST)
-    public ResponseEntity<Map<String,Object>> getStudentListByAgent(@RequestBody Map<String, Integer> requestParam){
+    @RequestMapping(value = "/getAgentStudentList",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getAgentStudentList(@RequestBody Map<String, Integer> requestParam){
 
         Integer agentId=requestParam.get("agentId");
         Integer pageNo=requestParam.get("pageNo");

@@ -179,6 +179,5 @@ public class OrderController {
         return WebUtil.result(orderService.serachOrderListByOwnerId(queryOrderParam));
     }
 
-    //todo 获取开团人枚举接口
 
 }
