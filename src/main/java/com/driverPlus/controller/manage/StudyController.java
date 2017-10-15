@@ -1,5 +1,7 @@
 package com.driverPlus.controller.manage;
 
+import com.driverPlus.dao.dto.manage.ContestStatusDto;
+import com.driverPlus.dao.dto.manage.QueryStudyResultParam;
 import com.driverPlus.service.manage.ConfigService;
 import com.driverPlus.service.manage.StudentService;
 import com.driverPlus.utils.WebUtil;
@@ -23,12 +25,17 @@ public class StudyController {
     private StudentService studentService;
 
     @RequestMapping(value = "/setContestStatus",method = RequestMethod.POST)
-    public ResponseEntity<Map<String,Object>> setContestStatus(@RequestParam List<Integer> idList,@RequestParam Integer status){
+    public ResponseEntity<Map<String,Object>> setContestStatus(@RequestBody ContestStatusDto contestStatusDto){
 
 
-        studentService.updateStudentTestStatusById(idList,status);
+        studentService.updateStudentTestStatusById(contestStatusDto.getIdList(),contestStatusDto.getStatus());
 
         return WebUtil.success("操作成功");
+    }
+    @RequestMapping(value = "/getStudyResultList",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getStudyResultList(@RequestBody QueryStudyResultParam queryStudyResultParam){
+
+        return WebUtil.result(studentService.searchStudyResultList(queryStudyResultParam));
     }
 
 

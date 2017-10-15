@@ -1,8 +1,6 @@
 package com.driverPlus.service.manage;
 
-import com.driverPlus.dao.dto.manage.QueryStudentParam;
-import com.driverPlus.dao.dto.manage.StudentDto;
-import com.driverPlus.dao.dto.manage.StudentResultDto;
+import com.driverPlus.dao.dto.manage.*;
 import com.driverPlus.dao.po.PageInfoResult;
 import com.driverPlus.dao.po.front.Student;
 import com.driverPlus.dao.po.manage.Agent;
@@ -28,5 +26,7 @@ public interface StudentService {
     List<Student> getStudentListById(List<Integer> idList);
 
     Map<Integer,Student> getStudentMap();
+
+    PageInfoResult<StudyResultDto> searchStudyResultList(QueryStudyResultParam queryStudyResultParam);
 
 }
