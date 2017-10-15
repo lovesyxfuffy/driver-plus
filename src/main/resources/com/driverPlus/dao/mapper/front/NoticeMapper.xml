@@ -208,4 +208,17 @@
       add_time = #{addTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <insert id="insertNoticeList" useGeneratedKeys="true" parameterType="java.util.List">
+
+    insert into t_notice (add_time,for_user_id,content,name,)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+      (#{item.addTime},#{item.forUserId},#{item.content},#{item.name})
+    </foreach>
+  </insert>
+  <select id="selectNoticeList" resultMap="BaseResultMap">
+    select a.* from t_notice a
+    left join t_student b on(a.for_user_id=b.user_id)
+    where b.school_id=#{schoolId}
+  </select>
 </mapper>

@@ -18,6 +18,14 @@ public class OrderDto implements Serializable {
     private String telephone;
     private String addTime;
 
+
+
+    private String schoolName;
+    private Integer payStatus;
+    private Integer status;
+    private Integer classId;
+    private Integer fieldId;
+
     public Integer getId() {
         return id;
     }
@@ -97,6 +105,46 @@ public class OrderDto implements Serializable {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+    public Integer getPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(Integer payStatus) {
+        this.payStatus = payStatus;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getClassId() {
+        return classId;
+    }
+
+    public void setClassId(Integer classId) {
+        this.classId = classId;
+    }
+
+    public Integer getFieldId() {
+        return fieldId;
+    }
+
+    public void setFieldId(Integer fieldId) {
+        this.fieldId = fieldId;
+    }
+
 
 
 }

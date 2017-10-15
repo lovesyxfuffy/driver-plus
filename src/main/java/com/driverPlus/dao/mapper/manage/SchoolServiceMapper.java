@@ -1,5 +1,6 @@
 package com.driverPlus.dao.mapper.manage;
 
+import com.driverPlus.dao.dto.manage.ServiceRecordDto;
 import com.driverPlus.dao.po.manage.SchoolService;
 import com.driverPlus.dao.po.manage.SchoolServiceExample;
 import java.util.List;
@@ -27,4 +28,6 @@ public interface SchoolServiceMapper {
     int updateByPrimaryKeySelective(SchoolService record);
 
     int updateByPrimaryKey(SchoolService record);
+
+    List<ServiceRecordDto> selectServiceRecordList();
 }

@@ -1,5 +1,7 @@
 package com.driverPlus.dao.mapper.manage;
 
+import com.driverPlus.dao.dto.manage.OrderDto;
+import com.driverPlus.dao.dto.manage.QueryOrderParam;
 import com.driverPlus.dao.po.manage.Order;
 import com.driverPlus.dao.po.manage.OrderExample;
 import java.util.List;
@@ -27,4 +29,6 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+
+    List<OrderDto> searchOrderList(QueryOrderParam queryOrderParam);
 }

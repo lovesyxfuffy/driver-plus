@@ -295,7 +295,7 @@ response:
 }
 ```
 
-##### 12.发送通知   未完成
+##### 12.发送通知   完成    *********
 url:/manage/student/sendNotice
 
 method:post
@@ -304,7 +304,8 @@ request:
 ```json
 {
   "idList":[1,2,3,4,5,7],
-  "content":"这是发送内容"
+  "content":"这是发送内容",
+  "name":"这是通知标题"
 }
 ```
 
@@ -316,29 +317,41 @@ response:
 }
 ```
 
-##### 13.查看消息发送历史 未完成
+##### 13.查看消息发送历史 完成    ****** 加了分页
 url:/manage/student/getNoticeList
 
 method:post
 
-request:``{}``
+request:
+```json
+{
+    "pageNo":1,
+    "pageSize":12
+}
+```
 
 response:
 ```json
 {
-  "data":[
-    {
-      "id":3,
-      "forUserName":"于景洋",
-      "content":"zxxxxxxx",
-      "name":"标题"
-    },{},{},{}
-  ],
+  "data":{
+       "content":[{
+           "id":3,
+           "forUserName":"于景洋",
+           "content":"zxxxxxxx",
+           "name":"标题"
+          },{},{},{}
+         ],
+       "page":{
+            "pageNo":1,
+            "pageSize":10,
+            "total":3
+       }
+  },
   "status":1
 }
 ```
 
-##### 14.查看驾校短信余量  未完成
+##### 14.查看驾校短信余量  完成
 url:/manage/student/getLastSms
 
 method:post
@@ -541,7 +554,7 @@ response:
 }
 ```
 
-##### 22.组团信息展示(文字性内容读config接口)
+##### 22.组团信息展示(文字性内容读config接口) 完成
 url:/manage/marketing/getGroupInfo
 
 method:post
@@ -554,6 +567,7 @@ response:
 {
   "data":[
     {
+      "id":2,
       "deadline":1223,
       "strategy":"组团攻略",
       "content":"组团说明",
@@ -561,6 +575,7 @@ response:
       "groupCount":3,
       "reductionList":[
         {
+          "id":12,
           "studentCount":3,
           "reduction":30
         }
@@ -571,21 +586,20 @@ response:
 }
 ```
 
-##### 23.组团信息更新
+##### 23.组团信息更新   ********* 加了更改的ID  完成
 url:/manage/marketing/updateGroupInfo
 
 method:post
 
 request:
 ```json
-{
+{     "id":2,
       "deadline":1223,
       "strategy":"组团攻略",
       "content":"组团说明",
-      "studentCount":1,
-      "groupCount":3,
       "reductionList":[
         {
+          "id":21,
           "studentCount":3,
           "reduction":30
         }
@@ -601,9 +615,9 @@ response:
 }
 ```
 
-##### 24.获取订单列表(以团为单位)
+##### 24.获取订单列表(以团为单位) 完成
 
-url:/manage/order/searchOrderList
+url:/manage/order/searchOrderListByOwnerId
 
 method:post
 
@@ -644,7 +658,7 @@ response:
 }
 ```
 
-##### 25.获取开团人枚举
+##### 25.获取开团人枚举  完成
 url:/manage/marketing/getGroupOwnerEnum
 
 method:post
@@ -834,7 +848,7 @@ response:
 }
 ```
 
-##### 32.获取通知
+##### 32.获取通知    完成(s_notice)
 url:/manage/common/getNotice
 
 method:post
@@ -967,7 +981,7 @@ response:
 
 
 
-##### 37.获取订单列表(带查询)  
+##### 37.获取订单列表(带查询)     完成
 
 url:/manage/admin/order/searchOrderList
 
@@ -1016,7 +1030,7 @@ response:
 }
 ```
 
-##### 38.获取驾校列表(带查询)
+##### 38.获取驾校列表(带查询)   ************** 完成
 url:/manage/admin/getSchoolList
 
 method:post
@@ -1042,7 +1056,7 @@ response:
           "adminEmail":"",//config
           "adminJob":"",//config
           "telephone":"1231434514",
-          "sms_count":15
+          "smsCount":15
         },{},{},{}
     ],
     "page":{
@@ -1057,8 +1071,8 @@ response:
 
 
 
-##### 39.获取驾校 当日/ 当月 / 总计 报名人数
-url:/manage/admin/getSchoolStudentCount
+##### 39.获取驾校 当日/ 当月 / 总计 报名人数 完成
+url:/manage/admin/getSchoolStudentCount 
 
 method:post
 
@@ -1081,7 +1095,7 @@ response:
 }
 ```
 
-##### 40.对指定驾校列表发送通知
+##### 40.对指定驾校列表发送通知   完成 ************ 
 url:/manage/admin/sendNotice
 
 method:post
@@ -1089,7 +1103,9 @@ method:post
 request:
 ```json
 {
-  "idList":[1,2,3,4,5,6]
+  "idList":[1,2,3,4,5,6],
+  "content":"通知内容123",
+  "name":"这是通知标题"
 }
 ```
 
@@ -1101,7 +1117,7 @@ response:
 }
 ```
 
-##### 41.获取通知列表
+##### 41.获取通知列表 完成
 url:/manage/admin/getNoticeList
 
 method:post
@@ -1137,7 +1153,7 @@ response:
 }
 ```
 
-##### 42.获取服务列表(不需要分页)
+##### 42.获取服务列表(不需要分页) 完成
 url:/manage/admin/getServiceList
 
 method:post
@@ -1165,7 +1181,7 @@ response:
 }
 ```
 
-##### 43.获取业务的交易记录
+##### 43.获取业务的交易记录 完成
 url:/manage/admin/getServiceRecord
 
 method:post
@@ -1187,7 +1203,7 @@ response:
             "id":"2",
             "serviceName":"xxxx服务",
             "price":100,
-            "type":"",
+            "type":1,
             "typeStr":"短信服务",
             "buySchool":"xxx驾校",
             "addTime":"yyyy-mm-dd"
@@ -1203,7 +1219,7 @@ response:
 }
 ```
 
-#### 44.短信内容更新
+#### 44.短信内容更新 完成
 url:/manage/admin/updateService
 
 method:post
@@ -1214,7 +1230,7 @@ request:
   "id":"2",
   "serviceName":"xxxx服务",
   "price":100,
-  "type":"sms_service"//写死 sms_service 和 service
+  "type":1 //写死 1-短信服务 和 2-普通服务
 }
 ```
 

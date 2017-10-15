@@ -351,7 +351,7 @@
     <result column="telephone" property="telephone" jdbcType="VARCHAR" />
     <result column="class_type" property="classTypeStr" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="INTEGER" />
-    <result column="add_time" property="addTime" jdbcType="VARCHAR" />
+    <result column="addTime" property="addTime" jdbcType="VARCHAR" />
   </resultMap>
   <select id="selectStudentByAgentIdWithPage" resultMap="StudentResultMap">
 
@@ -361,7 +361,7 @@
               stu.telephone,
               stu.class_type,
               ord.price,
-              ord.add_time
+              DATE_FORMAT(ord.add_time,"%Y-%m-%d %T") as addTime
         from t_student  stu
         left join s_order ord on(stu.user_id=ord.user_id)
         where ord.status!=-3

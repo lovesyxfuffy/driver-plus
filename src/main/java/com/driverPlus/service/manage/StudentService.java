@@ -4,6 +4,7 @@ import com.driverPlus.dao.dto.manage.QueryStudentParam;
 import com.driverPlus.dao.dto.manage.StudentDto;
 import com.driverPlus.dao.dto.manage.StudentResultDto;
 import com.driverPlus.dao.po.PageInfoResult;
+import com.driverPlus.dao.po.front.Student;
 import com.driverPlus.dao.po.manage.Agent;
 
 import java.util.List;
@@ -23,5 +24,9 @@ public interface StudentService {
     PageInfoResult<StudentResultDto> searchStudentByAgentIdWithPage(Integer agentId, Integer pageNo, Integer pageSize);
 
     List<StudentResultDto> searchStudentByAgentId(Integer agentId);
+
+    List<Student> getStudentListById(List<Integer> idList);
+
+    Map<Integer,Student> getStudentMap();
 
 }

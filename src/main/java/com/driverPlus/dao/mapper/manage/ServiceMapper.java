@@ -27,4 +27,6 @@ public interface ServiceMapper {
     int updateByPrimaryKeySelective(Service record);
 
     int updateByPrimaryKey(Service record);
+
+
 }

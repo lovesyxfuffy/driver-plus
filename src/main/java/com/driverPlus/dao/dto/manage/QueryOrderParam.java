@@ -12,8 +12,14 @@ public class QueryOrderParam  implements Serializable {
     private String studentName;
     private String studentIdcard;
     private String telephone;
+    private Integer ownerId;
     private Integer pageNo;
     private Integer pageSize;
+
+
+
+    private String city;
+    private Integer schoolId;
 
     public Integer getFieldId() {
         return fieldId;
@@ -55,6 +61,14 @@ public class QueryOrderParam  implements Serializable {
         this.telephone = telephone;
     }
 
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
+
     public Integer getPageNo() {
         return pageNo;
     }
@@ -69,6 +83,22 @@ public class QueryOrderParam  implements Serializable {
 
     public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Integer getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(Integer schoolId) {
+        this.schoolId = schoolId;
     }
 
 }
