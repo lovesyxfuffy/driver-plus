@@ -371,7 +371,7 @@ response:
 
 ##### 15.驾校充值(支付待定) 未完成
 
-##### 16.获取学员学习情况列表 未完成
+##### 16.获取学员学习情况列表 完成
 url:/manage/study/getStudyResultList
 
 method:post
