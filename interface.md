@@ -1030,7 +1030,7 @@ response:
 }
 ```
 
-##### 38.获取驾校列表(带查询)
+##### 38.获取驾校列表(带查询)   **************
 url:/manage/admin/getSchoolList
 
 method:post
@@ -1056,7 +1056,7 @@ response:
           "adminEmail":"",//config
           "adminJob":"",//config
           "telephone":"1231434514",
-          "sms_count":15
+          "smsCount":15
         },{},{},{}
     ],
     "page":{
