@@ -981,7 +981,7 @@ response:
 
 
 
-##### 37.获取订单列表(带查询)  
+##### 37.获取订单列表(带查询)     完成
 
 url:/manage/admin/order/searchOrderList
 
@@ -1030,7 +1030,7 @@ response:
 }
 ```
 
-##### 38.获取驾校列表(带查询)   **************
+##### 38.获取驾校列表(带查询)   ************** 完成
 url:/manage/admin/getSchoolList
 
 method:post

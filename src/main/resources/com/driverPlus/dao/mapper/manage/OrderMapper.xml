@@ -382,4 +382,54 @@
       school_id = #{schoolId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <resultMap id="searchOrderMap" type="com.driverPlus.dao.dto.manage.OrderDto" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pay_status" property="payStatus" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+    <result column="student_idcard" property="studentIdcard" jdbcType="VARCHAR" />
+    <result column="real_name" property="refereeName" jdbcType="INTEGER" />
+    <result column="class_id" property="classId" jdbcType="INTEGER" />
+    <result column="field_id" property="fieldId" jdbcType="INTEGER" />
+    <result column="addTime" property="addTime" jdbcType="VARCHAR" />
+    <result column="name" property="schoolName" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="searchOrderList" resultMap="BaseResultMap" parameterType="com.driverPlus.dao.dto.manage.QueryOrderParam">
+    select so.id,
+      so.pay_status,
+      so.status,
+      so.student_name,
+      so.student_idcard,
+      sa.real_name,
+      so.class_id,
+      so.field_id,
+      DATE_FORMAT(so.add_time,"%Y-%m-%d %T") as addTime,
+      ss.name
+  from s_order so
+  left join s_school ss on(so.school_id=ss.id)
+  left join s_agent sa on(so.referee_id=sa.id)
+where  1=1
+    <if test="fieldId != null" >
+        and so.field_id=#{fieldId,jdbcType=INTEGER}
+    </if>
+    <if test="classId != null" >
+        and so.class_id=#{classId,jdbcType=INTEGER}
+    </if>
+    <if test="studentName != null" >
+        and so.student_name=#{studentName,jdbcType=VARCHAR}
+    </if>
+    <if test="studentIdcard != null" >
+        and so.student_idcard=#{studentIdcard,jdbcType=VARCHAR}
+    </if>
+    <if test="studentTelephone != null" >
+        and so.student_telephone=#{studentTelephone,jdbcType=VARCHAR}
+    </if>
+    <if test="city != null" >
+        and ss.city=#{city,jdbcType=VARCHAR}
+    </if>
+    <if test="schoolId != null" >
+        and so.school_id=#{schoolId,jdbcType=INTEGER}
+    </if>
+  </select>
 </mapper>

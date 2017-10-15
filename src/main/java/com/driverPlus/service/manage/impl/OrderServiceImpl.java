@@ -306,5 +306,27 @@ public class OrderServiceImpl implements OrderService {
 
         return orderMapper.countByExample(example);
     }
+    @Override
+    public  PageInfoResult<OrderDto> searchManageOrderListWithPage(QueryOrderParam queryOrderParam){
+        Map<Integer,Agent> agentMap=agentService.getAllAgentMapById();
+        Map<Integer,Class>classMap=classService.getAllClassMap();
+        Map<Integer,Field>fieldMap=fieldService.getAllFieldMap();
+
+        PageHelper.startPage(queryOrderParam.getPageNo(),queryOrderParam.getPageSize());
+        List<OrderDto> orderDtoList=orderMapper.searchOrderList(queryOrderParam);
+        if(CollectionUtils.isEmpty(orderDtoList)){
+            return PageInfoResult.buildPage();
+        }
+
+        for(OrderDto orderDto:orderDtoList){
+
+            orderDto.setPayStatusStr(PayStatusEnum.getByCode(orderDto.getPayStatus()).getName());
+            orderDto.setStatusStr(OrderStatusEnum.getByCode(orderDto.getStatus()).getName());
+            orderDto.setClassName(classMap.get(orderDto.getClassId())==null?"":classMap.get(orderDto.getClassId()).getName());
+            orderDto.setFieldName(fieldMap.get(orderDto.getFieldId())==null?"":fieldMap.get(orderDto.getFieldId()).getName());
+
+        }
+        return PageInfoResult.buildPageFromList(orderDtoList);
+    }
 
 }

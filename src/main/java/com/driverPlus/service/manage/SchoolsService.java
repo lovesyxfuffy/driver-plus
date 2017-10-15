@@ -1,6 +1,10 @@
 package com.driverPlus.service.manage;
 
+import com.driverPlus.dao.dto.manage.QuerySchoolParam;
+import com.driverPlus.dao.dto.manage.SchoolResultDto;
+import com.driverPlus.dao.po.PageInfoResult;
 import com.driverPlus.dao.po.manage.School;
+import com.github.pagehelper.Page;
 
 import java.util.List;
 import java.util.Map;
@@ -19,4 +23,6 @@ public interface SchoolsService {
     List<School> getSchoolList();
 
     Map<Integer,School> getSchoolMap();
+
+    PageInfoResult<SchoolResultDto> getSchoolResultList(QuerySchoolParam querySchoolParam);
 }

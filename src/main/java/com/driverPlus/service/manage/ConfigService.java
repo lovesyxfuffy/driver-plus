@@ -15,6 +15,8 @@ public interface ConfigService {
     List<EnumDto>getGroupStatusList();
     List<EnumDto> getEnumDtoList(String type);
     List<Config> getConfigList(String type);
+    List<Config> getConfigList();
+    Map<Integer,Map<String,Config>> getConfigMap();
     void setConfig(String configKey,String configName,String configValue,String type);
     void addGroupStatusList(String status);
     void editGroupStatusList(Integer id,String status);

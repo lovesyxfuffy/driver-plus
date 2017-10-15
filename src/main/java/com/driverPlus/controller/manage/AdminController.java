@@ -1,6 +1,8 @@
 package com.driverPlus.controller.manage;
 
 import com.driverPlus.dao.dto.manage.NoticeDto;
+import com.driverPlus.dao.dto.manage.QueryOrderParam;
+import com.driverPlus.dao.dto.manage.QuerySchoolParam;
 import com.driverPlus.dao.po.manage.Config;
 import com.driverPlus.dao.po.manage.Service;
 import com.driverPlus.service.manage.*;
@@ -34,6 +36,9 @@ public class AdminController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private  SchoolsService schoolsService;
 
     @RequestMapping(value = "/updateService",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> updateService(@RequestBody Service service){
@@ -78,6 +83,20 @@ public class AdminController {
         map.put("month",monthCount);
         map.put("amount",todayCount);
         return WebUtil.result(map);
+    }
+
+    @RequestMapping(value = "/getSchoolList",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getSchoolList(@RequestBody QuerySchoolParam querySchoolParam){
+
+
+        return WebUtil.result(schoolsService.getSchoolResultList(querySchoolParam));
+    }
+
+    @RequestMapping(value = "/order/searchOrderList",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> searchOrderList(@RequestBody QueryOrderParam queryOrderParam){
+
+
+        return WebUtil.result(orderService.searchManageOrderListWithPage(queryOrderParam));
     }
 
 

@@ -16,6 +16,11 @@ public class QueryOrderParam  implements Serializable {
     private Integer pageNo;
     private Integer pageSize;
 
+
+
+    private String city;
+    private Integer schoolId;
+
     public Integer getFieldId() {
         return fieldId;
     }
@@ -78,6 +83,22 @@ public class QueryOrderParam  implements Serializable {
 
     public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Integer getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(Integer schoolId) {
+        this.schoolId = schoolId;
     }
 
 }

@@ -83,6 +83,31 @@ public class ConfigServiceImpl implements ConfigService {
 
         return configList;
     }
+    @Override
+    public List<Config> getConfigList(){
+        ConfigExample example = new ConfigExample();
+
+        List<Config> configList=configMapper.selectByExample(example);
+
+        return configList;
+    }
+    @Override
+    public Map<Integer,Map<String,Config>> getConfigMap(){
+        ConfigExample example = new ConfigExample();
+        List<Config> configList=configMapper.selectByExample(example);
+        Map<Integer,Map<String,Config>> map=new HashMap<>();
+        for(Config config:configList){
+            Map<String,Config> configMap=map.get(config.getSchoolId());
+            if(!map.containsKey(config.getSchoolId())){
+                configMap=new HashMap<>();
+            }
+            configMap.put(config.getConfigKey(),config);
+            map.put(config.getSchoolId(),configMap);
+
+        }
+
+        return map;
+    }
 
     /*@Override
     public void addGroupStatus(String type,String name){

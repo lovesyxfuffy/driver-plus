@@ -35,4 +35,6 @@ public interface OrderService {
     Integer getStudentCountByMonth(Integer schoolId);
 
     Integer getStudentCountTotal(Integer schoolId);
+
+    PageInfoResult<OrderDto> searchManageOrderListWithPage(QueryOrderParam queryOrderParam);
 }
