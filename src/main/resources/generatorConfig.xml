@@ -21,16 +21,16 @@
         <javaTypeResolver>
             <property name="forceBigDecimals" value="true"/>
         </javaTypeResolver>
-        <javaModelGenerator targetPackage="com.driverPlus.dao.po.manage" targetProject="/Users/yujingyang/codes/driver-plus/src/main/java">
+        <javaModelGenerator targetPackage="com.driverPlus.dao.po.front" targetProject="/Users/yujingyang/codes/driver-plus/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
-        <sqlMapGenerator targetPackage="com.driverPlus.dao.mapper.manage"
+        <sqlMapGenerator targetPackage="com.driverPlus.dao.mapper.front"
                          targetProject="/Users/yujingyang/codes/driver-plus/src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="com.driverPlus.dao.mapper.manage"
+        <javaClientGenerator targetPackage="com.driverPlus.dao.mapper.front"
                              targetProject="/Users/yujingyang/codes/driver-plus/src/main/java"
                              type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
@@ -42,11 +42,11 @@
                <!--enableSelectByExample="true" enableUpdateByExample="true">-->
             <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
-        <!--<table schema="driver_plus" tableName="t_answer_record" domainObjectName="AnswerRecord"-->
-               <!--enableCountByExample="true" enableDeleteByExample="true"-->
-               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--</table>-->
+        <table schema="driver_plus" tableName="t_answer_record" domainObjectName="AnswerRecord"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
         <!--<table schema="driver_plus" tableName="t_group_reduction" domainObjectName="GroupReduction"-->
                <!--enableCountByExample="true" enableDeleteByExample="true"-->
                <!--enableSelectByExample="true" enableUpdateByExample="true">-->
@@ -100,11 +100,11 @@
             <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
 
-        <table schema="driver_plus" tableName="s_class" domainObjectName="Class"
-               enableCountByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" enableUpdateByExample="true">
-            <property name="useActualColumnNames" value="false"/>
-        </table>
+        <!--<table schema="driver_plus" tableName="s_class" domainObjectName="Class"-->
+               <!--enableCountByExample="true" enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
 
         <!--<table schema="driver_plus" tableName="s_config" domainObjectName="Config"-->
                <!--enableCountByExample="true" enableDeleteByExample="true"-->
@@ -150,17 +150,17 @@
             <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
 
-        <table schema="driver_plus" tableName="s_school" domainObjectName="School"
-               enableCountByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" enableUpdateByExample="true">
-            <property name="useActualColumnNames" value="false"/>
-        </table>
-
-        <!--<table schema="driver_plus" tableName="t_contest_record" domainObjectName="ContestRecord"-->
+        <!--<table schema="driver_plus" tableName="s_school" domainObjectName="School"-->
                <!--enableCountByExample="true" enableDeleteByExample="true"-->
                <!--enableSelectByExample="true" enableUpdateByExample="true">-->
             <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
+
+        <table schema="driver_plus" tableName="t_contest_record" domainObjectName="ContestRecord"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
 
         <!--<table schema="driver_plus" tableName="s_school_service" domainObjectName="SchoolService"-->
                <!--enableCountByExample="true" enableDeleteByExample="true"-->

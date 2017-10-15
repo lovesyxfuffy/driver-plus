@@ -13,9 +13,11 @@ public class ContestRecord {
 
     private Integer score;
 
-    private Integer studentId;
+    private Integer type;
 
     private Date addTime;
+
+    private Integer studentId;
 
     public Integer getId() {
         return id;
@@ -57,12 +59,12 @@ public class ContestRecord {
         this.score = score;
     }
 
-    public Integer getStudentId() {
-        return studentId;
+    public Integer getType() {
+        return type;
     }
 
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public Date getAddTime() {
@@ -71,5 +73,13 @@ public class ContestRecord {
 
     public void setAddTime(Date addTime) {
         this.addTime = addTime;
+    }
+
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 }
