@@ -134,6 +134,7 @@ public class NoticeServiceImpl implements NoticeService {
         Map<Integer,School> schoolMap=schoolsService.getSchoolMap();
         Map<Integer,Account>accountMap=accountService.getAccountMap();
         List<NoticeDto> noticeDtoList=new ArrayList<>();
+        PageHelper.startPage(pageNo,pageSize);
         com.driverPlus.dao.po.manage.NoticeExample example=new com.driverPlus.dao.po.manage.NoticeExample();
         List<Notice> notices=sNoticeMapper.selectByExample(example);
         if(CollectionUtils.isEmpty(notices)){
