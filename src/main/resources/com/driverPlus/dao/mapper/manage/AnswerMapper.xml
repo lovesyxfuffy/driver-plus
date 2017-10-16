@@ -7,6 +7,7 @@
     <result column="right" property="right" jdbcType="BIT" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
     <result column="add_time" property="addTime" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, question_id, right, content, number, add_time
+    id, question_id, right, content, number, status, add_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.driverPlus.dao.po.manage.AnswerExample" >
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.driverPlus.dao.po.manage.Answer" >
     insert into s_answer (id, question_id, right, 
-      content, number, add_time
-      )
+      content, number, status, 
+      add_time)
     values (#{id,jdbcType=INTEGER}, #{questionId,jdbcType=INTEGER}, #{right,jdbcType=BIT}, 
-      #{content,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, #{addTime,jdbcType=DATE}
-      )
+      #{content,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{addTime,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.driverPlus.dao.po.manage.Answer" >
     insert into s_answer
@@ -125,6 +126,9 @@
       </if>
       <if test="number != null" >
         number,
+      </if>
+      <if test="status != null" >
+        status,
       </if>
       <if test="addTime != null" >
         add_time,
@@ -145,6 +149,9 @@
       </if>
       <if test="number != null" >
         #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="addTime != null" >
         #{addTime,jdbcType=DATE},
@@ -175,6 +182,9 @@
       <if test="record.number != null" >
         number = #{record.number,jdbcType=VARCHAR},
       </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
       <if test="record.addTime != null" >
         add_time = #{record.addTime,jdbcType=DATE},
       </if>
@@ -190,6 +200,7 @@
       right = #{record.right,jdbcType=BIT},
       content = #{record.content,jdbcType=VARCHAR},
       number = #{record.number,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
       add_time = #{record.addTime,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -210,6 +221,9 @@
       <if test="number != null" >
         number = #{number,jdbcType=VARCHAR},
       </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
       <if test="addTime != null" >
         add_time = #{addTime,jdbcType=DATE},
       </if>
@@ -222,6 +236,7 @@
       right = #{right,jdbcType=BIT},
       content = #{content,jdbcType=VARCHAR},
       number = #{number,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
       add_time = #{addTime,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
