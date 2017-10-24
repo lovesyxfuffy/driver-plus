@@ -13,6 +13,7 @@ public class StudentDto implements Serializable {
     private String telephone;
     private String classTypeStr;
     private String statusStr;
+    private String status;
 
     public Integer getId() {
         return id;
@@ -62,7 +63,13 @@ public class StudentDto implements Serializable {
         this.statusStr = statusStr;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
 
 }

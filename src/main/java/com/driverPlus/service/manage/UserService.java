@@ -15,5 +15,6 @@ public interface UserService {
 
     List<User> getUserList();
     Map<Integer,User> getAllUserMapById();
+    List<User>getUserListByPhone(String telephone);
 
 }

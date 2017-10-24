@@ -44,6 +44,12 @@ public class UserServiceImpl implements UserService {
         }
         return userHashMap;
     }
+    @Override
+    public List<User>getUserListByPhone(String telephone){
+        UserExample example = new UserExample();
+        UserExample.Criteria criteria=example.createCriteria();
+        criteria.andTelephoneEqualTo(telephone);
 
-
+        return userMapper.selectByExample(example);
+    }
 }

@@ -120,7 +120,7 @@
       #{schoolId,jdbcType=INTEGER}, #{contestCount,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
       #{classType,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.driverPlus.dao.po.front.Student" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.driverPlus.dao.po.front.Student" >
     insert into t_student
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

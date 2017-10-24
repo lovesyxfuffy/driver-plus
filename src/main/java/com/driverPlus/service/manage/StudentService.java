@@ -29,4 +29,8 @@ public interface StudentService {
 
     PageInfoResult<StudyResultDto> searchStudyResultList(QueryStudyResultParam queryStudyResultParam);
 
+    void createStudent(Student student);
+
+    StudentDto getStudentInforById(int id);
+
 }

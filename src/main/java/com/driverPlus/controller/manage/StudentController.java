@@ -4,16 +4,18 @@ import com.driverPlus.Auth.UserUtil;
 import com.driverPlus.dao.dto.manage.EnumDto;
 import com.driverPlus.dao.dto.manage.NoticeDto;
 import com.driverPlus.dao.dto.manage.QueryStudentParam;
+import com.driverPlus.dao.dto.manage.StudentDto;
+import com.driverPlus.dao.po.front.Student;
+import com.driverPlus.dao.po.front.User;
 import com.driverPlus.dao.po.manage.School;
 import com.driverPlus.enums.SchoolStatusEnum;
-import com.driverPlus.service.manage.ConfigService;
-import com.driverPlus.service.manage.NoticeService;
-import com.driverPlus.service.manage.SchoolsService;
-import com.driverPlus.service.manage.StudentService;
+import com.driverPlus.service.manage.*;
 import com.driverPlus.utils.WebUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -36,6 +38,8 @@ public class StudentController {
     private SchoolsService schoolsService;
     @Autowired
     private NoticeService noticeService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/getStatusEnum",method = RequestMethod.POST)
     public ResponseEntity<Map<String,Object>> getStatusEnum(){
@@ -103,6 +107,35 @@ public class StudentController {
     //todo 驾校充值
 
     //todo 查看学员学习情况列表
+
+    @RequestMapping(value = "/create",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> create(@RequestBody StudentDto studentDto){
+
+        Student student=new Student();
+        BeanUtils.copyProperties(studentDto, student);
+        List<User> userList=userService.getUserListByPhone(studentDto.getTelephone());
+        if(!CollectionUtils.isEmpty(userList)){
+            student.setUserId(userList.get(0).getId());
+        }
+        student.setSchoolId(UserUtil.getSchoolId());
+        student.setContestCount(0);
+        student.setAccuracy(100);
+        student.setTestCount(0);
+        student.setProcess(100);
+        student.setTestStatus(1);
+        studentService.createStudent(student);
+        Map<String,Integer> map=new HashMap<>();
+        map.put("id",student.getId());
+
+        return WebUtil.result(map);
+    }
+    @RequestMapping(value = "/getInfo",method = RequestMethod.POST)
+    public ResponseEntity<Map<String,Object>> getInfo(@RequestBody Map<String, Integer> requestParam){
+
+        Integer studentId=requestParam.get("studentId");
+
+        return WebUtil.result(studentService.getStudentInforById(studentId));
+    }
 
 
 

@@ -217,4 +217,18 @@ public class StudentServiceImpl implements StudentService {
 
         return PageInfoResult.buildPageFromList(studentList,studyResultDtoList);
     }
+    @Override
+    public  void createStudent(Student student){
+
+        studentMapper.insertSelective(student);
+    }
+    @Override
+    public StudentDto getStudentInforById(int id){
+        StudentDto studentDto=new StudentDto();
+        Student student=studentMapper.selectByPrimaryKey(id);
+        BeanUtils.copyProperties(student,studentDto);
+        studentDto.setStatusStr(StudentStatusEnum.getByCode(student.getStatus()).getName());
+
+        return studentDto;
+    }
 }
