@@ -1260,8 +1260,8 @@ request:
   "name":"yujingyang",
   "idcard":"111111",
   "telephone":"12345678",
-  "classTypeStr":"C",
-  "statusStr":"科目一不合格"
+  "classId":4,
+  "statusCode":2
 }
 ```
 
