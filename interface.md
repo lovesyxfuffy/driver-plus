@@ -274,7 +274,8 @@ response:
 ```
 
 
-##### 11.修改学员状态   完成
+##### 11.修改学员状态   (2017-10-24)修改
+(url:/manage/student/changeStudentStatus)
 url:/manage/student/changeStudentStatus
 
 method:post
@@ -283,6 +284,9 @@ request:
 ```json
 {
   "id":3,
+  "name":"yujingyang",
+  "idcard":"111111",
+  "telephone":"12345678",
   "statusId":6
 }
 ```
@@ -1242,9 +1246,58 @@ response:
 }
 ```
 
+- - -
+- - -
 
+##### 45.新增学员
+url:/manage/student/create
 
+method:post
 
+request:
+```json
+{
+  "name":"yujingyang",
+  "idcard":"111111",
+  "telephone":"12345678",
+  "classTypeStr":"C",
+  "statusStr":"科目一不合格"
+}
+```
 
+response:
+```json
+{
+  "data":{
+    "id":3
+  },
+  "status":1
+}
+```
 
-##### 45.
+##### 46.获取学员信息
+url:/manage/student/getInfo/{studentId}
+
+method:post
+
+request:
+```json
+{
+
+}
+```
+
+response:
+```json
+{
+  "data":{
+      "id":3,
+      "name":"yujingyang",
+      "idcard":"111111",
+      "telephone":"12345678",
+      "classTypeStr":"C",
+      "statusStr":"科目一不合格"
+  },
+  "status":1
+}
+```
