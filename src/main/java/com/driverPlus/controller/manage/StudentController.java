@@ -55,9 +55,9 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/editStatus",method = RequestMethod.POST)
-    public ResponseEntity<Map<String,Object>> addStatus(@RequestParam Integer id,@RequestParam String status){
+    public ResponseEntity<Map<String,Object>> editStatus(@RequestBody EnumDto enumDto){
 
-        configService.editGroupStatusList(id,status);
+        configService.editGroupStatusList(enumDto.getId(),enumDto.getName());
 
         return WebUtil.success("操作成功");
     }
