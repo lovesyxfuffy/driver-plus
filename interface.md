@@ -1260,8 +1260,8 @@ request:
   "name":"yujingyang",
   "idcard":"111111",
   "telephone":"12345678",
-  "classId":4,
-  "statusCode":2
+  "classTypeStr":"C1",
+  "status":2
 }
 ```
 
