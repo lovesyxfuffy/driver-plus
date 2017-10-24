@@ -228,7 +228,7 @@ public class StudentServiceImpl implements StudentService {
         Student student=studentMapper.selectByPrimaryKey(id);
         BeanUtils.copyProperties(student,studentDto);
         studentDto.setStatusStr(StudentStatusEnum.getByCode(student.getStatus()).getName());
-
+        studentDto.setClassTypeStr(student.getClassType());
         return studentDto;
     }
 }
